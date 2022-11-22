@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>这可能是我写过最全的GATK笔记 | 陈有朴</title>
+
+<link rel="shortcut icon" href="https://Youpu-Chen.github.io//favicon.ico">
+<link href="https://Youpu-Chen.github.io//styles/main.css" rel="stylesheet">
+<link href="//at.alicdn.com/t/font_1678829_7cn41ho9lyt.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="陈有朴 » Feed" href="https://Youpu-Chen.github.io//atom.xml">
+        <meta name="description" content="软件安装
+官方网站：https://gatk.broadinstitute.org/hc/en-us
+点击“Download GATK4”：
+
+选择zip安装包：
+
+wget https://github.com/broadinstitut..." />
+        <meta name="keywords" content="GATK,WGS" />
+        <!-- OG -->
+        <meta property="og:locale" content="zh_CN">
+        <meta property="og:title" content="这可能是我写过最全的GATK笔记" />
+        <meta property="og:type" content="article" />
+        <meta property="og:description" content="软件安装
+官方网站：https://gatk.broadinstitute.org/hc/en-us
+点击“Download GATK4”：
+
+选择zip安装包：
+
+wget https://github.com/broadinstitut...">
+        <meta property="og:url" content="https://Youpu-Chen.github.io/post/GATK-BESTPRACTICE/" />
+        <meta property="og:site_name" content="陈有朴">
+        <meta property="og:updated_time" content="2022-08-11">
+        <meta property="og:image" content="" />
+        <meta property="og:image:secure_url" content="">
+        <meta property="og:image:alt" content="这可能是我写过最全的GATK笔记">
+        <!-- Twitter (post.ejs) -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="这可能是我写过最全的GATK笔记">
+        <meta name="twitter:description" content="软件安装
+官方网站：https://gatk.broadinstitute.org/hc/en-us
+点击“Download GATK4”：
+
+选择zip安装包：
+
+wget https://github.com/broadinstitut...">
+        <!-- <meta name="twitter:site" content="@WBoy0609">
+        <meta name="twitter:creator" content="@WBoy0609"> -->
+        <meta name="twitter:image" content="">
+</head>
+
+<body>
+    <div class="main animated">
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <a href="https://Youpu-Chen.github.io/">陈有朴</a>
+        </div>
+    </div>
+    <div class="my_socials">
+        
+            
+                <a href="https://github.com/Youpu-Chen" target="_blank"><i class="iconfont icon-github"></i></a>
+            
+        
+            
+                <a href="https://twitter.com/chenhongpu1" target="_blank"><i class="iconfont icon-twitter"></i></a>
+            
+        
+            
+        
+            
+        
+            
+        
+        <a href="https://Youpu-Chen.github.io//atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
+    </div>
+</div>
+
+    <div class="header_menu">
+        
+            
+                <a href="/" class="menu">首页</a>
+            
+        
+            
+                <a href="/archives" class="menu">Archives</a>
+            
+        
+            
+                <a href="/tags" class="menu">Tags</a>
+            
+        
+            
+                <a href="/post/about" class="menu">About Me</a>
+            
+        
+        <div class="gridea-search-div">
+            <form id="gridea-search-form" action="https://Youpu-Chen.github.io//search/">
+                <input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
+            </form>
+        </div>
+    </div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+                    <div class="post_page">
+                        <div class="post animated fadeInDown">
+                            <div class="post_title post_detail_title">
+                                <h2>
+                                    这可能是我写过最全的GATK笔记
+                                </h2>
+                                <span class="article-info">
+                                    2022-08-11, 3772 words, 17 min read
+                                </span>
+                            </div>
+                            <div class="post_content markdown">
+                                <p class="md_block">
+                                    <span class="md_line md_line_start md_line_end">
+                                        <h3 id="软件安装">软件安装</h3>
+<p>官方网站：https://gatk.broadinstitute.org/hc/en-us</p>
+<p>点击“Download GATK4”：<br>
+<img src="https://Youpu-Chen.github.io//post-images/1660188520935.png" alt="" loading="lazy"></p>
+<p>选择zip安装包：<br>
+<img src="https://Youpu-Chen.github.io//post-images/1660188530491.png" alt="" loading="lazy"></p>
+<pre><code class="language-bash">wget https://github.com/broadinstitute/gatk/releases/download/4.2.5.0/gatk-4.2.5.0.zip
+unzip gatk-4.2.5.0.zip
+</code></pre>
+<h4 id="其他">其他</h4>
+<p>安装GATK Best Practice所需要的软件：https://gatk.broadinstitute.org/hc/en-us/articles/360041320571--How-to-Install-all-software-packages-required-to-follow-the-GATK-Best-Practices</p>
+<p>其他分析流程（bwa替代流程）：https://gatk.broadinstitute.org/hc/en-us/articles/4407897446939--How-to-Run-germline-single-sample-short-variant-discovery-in-DRAGEN-mode</p>
+<h3 id="gatkjave选项">GATK：Jave选项</h3>
+<p>GATK实际使用的命令为：<code>java -jar program.jar</code>，但是为了GATK的开发者为了方便将其添加到环境变量，对其进行了封装，即使用安装目录下的<strong>gatk可执行脚本</strong>可直接运行：<br>
+<img src="https://Youpu-Chen.github.io//post-images/1660188563873.png" alt="" loading="lazy"></p>
+<p>下面给出一个封装前后，设置额外参数的例子：</p>
+<p>未进行封装前，设置额外参数的方式为<code>java -Xmx4G -jar gatk-package-4.2.2.0-local.jar</code></p>
+<p>进行封装后，设置额外参数的方式为<code>gatk --java-options &quot;-Xmx4G&quot;</code></p>
+<p>官方文档如下：</p>
+<p>[1] https://gatk.broadinstitute.org/hc/en-us/articles/360035531892-GATK4-command-line-syntax</p>
+<h3 id="gatkhallotypecaller">GATK：HallotypeCaller</h3>
+<p>关于HallotypeCaller（GATK 3.6之后的版本）是否还需要使用重比对？</p>
+<p>答案是不需要。</p>
+<p>细节请看：</p>
+<p>[1] https://github.com/broadinstitute/gatk-docs/blob/master/blog-2012-to-2019/2016-06-21-Changing_workflows_around_calling_SNPs_and_indels.md?id=7847</p>
+<h3 id="gatkgenomicsdbimport">GATK：GenomicsDBImport</h3>
+<p>在完成gatk HallotypeCaller分析这一步之后，可以选择GenomicsDBImport将生成的gvcf文件进行整合，便于后续的joint genotyping。</p>
+<p>【标注】</p>
+<ul>
+<li>“GATK4 Best Practice for SNP and Indel”一般都选择GenomicsDBImport（而不是CombineGVCFs）进行gvcf文件的合并。GenomicsDBImport<strong>有一套独立的数据存储系统</strong>；</li>
+<li>GenomicsDBImport与CombineGVCFs功能类似 —— 合并gvcf文件。前者将genomic loci作为划分依据（e.g. chromosome, scaffold, contig），后者使用sample；</li>
+<li>可以使用SelectVariants，对GenomicsDBImport产生的数据库内容进行访问；</li>
+</ul>
+<h4 id="要求输入数据">要求输入数据</h4>
+<p>GenomicsDBImport所要求的输入数据，为HallotypeCaller添加<code>-ERC GVCF</code>或<code>-ERC BP_RESOLUTION</code>参数生成的结果文件，即gvcf文件。</p>
+<h4 id="参数设置强制要求">参数设置（强制要求）</h4>
+<p>运行GenomicsDBImport的时候，有一些参数是必须的，还有一些参数是额外设置，可以用于增大文件读取速度或者进行个性化分析。</p>
+<pre><code class="language-bash">--genomicsdb-workspace-path  # 构建GenomicsDatabase的目标文件夹
+-V                           # gvcf文件名
+--sample-name-map            # 一个包含所有gvcf ID的文本，使用tab分隔符，第一列为sample ID，第二列为gvcf ID
+-L | --intervals             # 选择需要合并的基因组区域（每一行一个染色体编号）
+</code></pre>
+<p>额外参数设置：</p>
+<pre><code class="language-bash">--batch-size        # 代表每批次能够读入多少个样本，默认为0，表示一次性全部读入。当样本数超过100时需要注意
+</code></pre>
+<h4 id="输入文件">输入文件</h4>
+<p>GenomicsDBImport特殊的数据存储格式（e.g. ）</p>
+<h4 id="genomicsdbimport示例代码">GenomicsDBImport：示例代码</h4>
+<pre><code class="language-bash"># 每一个sample gvcf作为输入文件
+gatk --java-options &quot;-Xmx4g -Xms4g&quot; GenomicsDBImport \
+  -V data/gvcfs/mother.g.vcf.gz \
+  -V data/gvcfs/father.g.vcf.gz \
+  -V data/gvcfs/son.g.vcf.gz \
+  --genomicsdb-workspace-path my_database \
+  --tmp-dir=/path/to/large/tmp \
+  -L 20
+
+# 将所有sample gvcf名称放入map文件中
+# 对应参数：--sample-name-map
+gatk --java-options &quot;-Xmx4g -Xms4g&quot; \
+   GenomicsDBImport \
+   --genomicsdb-workspace-path my_database \
+   --batch-size 50 \
+   -L chr1:1000-10000 \
+   --sample-name-map cohort.sample_map \
+   --tmp-dir /path/to/large/tmp \
+   --reader-threads 5
+
+# 将新sample添加到GenomicsDBImport数据库中
+# 对应参数：--genomicsdb-update-workspace-path
+gatk --java-options &quot;-Xmx4g -Xms4g&quot; GenomicsDBImport \
+  -V data/gvcfs/mother.g.vcf.gz \
+  -V data/gvcfs/father.g.vcf.gz \
+  -V data/gvcfs/son.g.vcf.gz \
+  --genomicsdb-update-workspace-path my_database \
+  --tmp-dir /path/to/large/tmp \
+</code></pre>
+<p>【标注】sample map文件使用tab分隔符，每一行一个gvcf文件名</p>
+<pre><code class="language-bash">sample1      sample1.vcf.gz
+sample2      sample2.vcf.gz
+sample3      sample3.vcf.gz
+</code></pre>
+<p>还有一些细节就看看官方文档吧~</p>
+<p>[1] https://gatk.broadinstitute.org/hc/en-us/articles/360057439331-GenomicsDBImport</p>
+<p>[2] https://github.com/GenomicsDB/GenomicsDB/wiki</p>
+<h3 id="gatkcombinegvcfs">GATK：CombineGVCFs</h3>
+<p>CombineGVCFs的主要功能就是将<strong>HaplotypeCaller</strong>产生的gvcf文件，给合并。</p>
+<p>【标注】</p>
+<ul>
+<li>有且只能是HaplotypeCaller产生的gvcf可以用作输入文件</li>
+<li>VCF文件的合并，使用的是MergeVcfs，是Picard下的一个工具</li>
+<li>官方给出的说明是：1000+以上的样本推荐使用GenomicsDBImport</li>
+</ul>
+<h4 id="combinegvcfs示例代码">CombineGVCFs：示例代码</h4>
+<pre><code class="language-bash">gatk CombineGVCFs \
+  -R reference.fasta \
+  --variant sample1.g.vcf.gz \
+  --variant sample2.g.vcf.gz \
+  -O cohort.g.vcf.gz
+
+# 将染色体拆分运行
+gatk --java-options &quot;-Xmx4g -Xms4g&quot; CombineGVCFs -L 1 -V DRR083661.g.vcf.gz -O chr1.vcf.gz -R /home/chphl/2022_3_4_WGS/00.ref/arab_ref.fa
+</code></pre>
+<p>官方说明文档如下：</p>
+<p>[1] https://gatk.broadinstitute.org/hc/en-us/articles/360037593911-CombineGVCFs</p>
+<h3 id="gatkgenotypegvcfs">GATK：GenotypeGVCFs</h3>
+<p>这边有一个非常关键词，“joint genotyping”。</p>
+<p>genotyping，<strong>实际上就是发现给定群体（数据）中的DNA变异</strong>，包括SNP、INDEL、non-variation位点等。</p>
+<ul>
+<li>要求的输入数据是HaplotypeCaller附加“-ERC GVCF”或“-ERC BP_RESOLUTION”参数，所产生的gvcf文件</li>
+<li>输出文件：VCF</li>
+</ul>
+<h4 id="genotypegvcfs示例代码">GenotypeGVCFs：示例代码</h4>
+<pre><code class="language-bash">gatk --java-options &quot;-Xmx4g&quot; GenotypeGVCFs \
+  -R Homo_sapiens_assembly38.fasta \
+  -V input.g.vcf.gz \
+  -O output.vcf.gz
+
+# 当使用GenomicsDBImport作为合并HaplotypeCaller输出数据的工具时，
+gatk GenotypeGVCFs \
+    -R data/ref/ref.fasta \
+    -V gendb://my_database \
+    -O test_output.vcf
+</code></pre>
+<p>一些常用参数：</p>
+<pre><code class="language-bash">--TMP_DIR                  # 使用暂时文件夹对结果文件进行保存
+--max-genotype-count       # 每一个位置的genotype数量上限，默认为1024
+
+# 其他参数
+--sample-ploidy            # 在混池测序的时候需要注意，设置为“Number of samples in each pool * Sample Ploidy”
+</code></pre>
+<p>官方说明文档如下：</p>
+<p>[1] https://gatk.broadinstitute.org/hc/en-us/articles/360037057852-GenotypeGVCFs</p>
+<p>[2] https://gatk.broadinstitute.org/hc/en-us/articles/360035889971--How-to-Consolidate-GVCFs-for-joint-calling-with-GenotypeGVCFs</p>
+<h3 id="gatkselectvariants">GATK：SelectVariants</h3>
+<p>SelectVariants用于选择给定VCF文件中的个体 &amp; SNP类型（Select a subset of variants from a VCF file），功能可以概述为：</p>
+<p>1、从给定VCF文件中，挑选个体（参数：-sn）</p>
+<p>2、从给定VCF文件中，挑选对应区域（参数：--intervals）</p>
+<p>3、选择不同类型的SNP（参数：--select-type）</p>
+<p>e.g. 只挑选“INDELs”</p>
+<p>一些常用参数：</p>
+<pre><code class="language-bash">-R | --reference           # 给定参考基因组（官网说明文档给的是NULL，可有有无？）
+--sn                       # 选择给定的样本，样本名保存在以.args结尾的文本中（一定要.args结尾！！！）
+-xl-sn                     # 反向选择样本
+--intervals                # 选择给定区域
+--select-type-to-include | -select-type   # 选择保留给定类型的一种variants（注意，只有一种）
+                                          # 没有给定的情况下，默认保留所有位点
+                                          # ！！！多次设置来选择多种类型的位点
+# 包括：INDEL, SNP, MIXED, MNP, SYMBOLIC, NO_VARIATION
+# INDEL：insertion和deletion
+# SNP：single nucleotide polymorphism
+# MIXED：同一个位置上，不仅有SNP，还有IDEL（在多个个体水平）
+# MNP：由相邻物理位置上组合成的SNP集合
+# SYMBOLIC：
+# NO_VARIATION：非多态性位点
+ 
+--restrict-alleles-to        # 限制variants的类型为“ALL”，“BIALLELIC”，“MULTIALLELIC”其中的一种
+--exclude-filtered           # 启用该FLAG值时，输出结果中只会包括有“PASS”标记的位点
+--set-filtered-gt-to-nocall  # 默认情况下不开启，开启之后将“./.”位点全部过滤
+</code></pre>
+<p>其他参数：</p>
+<pre><code class="language-bash">--selectExpressions     # 选择variants的标准（自行定义）
+</code></pre>
+<h4 id="需要注意的问题indexfeaturefile">需要注意的问题：IndexFeatureFile</h4>
+<ul>
+<li>在服务器中移动VCF文件时，转移到一个文件夹的时候忘记把对应VCF文件的<strong>索引</strong>也转移过来了</li>
+<li>或者，本身就没有对该VCF创建索引</li>
+</ul>
+<p>可以使用如下命令，对目标VCF文件建立索引</p>
+<pre><code class="language-bash">gatk --java-options &quot;-Xmx4G&quot; IndexFeatureFile --input input.vcf
+</code></pre>
+<h4 id="需要注意的问题createsequencedictionary">需要注意的问题：CreateSequenceDictionary</h4>
+<p>在输入参考基因组（fasta格式）进行辅助分析的时候，不仅需要使用samtools对fasta文件进行fai索引的构建，还需要使用属于Picard工具包的CreateSequenceDictionary对其进行dict文件的构建：</p>
+<pre><code class="language-bash">samtools faidx ref.fasta
+# 结果文件：ref.fasta.fai
+
+gatk CreateSequenceDictionary R=ref.fasta O=ref.dict
+# 结果文件：ref.dict
+</code></pre>
+<p>官方说明文档：</p>
+<p>[1] https://gatk.broadinstitute.org/hc/en-us/articles/360036362532-SelectVariants</p>
+<p>[2] https://gatk.broadinstitute.org/hc/en-us/articles/360035530752-What-types-of-variants-can-GATK-tools-detect-or-handle-</p>
+<p>[3] https://gatk.broadinstitute.org/hc/en-us/articles/360035890771-Biallelic-vs-Multiallelic-sites</p>
+<p>[4] https://www.strand-ngs.com/files/manual/reference/snp.html</p>
+<h3 id="gatkvariantfiltration">GATK：VariantFiltration</h3>
+<p>VariantFiltration命令主要的功能是设置阈值，对SNP进行硬过滤，在FILTER这一列对位点进行标记。</p>
+<ul>
+<li>一般被过滤的位点，被标记为自行给定的FILTER名称</li>
+<li>没有被过滤的位点，被标记为PASS</li>
+</ul>
+<h4 id="variantfiltration示例代码">VariantFiltration：示例代码</h4>
+<pre><code class="language-bash">gatk VariantFiltration \
+-R reference.fasta \
+-V input.vcf.gz \
+-O output.vcf.gz \
+--filter-name &quot;my_filter1&quot; \
+--filter-expression &quot;AB &lt; 0.2&quot; \
+--filter-name &quot;my_filter2&quot; \
+--filter-expression &quot;MQ0 &gt; 50&quot;
+</code></pre>
+<h4 id="一些参数的说明">一些参数的说明</h4>
+<p>官方推荐将SNP和INDEL单独提取出来之后，再分别进行VariantFiltration。</p>
+<p>【分析标注】SelectVariants使用“-select-type”对变异位点进行筛选时，只会根据给定类型，筛选单一子集（e.g. 给定选择SNP，就只会筛选SNP，不会选择SNP和INDEL共存的位点）。若需要选择混合类型的位点，使用参数“MIXED”</p>
+<pre><code class="language-bash"># 示例hard-filtering
+gatk VariantFiltration \
+    -V snps.vcf.gz \
+    -filter &quot;QD &lt; 2.0&quot; --filter-name &quot;QD2&quot; \
+    -filter &quot;QUAL &lt; 30.0&quot; --filter-name &quot;QUAL30&quot; \
+    -filter &quot;SOR &gt; 3.0&quot; --filter-name &quot;SOR3&quot; \
+    -filter &quot;FS &gt; 60.0&quot; --filter-name &quot;FS60&quot; \
+    -filter &quot;MQ &lt; 40.0&quot; --filter-name &quot;MQ40&quot; \
+    -filter &quot;MQRankSum &lt; -12.5&quot; --filter-name &quot;MQRankSum-12.5&quot; \
+    -filter &quot;ReadPosRankSum &lt; -8.0&quot; --filter-name &quot;ReadPosRankSum-8&quot; \
+    -O snps_filtered.vcf.gz
+gatk VariantFiltration \ 
+    -V indels.vcf.gz \ 
+    -filter &quot;QD &lt; 2.0&quot; --filter-name &quot;QD2&quot; \
+    -filter &quot;QUAL &lt; 30.0&quot; --filter-name &quot;QUAL30&quot; \
+    -filter &quot;FS &gt; 200.0&quot; --filter-name &quot;FS200&quot; \
+    -filter &quot;ReadPosRankSum &lt; -20.0&quot; --filter-name &quot;ReadPosRankSum-20&quot; \ 
+    -O indels_filtered.vcf.gz
+</code></pre>
+<p>再给出一篇文章中的过滤参数：</p>
+<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1660188613462.png" alt="" loading="lazy"></figure>
+<p>官方说明文档如下：</p>
+<p>[1] https://gatk.broadinstitute.org/hc/en-us/articles/360037434691-VariantFiltration</p>
+<p>[2] https://gatk.broadinstitute.org/hc/en-us/articles/360035531112--How-to-Filter-variants-either-with-VQSR-or-by-hard-filtering【主要看“2. Hard filter a cohort callset with VariantFiltration”这部分就行】</p>
+<h2 id="其他gatk命令">其他GATK命令</h2>
+<h3 id="gatk碱基质量矫正">GATK：碱基质量矫正</h3>
+<p>碱基质量矫正（Base Quality Score Recalibration/BQSR），这一步分析主要用于检测由于测序仪器造成的系统误差。</p>
+<h4 id="bqsr理解">BQSR理解</h4>
+<p>可以从以下2个方面对BQSR进行理解：</p>
+<p>1、首先需要明确的一点是，BQSR是对碱基质量值进行矫正，而不是碱基。碱基质量值代表了该碱基的可信度（有百分之多少的概率，我们可以相信这个位点的测序情况是正确的，或者说有百分之多少的概率，认为这个位点是测错的），而base quality又与后续的SNP检测有关，因此对碱基质量值进行矫正非常关键。</p>
+<p>【标注】也就是说，我们不能够决定一个低质量的A碱基，其原本是不是一个T，但是我们可以决定相信这个A的程度（基于base quality）</p>
+<p>2、BQSR通过机器学习的方法对base quality进行矫正（本质都是<strong>回归</strong>）</p>
+<p>【标注】</p>
+<ul>
+<li>作者给出的例子，当AA在序列中连着出现的时候，认为后续出现的碱基都增加了1%被测序的概率，因此对应的base quality也需要下降</li>
+<li>上述影响是具有累加性的</li>
+</ul>
+<h4 id="bqsr分析过程">BQSR分析过程</h4>
+<p>1、基于输入数据（bam），建立一个<strong>协变模型</strong>（这个名词有待商榷）</p>
+<p>结果文件为一个recalibration file</p>
+<p>2、使用ApplyBQSR对原始输入文件的base quality进行矫正，结果文件为bam文件（新生成），同时在上述步骤要求输入先验SNP位点。具体过程：</p>
+<ul>
+<li>统计全局差异（observed/reported quality vs expected/empirical quality）</li>
+<li>每一个位点加上窗口计算的差异 + 每一个位点加上循环计算 &amp; dinucleotide差异</li>
+</ul>
+<p>【分析标注】</p>
+<ul>
+<li>“dinucleotide”【待解决】</li>
+<li>推荐二次建立模型，看看recalibration对整体结果的影响变化。</li>
+</ul>
+<h4 id="bqsr示例代码">BQSR：示例代码</h4>
+<pre><code class="language-bash"># 还没学，用不到
+</code></pre>
+<p>官方文档如下：</p>
+<p>[1] https://gatk.broadinstitute.org/hc/en-us/articles/360035890531-Base-Quality-Score-Recalibration-BQSR-</p>
+<p>[2] https://gatk.broadinstitute.org/hc/en-us/articles/360036898312-BaseRecalibrator</p>
+<h3 id="gatkvariantrecalibrator-applyvqsr">GATK：VariantRecalibrator &amp; ApplyVQSR</h3>
+<p>VariantRecalibrator采用机器学习的方式，计算位点的VQSLOD值（取代该位点原本的QUAL），作为后续分析的指标，一般分为以下2个步骤：</p>
+<ul>
+<li>使用高质量的VCF数据集，训练模型</li>
+<li>将模型应用到我们自己的数据当中去</li>
+</ul>
+<p>从上述的话，其实也能很明显地看出来，VariantRecalibrator &amp; ApplyVQSR这套方法的缺陷 —— 需要先验的高质量VCF数据集。</p>
+<p>输入数据的要求：</p>
+<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1660188666242.png" alt="" loading="lazy"></figure>
+<h4 id="variantrecalibrator示例运行">VariantRecalibrator：示例运行</h4>
+<pre><code class="language-bash"># exome data
+gatk VariantRecalibrator \
+  -R Homo_sapiens_assembly38.fasta \
+  -V input.vcf.gz \
+  --resource hapmap,known=false,training=true,truth=true,prior=15.0:hapmap_3.3.hg38.sites.vcf.gz \
+  --resource omni,known=false,training=true,truth=false,prior=12.0:1000G_omni2.5.hg38.sites.vcf.gz \
+  --resource 1000G,known=false,training=true,truth=false,prior=10.0:1000G_phase1.snps.high_confidence.hg38.vcf.gz \
+  --resource dbsnp,known=true,training=false,truth=false,prior=2.0:Homo_sapiens_assembly38.dbsnp138.vcf.gz \
+  -an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR \
+  -mode SNP \
+  -O output.recal \
+  --tranches-file output.tranches \
+  --rscript-file output.plots.R
+  
+# Allele-specific version of the SNP recalibration
+gatk VariantRecalibrator \
+  -R Homo_sapiens_assembly38.fasta \
+  -V input.vcf.gz \
+  -AS \
+  --resource hapmap,known=false,training=true,truth=true,prior=15.0:hapmap_3.3.hg38.sites.vcf.gz \
+  --resource omni,known=false,training=true,truth=false,prior=12.0:1000G_omni2.5.hg38.sites.vcf.gz \
+  --resource 1000G,known=false,training=true,truth=false,prior=10.0:1000G_phase1.snps.high_confidence.hg38.vcf.gz \
+  --resource dbsnp,known=true,training=false,truth=false,prior=2.0:Homo_sapiens_assembly38.dbsnp138.vcf.gz \
+  -an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR \
+  -mode SNP \
+  -O output.AS.recal \
+  --tranches-file output.AS.tranches \
+  --rscript-file output.plots.AS.R
+</code></pre>
+<p>官方说明文档如下：</p>
+<p>[1] https://gatk.broadinstitute.org/hc/en-us/articles/360036510892-VariantRecalibrator</p>
+<p>[2] https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-</p>
+<h3 id="gatkmergevcfs">GATK：MergeVCFs</h3>
+<p>MergeVCFs是包含在Picard内的一个工具，用于合并不同区域的VCF文件</p>
+<p>对输入文件的要求如下：</p>
+<ul>
+<li>每个VCF文件所包含的sample要一致</li>
+<li>Input file headers must be contain compatible declarations for common annotations (INFO, FORMAT fields) and filters，即一些通用信息要包含（e.g. INFO, FORMAT, filters）</li>
+<li>每个VCF文件包含的SNP，要求经过排序</li>
+</ul>
+<h4 id="mergevcfs示例代码">MergeVCFs：示例代码</h4>
+<pre><code class="language-bash">java -jar /path/picard.jar MergeVcfs \
+          I=input_variants.01.vcf \
+          I=input_variants.02.vcf.gz \
+          O=output_variants.vcf.gz
+</code></pre>
+<h2 id="题外话">题外话</h2>
+<h3 id="gatk什么是read-group-如何添加read-group信息">GATK：什么是read group &amp; 如何添加read group信息</h3>
+<p>在进行bwa mem比对时，需要向bam/sam文件中，添加read group信息。</p>
+<p>如果bam/sam文件中，没有对应信息，则会报错。</p>
+<h4 id="1gatk需要的read-group信息是什么">（1）GATK需要的read group信息是什么？</h4>
+<pre><code class="language-bash">ID = Read group identifier
+# 每一个read group 独有的ID，每一对reads 均有一个独特的ID，可以自定义命名；
+
+PL = Platform
+# 测序平台：ILLUMINA, SOLID, LS454, HELICOS and PACBIO，不区分大小写；
+
+SM = sample
+# reads属于的样品名；SM要设定正确，因为GATK产生的VCF文件也使用这个名字;
+
+LB = DNA preparation library identifier
+# 对一个read group的reads进行重复序列标记时，需要使用LB来区分reads来自那条lane;有时候，同一个库可能在不同的lane上完成测序;为了加以区分，
+# 同一个或不同库只要是在不同的lane产生的reads都要单独给一个ID. 一般无特殊说明，成对儿read属于同一库，可自定义，比如：library1
+</code></pre>
+<h4 id="2如何进行read-group信息添加">（2）如何进行read group信息添加？</h4>
+<p>图示：<br>
+<img src="https://Youpu-Chen.github.io//post-images/1660299121752.png" alt="" loading="lazy"></p>
+<pre><code class="language-bash">@A00312:194:HFK5KDSX2  # 测序仪器
+4                      # lane ID
+1101                   # tail坐标
+24469                  # tail x坐标
+13150                  # tail y坐标
+# bwa比对时，对read group信息进行添加
+bwa -R '@RG\tID:lane_${lane}\tPL:illumina\tSM:${sample}'
+</code></pre>
+<p>参考资料如下：</p>
+<p>https://www.jianshu.com/p/c41e8f3266b4</p>
+<h2 id="写在最后">写在最后</h2>
+<p>变异分析流程的软件有很多，金标准只有GATK一个（针对于WGS和WES），但是GATK自己本身就不断在更新。所以说，只学习别人软件的用法，这样还是走不长远的，我觉得还是需要以后自己有能力去做一款软件，靠这个吃饭，我觉得比较ok。</p>
+<br />
+                                            
+                                </p>
+                            </div>
+                            <div class="post_footer">
+                                
+                                    <div class="meta">
+                                        <div class="info"><span class="field tags"><i class="iconfont icon-tag-sm"></i>
+                                                
+                                                    <a href="https://Youpu-Chen.github.io/tag/ZUP1ThQfW/" class="article-info">
+                                                        GATK
+                                                    </a>
+                                                    
+                                                    <a href="https://Youpu-Chen.github.io/tag/aOqSaL_Yug/" class="article-info">
+                                                        WGS
+                                                    </a>
+                                                    
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                        
+                                            <div class="next-post" style="margin-top: 20px;">
+                                                <div class="next">下一篇</div>
+                                                <a href="https://Youpu-Chen.github.io/post/hello-gridea/">
+                                                    <h3 class="post-title">
+                                                        「Hello Gridea」Here comes Youpu-Chen
+                                                    </h3>
+                                                </a>
+                                            </div>
+                                            
+                            </div>
+                        </div>
+                        
+                            
+                                        
+                                            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+<div id="disqus_thread"></div>
+<script>
+    var options = {
+        shortname: 'DisqusComments',
+        apikey: '0D4eig7RqYsljZD0i62dy7y5H2AVm2gE3T9qwx1S16zyJejdxXypcpTtxHm07Eig',
+    }
+    if ('https://disqus.com/api/oauth/2.0/authorize/') {
+        options.api = 'https://disqus.com/api/oauth/2.0/authorize/'
+    }
+    var dsqjs = new DisqusJS(options)
+</script>
+                                                
+                                                    
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="footer">
+    
+    <div class="powered_by">
+        <a href="https://github.com/kytrun/gridea-theme-one" target="_blank">Theme One,</a>
+        <a href="https://gridea.dev/" target="_blank">Powered by Gridea&#65281;</a>
+    </div>
+    <div class="footer_slogan">
+        有谱
+    </div>
+    <div id="back_to_top" class="back_to_top">
+        <span>△</span>
+    </div>
+    
+</div>
+
+<script src="https://Youpu-Chen.github.io//media/scripts/util.js"></script>
+        <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/default.min.css">
+        <script src="//unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+</body>
+
+</html>

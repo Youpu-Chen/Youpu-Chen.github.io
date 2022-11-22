@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>「一文搞定序列比对算法」Global以及Local Alignment序列比对算法的实现 | 陈有朴</title>
+
+<link rel="shortcut icon" href="https://Youpu-Chen.github.io//favicon.ico">
+<link href="https://Youpu-Chen.github.io//styles/main.css" rel="stylesheet">
+<link href="//at.alicdn.com/t/font_1678829_7cn41ho9lyt.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="陈有朴 » Feed" href="https://Youpu-Chen.github.io//atom.xml">
+        <meta name="description" content="序列比对是什么以及序列比对主要的作用是什么，本篇博客就一笔带过，因为不是主要分享内容。
+序列比对，此处引申为pairwise alignment会更加恰当一些，用于比较2条序列之间的相似程度，推断它们之间的相似程度，进而探索对应功能以及系统..." />
+        <meta name="keywords" content="" />
+        <!-- OG -->
+        <meta property="og:locale" content="zh_CN">
+        <meta property="og:title" content="「一文搞定序列比对算法」Global以及Local Alignment序列比对算法的实现" />
+        <meta property="og:type" content="article" />
+        <meta property="og:description" content="序列比对是什么以及序列比对主要的作用是什么，本篇博客就一笔带过，因为不是主要分享内容。
+序列比对，此处引申为pairwise alignment会更加恰当一些，用于比较2条序列之间的相似程度，推断它们之间的相似程度，进而探索对应功能以及系统...">
+        <meta property="og:url" content="https://Youpu-Chen.github.io/post/globalandlocal_alignment/" />
+        <meta property="og:site_name" content="陈有朴">
+        <meta property="og:updated_time" content="2022-10-08">
+        <meta property="og:image" content="https://Youpu-Chen.github.io//post-images/globalandlocal_alignment.jpg" />
+        <meta property="og:image:secure_url" content="https://Youpu-Chen.github.io//post-images/globalandlocal_alignment.jpg">
+        <meta property="og:image:alt" content="「一文搞定序列比对算法」Global以及Local Alignment序列比对算法的实现">
+        <!-- Twitter (post.ejs) -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="「一文搞定序列比对算法」Global以及Local Alignment序列比对算法的实现">
+        <meta name="twitter:description" content="序列比对是什么以及序列比对主要的作用是什么，本篇博客就一笔带过，因为不是主要分享内容。
+序列比对，此处引申为pairwise alignment会更加恰当一些，用于比较2条序列之间的相似程度，推断它们之间的相似程度，进而探索对应功能以及系统...">
+        <!-- <meta name="twitter:site" content="@WBoy0609">
+        <meta name="twitter:creator" content="@WBoy0609"> -->
+        <meta name="twitter:image" content="https://Youpu-Chen.github.io//post-images/globalandlocal_alignment.jpg">
+</head>
+
+<body>
+    <div class="main animated">
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <a href="https://Youpu-Chen.github.io/">陈有朴</a>
+        </div>
+    </div>
+    <div class="my_socials">
+        
+            
+                <a href="https://github.com/Youpu-Chen" target="_blank"><i class="iconfont icon-github"></i></a>
+            
+        
+            
+                <a href="https://twitter.com/chenhongpu1" target="_blank"><i class="iconfont icon-twitter"></i></a>
+            
+        
+            
+        
+            
+        
+            
+        
+        <a href="https://Youpu-Chen.github.io//atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
+    </div>
+</div>
+
+    <div class="header_menu">
+        
+            
+                <a href="/" class="menu">首页</a>
+            
+        
+            
+                <a href="/archives" class="menu">Archives</a>
+            
+        
+            
+                <a href="/tags" class="menu">Tags</a>
+            
+        
+            
+                <a href="/post/about" class="menu">About Me</a>
+            
+        
+        <div class="gridea-search-div">
+            <form id="gridea-search-form" action="https://Youpu-Chen.github.io//search/">
+                <input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
+            </form>
+        </div>
+    </div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+                    <div class="post_page">
+                        <div class="post animated fadeInDown">
+                            <div class="post_title post_detail_title">
+                                <h2>
+                                    「一文搞定序列比对算法」Global以及Local Alignment序列比对算法的实现
+                                </h2>
+                                <span class="article-info">
+                                    2022-10-08, 2761 words, 14 min read
+                                </span>
+                            </div>
+                            <div class="post_content markdown">
+                                <p class="md_block">
+                                    <span class="md_line md_line_start md_line_end">
+                                        <p>序列比对是什么以及序列比对主要的作用是什么，本篇博客就一笔带过，因为不是主要分享内容。</p>
+<p>序列比对，此处引申为pairwise alignment会更加恰当一些，用于比较2条序列之间的相似程度，推断它们之间的相似程度，进而探索对应功能以及系统发育关系。</p>
+<p>接下来大体分为2个部分，1）全局比对，2）局部比对</p>
+<p>首先要明确一个概念：<strong>序列比对想要达到的目的是什么？</strong></p>
+<p>引一张图来说明序列比对的目的以及全局比对、局部比对之间的区别，</p>
+<p>总的来说，也就是全局比对和局部比对想要达到的目的是不一样的，</p>
+<ul>
+<li>全局比对想要得到的是2条序列最佳的匹配结果（e.g. 最多的match数量、最高的比对得分、最高的identity），局部比对想要得到的是2条序列中<strong>最佳匹配片段</strong>（注意：最佳的匹配结果需要建立在相对较少的序列修改上）</li>
+<li>全局比对更适用于evolution关系上更加靠近的（e.g. 粳稻和籼稻），而局部比对更加适用于evolution关系上关系比较远的（e.g. 水稻和葡萄）</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1665210943785.png" alt="" loading="lazy"></figure>
+<h1 id="步骤拆解global-alignment">「步骤拆解」Global Alignment</h1>
+<p>利用动态规划来解决问题，最关键的一步就是列出<strong>动态规划公式</strong>，只要能列出公式，后面的编程也都只是时间问题。</p>
+<p>但是，我并不想一上来就列出数学公式，我认为以一个简单的例子入手更有利于序列比对问题中的动态规划应用。</p>
+<p>接下来，先理一理基于动态规划的序列比对的过程。</p>
+<h2 id="1intialization-matrix-filling">（1）Intialization + Matrix Filling</h2>
+<p>假设现在有2条长度分别为n、m的序列，</p>
+<p>那则需要构建行数为n+1，列数为m+1的矩阵，</p>
+<p>而“Filling”这个过程，即将第一列和第一行进行填充，从数学公式的角度来理解的话，</p>
+<ul>
+<li>第一列的填充：$$g*length(matrix[1:i, 1])$$，i~[1, n]</li>
+<li>第一行的填充：$$g*length(matrix[1, 1:j])$$，j~[1, m]</li>
+</ul>
+<h2 id="2tracing-back">（2）Tracing Back</h2>
+<p>每一个单元的填充模式如下，</p>
+<ul>
+<li>
+<p>横向和竖向的移动代表了gap open（horizontal，vertical）</p>
+<p>但更加复杂的情况应该考虑到gap在哪一条序列打开</p>
+</li>
+<li>
+<p>对角线的移动则可以分为1）<strong>match</strong>（从大的数值回溯到小的数值），2）<strong>mismatch</strong>（从小的数值回溯到大的数值）</p>
+</li>
+</ul>
+<p>Note：数值增大代表替换矩阵中，该碱基对应关系为match，而数值减小，代表替换矩阵中碱基对应关系为mismatch</p>
+<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1665210984762.png" alt="" loading="lazy"></figure>
+<h1 id="公式global-alignment">「公式」Global Alignment</h1>
+<figure data-type="image" tabindex="3"><img src="https://Youpu-Chen.github.io//post-images/1665211129642.png" alt="" loading="lazy"></figure>
+<h1 id="引入gap-extension">引入gap extension</h1>
+<p><strong>出现4个单位长度的一个完整gap将两条序列给比对上，或者4个单位长度的单独gap将两条序列给比对上是更符合生物学原理的</strong>？</p>
+<p>上述的文字情况如下所示，</p>
+<pre><code class="language-shell"># 1.
+ATCGATCGATCGATCG----
+AGCTAGCTCAGTACGT----
+# 2.
+ATCG-ATCG-ATCG-ATCG-ATCG
+ATCG-ATCG-ATCG-ATCG-ATCG
+</code></pre>
+<p><a href="http://www.cs.otago.ac.nz/cosc348/alignments/Lecture05_GlobalAlignment.pdf">答案是前者</a>。这就需要在序列比对中引入另一个非常重要的细节 —— affine gap penalty。</p>
+<blockquote>
+<p>Note：此处引入的affine gap penalty为“not penalize open with extension”，即在打开一个gap的时候，不会在该gap上同时引入open和extension的罚分</p>
+</blockquote>
+<p>affine gap penalty，即在打开第一个gap的时候引入gap open罚分，而在该gap的基础上进行延续则采用gap extension罚分。</p>
+<p>该种做法与原来的常量gap有一定区别，因此就需要改变动态规划公式，同时引入CS中的状态机可以帮助我们更好地理解这个问题。</p>
+<figure data-type="image" tabindex="4"><img src="https://Youpu-Chen.github.io//post-images/1665211055133.png" alt="" loading="lazy"></figure>
+<p>上图中存在3个状态，</p>
+<p>1）M：当前的比对情况下为match或mismatch</p>
+<p>2）Ix：当前的比对情况为在seq2上打开一个gap，而seq1上为一个base</p>
+<p>3）Iy：当前的比对情况为在seq1上打开一个gap，而seq2上为一个base</p>
+<p>三者之间是可以相互转换的，通过d、e、s(x, y)来调整。</p>
+<p>因此动态规划公式变为如下的形式，</p>
+<figure data-type="image" tabindex="5"><img src="https://Youpu-Chen.github.io//post-images/1665211100756.png" alt="" loading="lazy"></figure>
+<h2 id="gap-extension情况下的动态规划矩阵初始化">gap extension情况下的动态规划矩阵初始化</h2>
+<ul>
+<li>M(0,0)=0</li>
+<li>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>I</mi><mi>x</mi></msub><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mn>0</mn><mo>)</mo><mo>=</mo><mi>d</mi><mo>+</mo><mi>e</mi><mo>∗</mo><mo>(</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">I_{x}(i,0)=d + e*(i-1)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></p>
+</li>
+<li>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>I</mi><mi>y</mi></msub><mo>(</mo><mi>j</mi><mo separator="true">,</mo><mn>0</mn><mo>)</mo><mo>=</mo><mi>d</mi><mo>+</mo><mi>e</mi><mo>∗</mo><mo>(</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">I_{y}(j,0)=d+e*(j-1)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></p>
+</li>
+</ul>
+<p>但由于$$I_{x}$$在第一行以及$$I_{y}$$在第一列的取值都是不存在的，因此定义为-inf。</p>
+<p>同时，由于每一个cell都存在一种情况，我们需要建立3个矩阵来存储对应的信息，分别用M、X、Y来表示。</p>
+<p>经初始化之后，就可以得到如下3个矩阵：</p>
+<h4 id="1m">1）M</h4>
+<figure data-type="image" tabindex="6"><img src="https://Youpu-Chen.github.io//post-images/1665211211305.png" alt="" loading="lazy"></figure>
+<h4 id="2x">2）X</h4>
+<p>代表在列方向打开一个gap，即seq2上插入一个gap</p>
+<figure data-type="image" tabindex="7"><img src="https://Youpu-Chen.github.io//post-images/1665211230263.png" alt="" loading="lazy"></figure>
+<h4 id="3y">3）Y</h4>
+<p>代表在行方向上打开一个gap，即seq1上插入一个gap</p>
+<figure data-type="image" tabindex="8"><img src="https://Youpu-Chen.github.io//post-images/1665211245230.png" alt="" loading="lazy"></figure>
+<h3 id="gap-extension情况下的动态规划矩阵回溯">gap extension情况下的动态规划矩阵回溯</h3>
+<p>3个矩阵，可以使用1个矩阵来记录当前的cell的数值来源，3种情况如下</p>
+<ul>
+<li>来自M，即当前为一个match/mismatch，记录为0</li>
+<li>来自X，即当前为一个gap open/gap extension，记录为1</li>
+<li>来自Y，即当前为一个gap open/gap extension，记录为2</li>
+</ul>
+<p>给个示例的回溯矩阵，</p>
+<figure data-type="image" tabindex="9"><img src="https://Youpu-Chen.github.io//post-images/1665211266426.png" alt="" loading="lazy"></figure>
+<h1 id="步骤拆解local-alignment">「步骤拆解」Local Alignment</h1>
+<p>步骤与Global Alignment近似，只是引入了一个0，就可以得到局部的最佳匹配。</p>
+<p>公式如下，</p>
+<figure data-type="image" tabindex="10"><img src="https://Youpu-Chen.github.io//post-images/1665211285196.png" alt="" loading="lazy"></figure>
+<h1 id="代码实现">代码实现</h1>
+<pre><code class="language-python">import numpy as np
+
+# Preset variables
+seq1 = &quot;TCGTAGACGA&quot;
+seq2 = &quot;ATAGAATGCGG&quot;
+print(f'The seq1 has length of {len(seq1)}')
+print(f'The seq2 has length of {len(seq2)}')
+
+match = 1
+mismatch = -1
+gap_open = -2
+gap_extension = -1
+# 
+global MIN
+MIN = -float(&quot;inf&quot;)
+
+
+def identity_match(base1, base2):
+    '''Note: this function is used to compare the bases and return match point or mismatch point'''
+    if base1 == base2:
+        return match
+    else:
+        return mismatch
+
+def createscorematrix(n, m):
+    '''Note: this function is used to generate the original score function'''
+    # Create match matrix, x matrix and y matrix
+    m_mat = [np.zeros(m+1) for i in range(0, n+1)]
+    x_mat = [np.zeros(m+1) for i in range(0, n+1)]
+    y_mat = [np.zeros(m+1) for i in range(0, n+1)]
+
+    return m_mat, x_mat, y_mat
+
+m_mat, x_mat, y_mat = createscorematrix(len(seq1), len(seq2))
+# print(m_mat)
+# print(x_mat)
+# print(y_mat)
+
+
+def scorematrix_init(m_mat, x_mat, y_mat, d, e, local=False):
+    '''Note: this function conduct the score matrix initialization'''
+    '''Global Alignment'''
+    if local == False:
+        '''match matrix filling'''
+        for i in range(0, len(m_mat)):
+            for j in range(0, len(m_mat[0])):
+                if i == 0 and j == 0:
+                    m_mat[i][j] = 0
+                elif i == 0 and j &gt; 0:
+                    m_mat[i][j] = MIN
+                elif i &gt; 0 and j == 0:
+                    m_mat[i][j] = MIN
+        # print(m_mat)
+        for line in m_mat:
+            r_list = [str(i) for i in line]
+            print(' '.join(r_list))
+
+        '''x_matrix filling'''
+        for i in range(0, len(x_mat)):
+            for j in range(0, len(x_mat[0])):
+                if i == 0 and j == 0:
+                    x_mat[i][j]=0
+                if i &gt; 0 and j == 0:
+                    x_mat[i][j] = d+e*(i-1)
+        x_first_row = [0]
+        x_first_row.extend([MIN]*(len(x_mat[0])-1))
+        x_mat[0] = x_first_row
+        # print(x_mat)
+        for line in x_mat:
+            r_list = [str(i) for i in line]
+            print(' '.join(r_list))
+
+        '''y_matrix filling'''
+        for i in range(0, len(y_mat)):
+            for j in range(0, len(y_mat[0])):
+                if i == 0 and j == 0:
+                    y_mat[i][j]=0
+                elif i &gt; 0 and j == 0: 
+                    y_mat[i][j] = MIN
+        y_first_row = [0]
+        y_first_row.extend([d+e*(i-1) for i in range(1, len(y_mat[0]-1))])
+        y_mat[0] = y_first_row
+        # print(y_mat)
+        for line in y_mat:
+            r_list = [str(i) for i in line]
+            print(' '.join(r_list))
+
+        return m_mat, x_mat, y_mat
+    
+    '''Local Alignment: Initialization step for Smith-Watermen is useless'''
+    if local == True:
+        return m_mat, x_mat, y_mat
+
+m_mat, x_mat, y_mat = scorematrix_init(m_mat, x_mat, y_mat, -2, -1, local=False)
+# m_mat, x_mat, y_mat = scorematrix_init(m_mat, x_mat, y_mat, -2, -1, local=True)
+
+
+def matrix_filling(m_mat, x_mat, y_mat, d, e, local=False):
+    '''this function is used to create the scoring matrix using three dynamic programming,
+    and building a tracing matrix to restore the paths for the retrieve of aliignments'''
+    '''Global Alignment Activation'''
+    if local == False:
+        # Filling score matrix and record the trace
+        trace_matrix = [np.zeros(len(m_mat[0])) for i in range(0, len(m_mat))]
+
+        for i in range(1, len(m_mat)):
+            # print(m_mat[0])
+            for j in range(1, len(m_mat[0])):
+                # print(i, j)
+                m_mat[i][j] = max(
+                    m_mat[i-1][j-1] + identity_match(seq1[i-1], seq2[j-1]),
+                    x_mat[i-1][j-1] + identity_match(seq1[i-1], seq2[j-1]),
+                    y_mat[i-1][j-1] + identity_match(seq1[i-1], seq2[j-1])
+                )
+                x_mat[i][j] = max(m_mat[i-1][j] + d, x_mat[i-1][j] + e)
+                y_mat[i][j] = max(m_mat[i][j-1] + d, y_mat[i][j-1] + e)
+        # for line in m_mat:
+        #     print(line)
+
+        # Take the greatest values in these three matrix,
+        # merge into one matrix,
+        # and record the path
+        new_mat = [np.zeros(len(m_mat[0])) for i in range(0, len(m_mat))]
+        for i in range(0, len(m_mat)):
+            for j in range(0, len(m_mat[0])):
+                new_mat[i][j] = max(m_mat[i][j], x_mat[i][j], y_mat[i][j])
+                # Fill the trace matrix
+                # Note: from match/mismatch is 0, from x_mat (open a gap in seq2) is 1, from y_mat (open a gap in seq1)
+                if m_mat[i][j] == max(m_mat[i][j], x_mat[i][j], y_mat[i][j]):
+                    trace_matrix[i][j] = 0
+                elif x_mat[i][j] == max(m_mat[i][j], x_mat[i][j], y_mat[i][j]):
+                    trace_matrix[i][j] = 1
+                elif y_mat[i][j] == max(m_mat[i][j], x_mat[i][j], y_mat[i][j]):
+                    trace_matrix[i][j] = 2
+        # # Print out the scoring matrix
+        # for line in new_mat:
+        #     r_list = [str(i) for i in line]
+        #     print('\t'.join(r_list))
+        # # Print out the tracing matrix
+        for line in trace_matrix:
+            r_list = [str(i) for i in line]
+            print('\t'.join(r_list))
+
+        return new_mat, trace_matrix
+    
+    '''Local Alignment Activation'''
+    if local == True:
+        # Filling score matrix and record the trace
+        trace_matrix = [np.zeros(len(m_mat[0])) for i in range(0, len(m_mat))]
+
+        for i in range(1, len(m_mat)):
+            # print(m_mat[0])
+            for j in range(1, len(m_mat[0])):
+                # print(i, j)
+                m_mat[i][j] = max(
+                    m_mat[i-1][j-1] + identity_match(seq1[i-1], seq2[j-1]),
+                    x_mat[i-1][j-1] + identity_match(seq1[i-1], seq2[j-1]),
+                    y_mat[i-1][j-1] + identity_match(seq1[i-1], seq2[j-1]),
+                    0
+                )
+                x_mat[i][j] = max(m_mat[i-1][j] + d, x_mat[i-1][j] + e)
+                y_mat[i][j] = max(m_mat[i][j-1] + d, y_mat[i][j-1] + e)
+        # for line in m_mat:
+        #     print(line)
+
+        # Take the Greatest values in these three matrix
+        new_mat = [np.zeros(len(m_mat[0])) for i in range(0, len(m_mat))]
+        for i in range(0, len(m_mat)):
+            for j in range(0, len(m_mat[0])):
+                new_mat[i][j] = max(m_mat[i][j], x_mat[i][j], y_mat[i][j])
+                if m_mat[i][j] == max(m_mat[i][j], x_mat[i][j], y_mat[i][j]):
+                    trace_matrix[i][j] = 0
+                elif x_mat[i][j] == max(m_mat[i][j], x_mat[i][j], y_mat[i][j]):
+                    trace_matrix[i][j] = 1
+                elif y_mat[i][j] == max(m_mat[i][j], x_mat[i][j], y_mat[i][j]):
+                    trace_matrix[i][j] = 2
+        
+        # # Print out the scoring matrix
+        # for line in new_mat:
+        #     r_list = [str(i) for i in line]
+        #     print(' '.join(r_list))
+        # # Print out the tracing matrix
+        # for line in trace_matrix:
+        #     r_list = [str(i) for i in line]
+        #     print('\t'.join(r_list))
+        return new_mat, trace_matrix
+
+score_matrix, trace_matrix = matrix_filling(m_mat, x_mat, y_mat, -2, -1, local=False)
+# score_matrix, trace_matrix = matrix_filling(m_mat, x_mat, y_mat, -2, -1, local=True)
+
+# seq1 = &quot;-TCGTAGACGA&quot;
+# seq2 = &quot;ATAGAATGCGG&quot;
+def global_backtracking(matrix, score_matrix):
+    '''this function is used to trace back the input matrix and output the final alignment
+    Note: the input matrix is trace matrix'''
+    ti = len(seq1)
+    tj = len(seq2)
+    alignment1 = ''
+    alignment2 = ''
+    while (ti &gt; 0 or tj &gt; 0):
+        # Choose to go left, up or diagonal
+        cell = matrix[ti][tj]
+        if cell == 0:
+            alignment1 = seq1[ti-1] + alignment1
+            alignment2 = seq2[tj-1] + alignment2
+            ti -= 1
+            tj -= 1
+        elif cell == 1:
+            alignment1 = seq1[ti-1] + alignment1
+            alignment2 = '-' + alignment2
+            ti -= 1
+        elif cell == 2:
+            alignment1 = '-' + alignment1
+            alignment2 = seq2[tj-1] + alignment2
+            tj -= 1
+
+    # fmt_alignment = f'{alignment1}\n{alignment2}'
+    # print(fmt_alignment)
+    # Formt the info
+    info = f&quot;======The Global======\n     {alignment1}\n     {alignment2}\nSCORE: {score_matrix[len(score_matrix)-1][len(score_matrix[0])-1]}&quot;
+    print(info)
+global_backtracking(trace_matrix, score_matrix)
+
+
+def local_backtracking(trace_matrix, score_matrix):
+    '''this function does backtracking like FUNCTION global_backtracking, but in the way of local aligment'''
+    # Convert score matrix into Numpy array to find maximum value
+    new_score_matrix = np.array(score_matrix)
+    pos = np.unravel_index(np.argmax(new_score_matrix, axis=None), new_score_matrix.shape)  # retrieve the maximum value
+    ti = pos[0]
+    tj = pos[1]
+    # print(f'{ti}\t{tj}')
+    alignment1 = ''
+    alignment2 = ''
+
+    while (ti &gt; 0 or tj &gt; 0):
+
+        if new_score_matrix[ti][tj] == 0: # stop local alignment back tracking when 0 values met
+            break
+        
+        cell = trace_matrix[ti][tj]
+        if cell == 0:
+            alignment1 = seq1[ti-1] + alignment1
+            alignment2 = seq2[tj-1] + alignment2
+            ti -= 1
+            tj -= 1
+        elif cell == 1:
+            alignment1 = seq1[ti-1] + alignment1
+            alignment2 = '-' + alignment2
+            ti -= 1
+        elif cell == 2:
+            alignment1 = '-' + alignment1
+            alignment2 = seq2[tj-1] + alignment2
+            tj -= 1
+    info = f&quot;======The Local======\n     {alignment1}\n     {alignment2}\nSCORE: {np.ndarray.max(new_score_matrix)}&quot;
+    print(info)
+
+# local_backtracking(trace_matrix, score_matrix)
+</code></pre>
+<h1 id="参考文献">参考文献</h1>
+<p>[1] 《组学数据中的统计与分析》，田卫东</p>
+<p>[2] https://users.soe.ucsc.edu/~karplus/bme205/f12/Alignment.html</p>
+<p>[3] https://www.youtube.com/watch?v=ZBD9he4Zp1E</p>
+<p>[4] Biological sequence analysis: Probabilistic models of proteins and nucleic acids</p>
+<br />
+                                            
+                                </p>
+                            </div>
+                            <div class="post_footer">
+                                
+                                        
+                                            <div class="next-post" style="margin-top: 20px;">
+                                                <div class="next">下一篇</div>
+                                                <a href="https://Youpu-Chen.github.io/post/for-readers/">
+                                                    <h3 class="post-title">
+                                                        从读者的角度出发
+                                                    </h3>
+                                                </a>
+                                            </div>
+                                            
+                            </div>
+                        </div>
+                        
+                            
+                                        
+                                            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+<div id="disqus_thread"></div>
+<script>
+    var options = {
+        shortname: 'DisqusComments',
+        apikey: '0D4eig7RqYsljZD0i62dy7y5H2AVm2gE3T9qwx1S16zyJejdxXypcpTtxHm07Eig',
+    }
+    if ('https://disqus.com/api/oauth/2.0/authorize/') {
+        options.api = 'https://disqus.com/api/oauth/2.0/authorize/'
+    }
+    var dsqjs = new DisqusJS(options)
+</script>
+                                                
+                                                    
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="footer">
+    
+    <div class="powered_by">
+        <a href="https://github.com/kytrun/gridea-theme-one" target="_blank">Theme One,</a>
+        <a href="https://gridea.dev/" target="_blank">Powered by Gridea&#65281;</a>
+    </div>
+    <div class="footer_slogan">
+        有谱
+    </div>
+    <div id="back_to_top" class="back_to_top">
+        <span>△</span>
+    </div>
+    
+</div>
+
+<script src="https://Youpu-Chen.github.io//media/scripts/util.js"></script>
+        <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/default.min.css">
+        <script src="//unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+</body>
+
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>「基因组」基因组组装之前要做的：Genome Survey | 陈有朴</title>
+
+<link rel="shortcut icon" href="https://Youpu-Chen.github.io//favicon.ico">
+<link href="https://Youpu-Chen.github.io//styles/main.css" rel="stylesheet">
+<link href="//at.alicdn.com/t/font_1678829_7cn41ho9lyt.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="陈有朴 » Feed" href="https://Youpu-Chen.github.io//atom.xml">
+        <meta name="description" content="基因组组装之前，有一些问题还是需要注意的，
+
+genome size是多少？
+评估得到的genome heterozygosity是多少？
+重复序列的占比是多少？
+
+可以系统性地称为genome survey，这是一个非常简单的分析，但是其..." />
+        <meta name="keywords" content="基因组学,Python,R" />
+        <!-- OG -->
+        <meta property="og:locale" content="zh_CN">
+        <meta property="og:title" content="「基因组」基因组组装之前要做的：Genome Survey" />
+        <meta property="og:type" content="article" />
+        <meta property="og:description" content="基因组组装之前，有一些问题还是需要注意的，
+
+genome size是多少？
+评估得到的genome heterozygosity是多少？
+重复序列的占比是多少？
+
+可以系统性地称为genome survey，这是一个非常简单的分析，但是其...">
+        <meta property="og:url" content="https://Youpu-Chen.github.io/post/genomesurvey/" />
+        <meta property="og:site_name" content="陈有朴">
+        <meta property="og:updated_time" content="2022-10-16">
+        <meta property="og:image" content="" />
+        <meta property="og:image:secure_url" content="">
+        <meta property="og:image:alt" content="「基因组」基因组组装之前要做的：Genome Survey">
+        <!-- Twitter (post.ejs) -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="「基因组」基因组组装之前要做的：Genome Survey">
+        <meta name="twitter:description" content="基因组组装之前，有一些问题还是需要注意的，
+
+genome size是多少？
+评估得到的genome heterozygosity是多少？
+重复序列的占比是多少？
+
+可以系统性地称为genome survey，这是一个非常简单的分析，但是其...">
+        <!-- <meta name="twitter:site" content="@WBoy0609">
+        <meta name="twitter:creator" content="@WBoy0609"> -->
+        <meta name="twitter:image" content="">
+</head>
+
+<body>
+    <div class="main animated">
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <a href="https://Youpu-Chen.github.io/">陈有朴</a>
+        </div>
+    </div>
+    <div class="my_socials">
+        
+            
+                <a href="https://github.com/Youpu-Chen" target="_blank"><i class="iconfont icon-github"></i></a>
+            
+        
+            
+                <a href="https://twitter.com/chenhongpu1" target="_blank"><i class="iconfont icon-twitter"></i></a>
+            
+        
+            
+        
+            
+        
+            
+        
+        <a href="https://Youpu-Chen.github.io//atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
+    </div>
+</div>
+
+    <div class="header_menu">
+        
+            
+                <a href="/" class="menu">首页</a>
+            
+        
+            
+                <a href="/archives" class="menu">Archives</a>
+            
+        
+            
+                <a href="/tags" class="menu">Tags</a>
+            
+        
+            
+                <a href="/post/about" class="menu">About Me</a>
+            
+        
+        <div class="gridea-search-div">
+            <form id="gridea-search-form" action="https://Youpu-Chen.github.io//search/">
+                <input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
+            </form>
+        </div>
+    </div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+                    <div class="post_page">
+                        <div class="post animated fadeInDown">
+                            <div class="post_title post_detail_title">
+                                <h2>
+                                    「基因组」基因组组装之前要做的：Genome Survey
+                                </h2>
+                                <span class="article-info">
+                                    2022-10-16, 1684 words, 8 min read
+                                </span>
+                            </div>
+                            <div class="post_content markdown">
+                                <p class="md_block">
+                                    <span class="md_line md_line_start md_line_end">
+                                        <p>基因组组装之前，有一些问题还是需要注意的，</p>
+<ul>
+<li>genome size是多少？</li>
+<li>评估得到的genome heterozygosity是多少？</li>
+<li>重复序列的占比是多少？</li>
+</ul>
+<p>可以系统性地称为genome survey，这是一个非常简单的分析，但是其实有一些问题是值得注意的</p>
+<p>Genome Survey一般基于Illumina short reads进行分析，因为二代测序便宜，先测出来试试水，</p>
+<p>再判断三代的数据量，这应该算是一个非常经济实惠的做法。</p>
+<h1 id="分析流程">分析流程</h1>
+<p>1）fastp、Trimmomatic等软件挑一个过滤低质量序列</p>
+<p>2）Jellyfish 2.3.0、KMC3</p>
+<p>我个人其实比较喜欢KMC，因为可以直接读取<code>.gz</code>文件（绝对不是因为之前KMC作者帮助我愉快地解决了一个Bug），但是解决jellyfish脚本的过程中也让我对Shell Kernel有了一个更深刻的理解。</p>
+<p>3）Genome Scope 2.0、GCE等软件，挑一个进行genome size、heterozygosity等指标的估计</p>
+<p>我个人比较熟悉的还是Genome Scope 2.0，因为这个软件可以用于<a href="https://github.com/Youpu-Chen/Pipeline-for-Polyploid-Analysis">判断auto-tetraploid和allo-tetraploid</a>，</p>
+<p>同时作者Michael C. Schatz的实验室还开发了FALCON~</p>
+<h1 id="fastp">fastp</h1>
+<pre><code class="language-shell">vim fastp.sh
+sh fastp.sh 2&gt;fastp.err.log &amp;
+</code></pre>
+<p>Shell script:</p>
+<pre><code class="language-shell">#!/bin/bash
+# Preset
+dir=&lt;specicy_path_of_your_rawdata&gt;
+echo &quot;The raw dataset is placed at $dir&quot;
+echo &quot;Now running Quality control&quot;
+thread=24    # set 24 threads
+quality=20   # set quality cutoff to 20 based on Phred33 
+# 
+fastp -w $thread -q $quality -i $dir/sample1.fq.gz -I $dir/sample2.fq.gz -o ./sample_clean_1.fq.gz -O ./sample_clean_2.fq.gz
+</code></pre>
+<h1 id="jellyfish-count-k-mer">Jellyfish: count k-mer</h1>
+<pre><code class="language-shell">vim jellyfish.sh
+chmod 777 jellyfish.sh  # key step, otherwise the script below will report syntax error
+./jellyfish.sh 2&gt;jellyfish.err.log &amp;
+</code></pre>
+<p>“哼男人，嘴上说着喜欢KMC，但是却用Jellyfish”，</p>
+<p>Shell script:</p>
+<pre><code class="language-shell"># Preset
+dir=&lt;specicy_path_of_your_cleandata&gt;
+echo &quot;The clean dataset is placed at $dir&quot;
+echo &quot;Now running Jellyfish Kmercount&quot;
+
+# 17mer
+echo &quot;Now running 17mer counting&quot;
+content1=&quot;jellyfish count -C -m 17 -o ./sample.17mer.jf -s 10G -t 24 &lt;(pigz -dc $dir/sample_clean_1.fq.gz) &lt;(pigz -dc $dir/sample_clean_2.fq.gz)&quot;
+echo &quot;The command is $content1&quot;
+
+jellyfish count \
+-C \
+-m 17 \
+&lt;( pigz -dc $dir/sample_clean_1.fq.gz ) &lt;( pigz -dc $dir/sample_clean_2.fq.gz ) \
+-o ./sample.17mer.jf -s 10G -t 24
+
+
+# 21mer: recommanded by author
+echo &quot;Now running 21mer counting&quot;
+content2=&quot;jellyfish count -C -m 21 -o ./sample.21mer.jf -s 10G -t 24 &lt;(pigz -dc $dir/sample_clean_1.fq.gz) &lt;(pigz -dc $dir/sample_clean_2.fq.gz)&quot;
+echo &quot;The command is $content2&quot;
+
+jellyfish count \
+-C \
+-m 21 \
+&lt;( pigz -dc $dir/sample_clean_1.fq.gz ) &lt;( pigz -dc $dir/sample_clean_2.fq.gz ) \
+-o ./sample.21mer.jf -s 10G -t 24
+</code></pre>
+<p>注意点：为什么要用<code>chmod 777</code>？<br>
+答：未经777赋予可执行权限的脚本，仍为shell脚本，需要指定<code>bash</code>或者<code>sh</code>来运行程序，即不可从<code>jellyfish</code>直接开始运行程序，</p>
+<p>就好比原本的运行方式为<code>bash &lt;script_name&gt;.sh</code>，现在要修改成为<code>./&lt;script_name&gt;.sh</code>的运行方式，不然就会出现syntax errror</p>
+<h1 id="jellyfish-k-mer-spectrum-generation">Jellyfish: k-mer spectrum generation</h1>
+<pre><code class="language-shell">jellyfish histo -t 24 -l 1 -h 500000 sample.17mer.jf &gt; sample.17mer.histo &amp;
+jellyfish histo -t 24 -l 1 -h 500000 sample.21mer.jf &gt; sample.21mer.histo &amp;
+</code></pre>
+<p>注意点：<code>upper limitation</code>的修改。</p>
+<p>Genome Scope 2.0的分析需要将k-mer spectrum的upper limit设置得高一些，不然后续genome size估计塌缩比例会特别大。</p>
+<h1 id="genome-scope-20-smudeplot">Genome Scope 2.0 + Smudeplot</h1>
+<p>1）The estimation of genome size, heterozygosity, etc.</p>
+<pre><code class="language-shell">vim genomescope.sh
+chmod 777 genomescope.sh
+./genomescope.sh 2&gt;genomescope.err.log &amp;
+</code></pre>
+<p>Shell script:</p>
+<pre><code class="language-shell">script=&lt;path_to_your_genomescope_repo&gt;/genomescope.R
+dir=&lt;where_kmerspectrum_deposited&gt;
+Rscript $script -i &lt;input_histo&gt; -o ./ -n &lt;outputname&gt; -p &lt;ploidy_level&gt; -k &lt;kmer_used&gt;
+</code></pre>
+<p>2）Kmer-pair plot</p>
+<p>这部分官网其实给出了比较好的流程，我就只是简单概括走一下，</p>
+<pre><code class="language-shell">dir=&lt;specify_your_kmercount_database&gt;
+L=$(smudgeplot.py cutoff &lt;histo_from_kmc&gt; L)
+U=$(smudgeplot.py cutoff &lt;histo_from_kmc&gt; U)
+echo $L $U # these need to be sane values
+# conda activate genomesurvey
+kmc_tools transform $dir/&lt;kmc_db&gt; -ci&quot;$L&quot; -cx&quot;$U&quot; dump -s smudgeplot_kmc_db/&lt;kmc_db&gt;.kmc_L&quot;$L&quot;_U&quot;$U&quot;.dump
+# conda activate smudgeplot
+smudgeplot.py hetkmers -o smudgeplot_kmercounts/&lt;kmc_db&gt;.kmc_L&quot;$L&quot;_U&quot;$U&quot; &lt; smudgeplot_kmc_db/&lt;kmc_db&gt;.kmc_L&quot;$L&quot;_U&quot;$U&quot;.dump
+
+# Plot
+smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
+</code></pre>
+<p>结果示意图如下，</p>
+<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1665905861119.png" alt="" loading="lazy"></figure>
+<p><strong>基因组大小估计需要注意的点</strong>，</p>
+<p>0）三代数据不适合用于Kmer分析，因为测序错误率高了很多，会对分析结果产生非常大的影响，</p>
+<p>但是HiFi reads以及canu和falcon产生的corrected reads可以很好的适用于Genome Scope分析</p>
+<p>1）<code>jellyfish histo</code>输出时指定的maximum kmer-freq，会极大地影响到genome size的估计，因此需要根据自己的数据进行调整，一般100000再往上也可</p>
+<p>2）<code>genonomescope.R</code>的<code>-p</code>以及<code>--kcov</code>的设置，都会影响到genome size的估计</p>
+<p>比如在genomescope2.0 model下，如果<strong>在输入数据和模型都已经定下来的基础上，将<code>--kcov</code>设置为原本的一倍，则genome size的大小估计会减半</strong>（此处感兴趣的，我建议还是自行搜索下基于kmer计算genome size的公式）</p>
+<p>3）结果中的<code>transformed_linear_plot</code>和<code>linear_plot</code>有什么区别？</p>
+<p>前者的<code>observed</code>曲线经过了一个转换，越往后的peak其峰值越大，即在原始的kmer freq上乘了一个n（n代表第n个peak），</p>
+<p>后者的<code>observed</code>曲线为实际观测到的一个数值，没有经过上述转换</p>
+<p>transformed linear：</p>
+<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1665905871689.png" alt="" loading="lazy"></figure>
+<p>linear plot：</p>
+<figure data-type="image" tabindex="3"><img src="https://Youpu-Chen.github.io//post-images/1665905877897.png" alt="" loading="lazy"></figure>
+<p>4）Genome Scope 2.0分析时，如果将过多的kmer判定为了<code>error</code>，最终的genome size就会小了特别多（基于genome size的计算公式）</p>
+<h1 id="背后的原理">背后的原理</h1>
+<p>首先需要明确的一个点是：Genome Scope 是基于diploid进行编写的。</p>
+<p>关于二倍体物种的基因组大小估计，如何理解。我想要举一个非常简单的例子来理解：</p>
+<p>给个用kmer将genome给“划分”开的示意，</p>
+<pre><code class="language-shell">				kmer:   ---A--
+                		 --A---
+                		  -A----
+                		   A-----
+				genome: ---A-----------------------------------------------
+</code></pre>
+<ul>
+<li>
+<p>假设当前的基因组非常纯合（-&gt; homozygous, not -&gt; heterozygous），kmer会在某一个频数上呈现一个峰值，</p>
+</li>
+<li>
+<p>但是如果当前的基因组杂合度上升了，也就是我们一般在文献中看到的heterozygosity，kmer在另一个频数较小的区域，也会呈现一个峰值，也就是Genome Survey中提到的杂合峰</p>
+<p>就比如下图中的T，是A对应的allele。该种情况的存在，会导致kmer出现另一种情况，从而降低了纯合峰的高度，比如下图的例子就表示了对应位置kmer的频数，从4降低到了2，</p>
+<p>即可以将diploid的kmer topology理解为：aa，ab</p>
+</li>
+</ul>
+<pre><code class="language-shell">				kmer:   ---A--
+                		 --A---
+				genome: ---A-----------------------------------------------
+				           T
+				        ---T--
+				         --T---
+</code></pre>
+<p>所以，为了满足polyploid的产生，Genome Scope 2.0被开发 —— 基于负二项分布的Kmer模型，用于估计genome size、heterozygosity等。</p>
+<p>三倍体的kmer topolygy：aaa（3种haplotype均一致），aab（有1种haplotype和另外2个haplotype存在区别），abc（3种haplotype各不相同）</p>
+<p>四倍体的kmer topology：aaaa，aaab，aabb，abcd</p>
+<h1 id="参考资料">参考资料</h1>
+<p>[1] https://github.com/schatzlab/genomescope/issues/32</p>
+<p>[2] https://github.com/schatzlab/genomescope/issues/43</p>
+<p>[3] https://github.com/schatzlab/genomescope/issues/48</p>
+<p>[4] https://github.com/schatzlab/genomescope</p>
+<p>[5] https://github.com/KamilSJaron/smudgeplot</p>
+<br />
+                                            
+                                </p>
+                            </div>
+                            <div class="post_footer">
+                                
+                                    <div class="meta">
+                                        <div class="info"><span class="field tags"><i class="iconfont icon-tag-sm"></i>
+                                                
+                                                    <a href="https://Youpu-Chen.github.io/tag/Xg1_Prd4r/" class="article-info">
+                                                        基因组学
+                                                    </a>
+                                                    
+                                                    <a href="https://Youpu-Chen.github.io/tag/O3WOVHTS3b/" class="article-info">
+                                                        Python
+                                                    </a>
+                                                    
+                                                    <a href="https://Youpu-Chen.github.io/tag/YePZ4sFJt/" class="article-info">
+                                                        R
+                                                    </a>
+                                                    
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                        
+                                            <div class="next-post" style="margin-top: 20px;">
+                                                <div class="next">下一篇</div>
+                                                <a href="https://Youpu-Chen.github.io/post/globalandlocal_alignment/">
+                                                    <h3 class="post-title">
+                                                        「一文搞定序列比对算法」Global以及Local Alignment序列比对算法的实现
+                                                    </h3>
+                                                </a>
+                                            </div>
+                                            
+                            </div>
+                        </div>
+                        
+                            
+                                        
+                                            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+<div id="disqus_thread"></div>
+<script>
+    var options = {
+        shortname: 'DisqusComments',
+        apikey: '0D4eig7RqYsljZD0i62dy7y5H2AVm2gE3T9qwx1S16zyJejdxXypcpTtxHm07Eig',
+    }
+    if ('https://disqus.com/api/oauth/2.0/authorize/') {
+        options.api = 'https://disqus.com/api/oauth/2.0/authorize/'
+    }
+    var dsqjs = new DisqusJS(options)
+</script>
+                                                
+                                                    
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="footer">
+    
+    <div class="powered_by">
+        <a href="https://github.com/kytrun/gridea-theme-one" target="_blank">Theme One,</a>
+        <a href="https://gridea.dev/" target="_blank">Powered by Gridea&#65281;</a>
+    </div>
+    <div class="footer_slogan">
+        有谱
+    </div>
+    <div id="back_to_top" class="back_to_top">
+        <span>△</span>
+    </div>
+    
+</div>
+
+<script src="https://Youpu-Chen.github.io//media/scripts/util.js"></script>
+        <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/default.min.css">
+        <script src="//unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+</body>
+
+</html>

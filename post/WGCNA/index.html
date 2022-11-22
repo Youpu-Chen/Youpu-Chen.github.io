@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>「转录组」WGCNA专题：实战原理两不误 | 陈有朴</title>
+
+<link rel="shortcut icon" href="https://Youpu-Chen.github.io//favicon.ico">
+<link href="https://Youpu-Chen.github.io//styles/main.css" rel="stylesheet">
+<link href="//at.alicdn.com/t/font_1678829_7cn41ho9lyt.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="陈有朴 » Feed" href="https://Youpu-Chen.github.io//atom.xml">
+        <meta name="description" content="Hello，这里是即将开学的陈有朴。
+表达矩阵的处理
+后续分析所用到的数据，均为FPKM标准化后的表达矩阵。
+从流程上对WGCNA进行解读
+1）当对芯片数据或者RNA-Seq等数据完成分析之后，我们可以得到一张表达矩阵
+一行为一个样本，一列..." />
+        <meta name="keywords" content="WGCNA,转录组" />
+        <!-- OG -->
+        <meta property="og:locale" content="zh_CN">
+        <meta property="og:title" content="「转录组」WGCNA专题：实战原理两不误" />
+        <meta property="og:type" content="article" />
+        <meta property="og:description" content="Hello，这里是即将开学的陈有朴。
+表达矩阵的处理
+后续分析所用到的数据，均为FPKM标准化后的表达矩阵。
+从流程上对WGCNA进行解读
+1）当对芯片数据或者RNA-Seq等数据完成分析之后，我们可以得到一张表达矩阵
+一行为一个样本，一列...">
+        <meta property="og:url" content="https://Youpu-Chen.github.io/post/WGCNA/" />
+        <meta property="og:site_name" content="陈有朴">
+        <meta property="og:updated_time" content="2022-08-23">
+        <meta property="og:image" content="" />
+        <meta property="og:image:secure_url" content="">
+        <meta property="og:image:alt" content="「转录组」WGCNA专题：实战原理两不误">
+        <!-- Twitter (post.ejs) -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="「转录组」WGCNA专题：实战原理两不误">
+        <meta name="twitter:description" content="Hello，这里是即将开学的陈有朴。
+表达矩阵的处理
+后续分析所用到的数据，均为FPKM标准化后的表达矩阵。
+从流程上对WGCNA进行解读
+1）当对芯片数据或者RNA-Seq等数据完成分析之后，我们可以得到一张表达矩阵
+一行为一个样本，一列...">
+        <!-- <meta name="twitter:site" content="@WBoy0609">
+        <meta name="twitter:creator" content="@WBoy0609"> -->
+        <meta name="twitter:image" content="">
+</head>
+
+<body>
+    <div class="main animated">
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <a href="https://Youpu-Chen.github.io/">陈有朴</a>
+        </div>
+    </div>
+    <div class="my_socials">
+        
+            
+                <a href="https://github.com/Youpu-Chen" target="_blank"><i class="iconfont icon-github"></i></a>
+            
+        
+            
+                <a href="https://twitter.com/chenhongpu1" target="_blank"><i class="iconfont icon-twitter"></i></a>
+            
+        
+            
+        
+            
+        
+            
+        
+        <a href="https://Youpu-Chen.github.io//atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
+    </div>
+</div>
+
+    <div class="header_menu">
+        
+            
+                <a href="/" class="menu">首页</a>
+            
+        
+            
+                <a href="/archives" class="menu">Archives</a>
+            
+        
+            
+                <a href="/tags" class="menu">Tags</a>
+            
+        
+            
+                <a href="/post/about" class="menu">About Me</a>
+            
+        
+        <div class="gridea-search-div">
+            <form id="gridea-search-form" action="https://Youpu-Chen.github.io//search/">
+                <input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
+            </form>
+        </div>
+    </div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+                    <div class="post_page">
+                        <div class="post animated fadeInDown">
+                            <div class="post_title post_detail_title">
+                                <h2>
+                                    「转录组」WGCNA专题：实战原理两不误
+                                </h2>
+                                <span class="article-info">
+                                    2022-08-23, 2164 words, 11 min read
+                                </span>
+                            </div>
+                            <div class="post_content markdown">
+                                <p class="md_block">
+                                    <span class="md_line md_line_start md_line_end">
+                                        <p>Hello，这里是即将开学的陈有朴。</p>
+<h1 id="表达矩阵的处理">表达矩阵的处理</h1>
+<p>后续分析所用到的数据，均为FPKM标准化后的表达矩阵。</p>
+<h1 id="从流程上对wgcna进行解读">从流程上对WGCNA进行解读</h1>
+<h2 id="1当对芯片数据或者rna-seq等数据完成分析之后我们可以得到一张表达矩阵">1）当对芯片数据或者RNA-Seq等数据完成分析之后，我们可以得到一张表达矩阵</h2>
+<p>一行为一个样本，一列为一个gene。</p>
+<h2 id="2读取表达矩阵之后对其进行adjacency矩阵的计算">2）读取表达矩阵之后，对其进行adjacency矩阵的计算</h2>
+<p>adjacency矩阵，基于gene之间相关性的矩阵。每一个单元代表了2个gene之间的关联性（similarity）。</p>
+<p>adjacency矩阵的构建，涉及到软阈值的选择，即构建一个幂函数，选择一个指数（power），强化强相关性，弱化弱相关性。</p>
+<h3 id="adjacency矩阵的拓展">「adjacency矩阵的拓展」</h3>
+<p>adjacency矩阵有2种计算方式，</p>
+<p>1）unsigned：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mi mathvariant="normal">∣</mi><mi>c</mi><mi>o</mi><mi>r</mi><mo>(</mo><msub><mi>x</mi><mi>x</mi></msub><mo separator="true">,</mo><msub><mi>x</mi><mi>j</mi></msub><mo>)</mo><msup><mi mathvariant="normal">∣</mi><mi>β</mi></msup></mrow><annotation encoding="application/x-tex">a_{ij} = |cor(x_{x}, x_{j})|^{β}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.1352159999999998em;vertical-align:-0.286108em;"></span><span class="mord">∣</span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05278em;">β</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>2）signed：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mo>(</mo><mn>0.5</mn><mo>∗</mo><mo>(</mo><mn>1</mn><mo>+</mo><mi>c</mi><mi>o</mi><mi>r</mi><mo>)</mo><msup><mo>)</mo><mi>β</mi></msup></mrow><annotation encoding="application/x-tex">a_{ij}=(0.5*(1+cor))^{β}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mord">.</span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.0991079999999998em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05278em;">β</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>第一种情况，认为具有高负相关的gene之间，是有联系的。</p>
+<p>第二种情况，认为具有高负相关的gene之间，是没有联系的。</p>
+<p>举个例子，</p>
+<p>假设cor = -1，β=2，unsigned情况下，计算得到的adjacency为1，即gene之间高度关联。signed情况下，计算得到的adjacency为0，即gene之间无关联。</p>
+<h2 id="3tom矩阵的构建">3）TOM矩阵的构建</h2>
+<p>引入一个指标，即topological overlaps的计算，用于定义该gene是否有多个高关联性的gene（<font color='yellow'>用于gene module的构建</font>）</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>o</mi><mi>r</mi><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>x</mi><mi>j</mi></msub><mo>)</mo><mo>−</mo><mo>&gt;</mo><mi>T</mi><mi>O</mi><mi>M</mi><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>x</mi><mi>j</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">Cor(x_{i},x_{j}) -&gt; TOM(x_{i}, x_{j})
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<h3 id="tom矩阵的拓展">「TOM矩阵的拓展」</h3>
+<p>但是针对unsigned类型的adjacency矩阵，可能会出现无法判断几个基因之间的关联关系。</p>
+<p>比如现有i，j，k 3个gene，计算得到它们之间的关联关系为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mo>+</mo><mo separator="true">,</mo><mo>+</mo><mo separator="true">,</mo><mo>−</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">(+,+,-)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">+</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">+</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">−</span><span class="mclose">)</span></span></span></span>，</p>
+<p>1）i和j之间为正相关；2）i和k之间为正相关；3）j和k之间为负相关。</p>
+<p>这就矛盾了，说明上面的关联关系可能受到了一些噪音的影响等等。</p>
+<p><u>此时，引入signed TOM</u>，其相较于unsigned TOM能够更好的解决gene之间的冲突情况。</p>
+<blockquote>
+<p>Note：需要注意的是，当使用signed adjacency进行分析时，不会出现上述矛盾。</p>
+<p>同时，这些矛盾作者都已经考虑到了，但还是有一定区别，</p>
+<ul>
+<li><code>TOMsimilarity()</code>中，默认设置为<code>TOMType = &quot;unsigned&quot;</code></li>
+<li><code>TOMsimilarityFromExpr()</code>中，默认设置为<code>TOMType = &quot;signed&quot;</code></li>
+</ul>
+</blockquote>
+<h2 id="4tom-dissimilarity矩阵的构建">4）TOM dissimilarity矩阵的构建</h2>
+<p>TOM dissimilarity矩阵代表了某个gene与其他gene之间的距离。</p>
+<p>用上述矩阵进行聚类分析，得到gene module。</p>
+<h2 id="5初步构建gene-module">5）初步构建gene module</h2>
+<p>以TOM dissimilarity矩阵作为输入，进行聚类分析。</p>
+<p>代码如下，</p>
+<pre><code class="language-R"># Turn data expression into topological overlap matrix
+power=sft$powerEstimate   # 使用sft$powerEstimate调用预估出的软阈值
+TOM = TOMsimilarityFromExpr(datExpr, power = power)
+dissTOM = 1-TOM
+# Plot gene tree
+geneTree = hclust(as.dist(dissTOM), method = &quot;average&quot;);   # 用于后续cutreeDynamic()，对gene tree进行裁剪
+# pdf(file = &quot;3-gene_cluster.pdf&quot;, width = 12, height = 9);
+plot(geneTree, xlab=&quot;&quot;, sub=&quot;&quot;, main = &quot;Gene clustering on TOM-based dissimilarity&quot;,
+     labels = FALSE, hang = 0.04);
+# dev.off()
+</code></pre>
+<h2 id="6使用cutreedynamic进行聚类分析的优化">6）使用<code>cutreeDynamic()</code>进行聚类分析的优化</h2>
+<p>使用<font color='yellow'>pairwise eigengene</font>，进一步计算得到eigengene dissimilarity，用于聚类分析，筛选指标，最终合并gene module。</p>
+<blockquote>
+<p>Note：eigengene为gene表达模式的指标（PCA降维得到的第一个主成分）</p>
+</blockquote>
+<p><code>cutreeDynamic()</code>代码如下，</p>
+<ul>
+<li><code>cutreeDynamic</code></li>
+<li><code>labels2colors</code></li>
+<li><code>plotDendroAndColors</code></li>
+</ul>
+<pre><code class="language-R"># Module identification using dynamic tree cut
+dynamicMods = cutreeDynamic(dendro = geneTree, distM = dissTOM, deepSplit = 2, 
+                            pamRespectsDendro = FALSE, minClusterSize = 30);
+table(dynamicMods)
+length(table(dynamicMods)) 
+# Convert numeric labels into colors
+dynamicColors = labels2colors(dynamicMods)
+table(dynamicColors)
+# Plot the dendrogram and colors underneath
+# pdf(file = &quot;4-module_tree.pdf&quot;, width = 8, height = 6);
+plotDendroAndColors(geneTree, dynamicColors, &quot;Dynamic Tree Cut&quot;,dendroLabels = FALSE,
+                    hang = 0.03,addGuide = TRUE, guideHang = 0.05,main = &quot;Gene dendrogram and module colors&quot;)
+# dev.off()
+</code></pre>
+<p>绘制图如下，<br>
+<img src="https://Youpu-Chen.github.io//post-images/1661263419560.png" alt="" loading="lazy"></p>
+<p>gene module合并代码如下 -&gt; 基于<code>cutreeDynamic()</code>的分析结果进行聚类分析的gene module的合并</p>
+<ul>
+<li><code>mergeCloseModules</code>：合并gene module</li>
+<li><code>plotDendroAndColors</code></li>
+</ul>
+<pre><code class="language-R"># Merge close modules
+MEDissThres=0.25
+abline(h=MEDissThres, col = &quot;red&quot;)
+merge = mergeCloseModules(datExpr, dynamicColors, cutHeight = MEDissThres, verbose = 3) 
+mergedColors = merge$colors  
+mergedMEs = merge$newMEs  
+# Plot merged module tree
+# pdf(file = &quot;5-merged_Module_Tree.pdf&quot;, width = 12, height = 9)  
+plotDendroAndColors(geneTree, cbind(dynamicColors, mergedColors), 
+                    c(&quot;Dynamic Tree Cut&quot;, &quot;Merged dynamic&quot;), dendroLabels = FALSE, 
+                    hang = 0.03, addGuide = TRUE, guideHang = 0.05)  
+# dev.off()
+# merge$oldMEs，为数据框，行为样本，列为对应的gene module，其中的数值代表了它们之间的关联度
+write.table(merge$oldMEs,file=&quot;oldMEs.txt&quot;);
+write.table(merge$newMEs,file=&quot;newMEs.txt&quot;);
+</code></pre>
+<p>绘制图如下，可以看到有一些gene module被合并了，</p>
+<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1661263433346.png" alt="" loading="lazy"></figure>
+<h2 id="7将gene-module与表型特征相联系">7）将gene module与表型特征相联系</h2>
+<p>使用标准化的eigengene进行计算。<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>o</mi><mi>r</mi><mo>(</mo><mi>M</mi><mi>E</mi><mi>s</mi><mo separator="true">,</mo><mi>T</mi><mi>r</mi><mi>a</mi><mi>i</mi><mi>t</mi><mi>s</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">
+Cor(MEs, Traits)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord mathdefault">s</span><span class="mclose">)</span></span></span></span><br>
+代码如下，</p>
+<ul>
+<li><code>moduleEigengenes</code>，计算每个gene module的特征值</li>
+<li><code>moduleTraitCor = cor(MEs, datTraits, use = &quot;p&quot;)</code></li>
+<li><code>moduleTraitPvalue = corPvalueStudent(moduleTraitCor, nSamples)</code></li>
+</ul>
+<pre><code class="language-R"># Define numbers of genes and samples
+nGenes = ncol(datExpr);
+nSamples = nrow(datExpr);
+# Recalculate MEs with color labels
+MEs0 = moduleEigengenes(datExpr, mergedColors)$eigengenes
+MEs = orderMEs(MEs0)
+# r$&gt; MEs[1:5, 1:5]
+#           MElightcyan1 MEdarkolivegreen MEgreenyellow       MEcyan     MEwhite
+# LH38_Z1_1    0.3093871      -0.01665288     0.1583588 -0.017809267 -0.01305706
+# LH38_Z1_2    0.3318247      -0.01679628     0.1629585 -0.010450719  0.04613664
+# LH38_Z1_3    0.3087032      -0.01762908     0.1527085 -0.018456470 -0.03661408
+# LH38_Z2_1    0.3050361      -0.01431782     0.1589569 -0.020199995  0.06161998
+# LH38_Z2_2    0.3422982      -0.01466196     0.1722949 -0.006663298  0.08192540
+
+# 一些数据处理部分
+# Read microbial data as traits
+bac_traits = read.table(&quot;traits_file/b_order_234.txt&quot;, header = T, sep = &quot;\t&quot;)
+rownames(bac_traits) = bac_traits[, 1]
+bac_traits = bac_traits[, -1]
+# r$&gt; bac_traits[1:5, 1:5]
+#           Pseudomonadales Enterobacteriales Xanthomonadales Burkholderiales Verrucomicrobiales
+# LH38_Z1_1      0.02120943       0.006338742      0.07261663      0.05920385         0.02674949
+# LH38_Z1_2      0.04192444       0.009089757      0.06880071      0.05583164         0.02156440
+# LH38_Z1_3      0.01393256       0.004525862      0.06961207      0.05100152         0.02189402
+# LH39_Z1_1      0.11288033       0.013045132      0.07138692      0.04186106         0.01743154
+# LH39_Z1_2      0.01214503       0.003410243      0.08236562      0.03733519         0.01953600
+
+
+rownames(MEs) = paste(substr(rownames(MEs), 1, nchar(rownames(MEs))-1), rep(c(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;), 60), sep = &quot;&quot;)
+# sample names should be consistent in eigen genes and traits !!!!
+bac_traits = bac_traits[match(rownames(MEs), rownames(bac_traits)), ]
+table(rownames(MEs) == rownames(bac_traits))
+
+# Calculate pearson correlation coefficients between module eigen-genes and traits
+moduleTraitCor = cor(MEs, bac_traits, use = &quot;p&quot;);
+moduleTraitPvalue = corPvalueStudent(moduleTraitCor, nSamples);
+write.table(moduleTraitCor,file=&quot;moduleTrait_correlation.txt&quot;);
+write.table(moduleTraitPvalue,file=&quot;moduleTrait_pValue.txt&quot;);
+</code></pre>
+<p>结果图可视化代码如下，</p>
+<pre><code class="language-R">sizeGrWindow(10,6)
+# Will display correlations and their p-values
+# 合并
+textMatrix =  paste(signif(moduleTraitCor, 2), &quot;\n(&quot;,
+                    signif(moduleTraitPvalue, 1), &quot;)&quot;, sep = &quot;&quot;);
+dim(textMatrix) = dim(moduleTraitCor)
+# pdf(&quot;module-traits-bacteria-order.pdf&quot;, width = 100, height = 30)
+par(mar = c(15, 12, 5, 5));
+# Display the correlation values within a heatmap plot
+labeledHeatmap(Matrix = moduleTraitCor,
+               xLabels = names(bac_traits),
+               yLabels = names(MEs),
+               ySymbols = names(MEs),
+               colorLabels = FALSE,
+               colors = greenWhiteRed(50),
+               textMatrix = textMatrix,  # 矩阵单元格上需要显示的信息
+               setStdMargins = FALSE,
+               cex.text = 0.5,
+               zlim = c(-1,1),
+               main = paste(&quot;Module-trait relationships&quot;))
+# dev.off()
+</code></pre>
+<p>结果图如下，</p>
+<blockquote>
+<p>Note：右边的图例，代表相关性程度</p>
+</blockquote>
+<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1661263448767.png" alt="" loading="lazy"></figure>
+<h2 id="8hub-gene的鉴定">8）Hub gene的鉴定</h2>
+<p>2种方法，</p>
+<ul>
+<li>与目标module有强关联性的gene（gene significance）</li>
+<li>使用module membership来鉴定关键gene，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>o</mi><mi>r</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>M</mi><mi>E</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">Cor(i,ME)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<p>一般先绘制出以module membership为x，gene significance为y的散点图。</p>
+<p>代码如下，</p>
+<pre><code class="language-R"># 以相关性最高的模块为例
+which(moduleTraitCor == max(moduleTraitCor, na.rm = TRUE), arr.ind = TRUE)
+#            row col
+# MEskyblue3  25  30
+
+Nitrosomonadales &lt;- as.data.frame(bac_traits[, 30])
+names(Nitrosomonadales) = &quot;Nitrosomonadales&quot;
+
+modNames = substring(names(MEs), 3) # 去除ME前缀
+
+# 计算module membership
+# 使用的是WGCNA自带cor函数，使用皮尔逊计算相关性
+geneModuleMembership = as.data.frame(cor(datExpr, MEs, use = &quot;p&quot;));
+geneModuleMembership[1:5, 1:5]
+#                MElightcyan1 MEdarkolivegreen MEgreenyellow      MEcyan       MEwhite
+# Zm00001d001763 -0.045547074      -0.10334193   -0.20030129  0.22671189  0.1501121833
+# Zm00001d001766  0.004752275      -0.01548396   -0.11130522 -0.22346048  0.0178421845
+# Zm00001d001770 -0.286230379      -0.23340743   -0.39930773  0.22791746  0.0925346831
+# Zm00001d001774  0.029505956      -0.06714112   -0.06323784 -0.34302212  0.1677206174
+# Zm00001d001775 -0.029767437      -0.07642270   -0.13732818 -0.07876773 -0.0008678361
+
+MMPvalue = as.data.frame(corPvalueStudent(as.matrix(geneModuleMembership), nSamples));
+MMPvalue[1:5, 1:5]
+
+names(geneModuleMembership) = paste(&quot;MM&quot;, modNames, sep=&quot;&quot;);
+names(MMPvalue) = paste(&quot;p.MM&quot;, modNames, sep=&quot;&quot;);
+
+# 计算gene significance
+geneTraitSignificance = as.data.frame(cor(datExpr, Nitrosomonadales, use = &quot;p&quot;));
+# head(geneTraitSignificance)
+# nrow(geneTraitSignificance)
+GSPvalue = as.data.frame(corPvalueStudent(as.matrix(geneTraitSignificance), nSamples));
+names(geneTraitSignificance) = paste(&quot;GS.&quot;, names(Nitrosomonadales), sep=&quot;&quot;);
+names(GSPvalue) = paste(&quot;p.GS.&quot;, names(Nitrosomonadales), sep=&quot;&quot;);
+
+
+module = &quot;skyblue3&quot;
+column = match(module, modNames);  # match(x, y)，找到y中x的索引位置
+moduleGenes = mergedColors==module;
+# length(mergedColors)
+# nrow(geneModuleMembership)
+# nrow(geneTraitSignificance)
+# table(mergedColors)
+table(moduleGenes)
+
+sizeGrWindow(7, 7);
+par(mfrow = c(1,1));
+verboseScatterplot(abs(geneModuleMembership[moduleGenes, column]),
+                   abs(geneTraitSignificance[moduleGenes, 1]),
+                   xlab = paste(&quot;Module Membership in&quot;, module, &quot;module&quot;),
+                   ylab = &quot;Gene significance for Nitrosomonadales&quot;,
+                   main = paste(&quot;Module membership vs. gene significance\n&quot;),
+                   cex.main = 1.2, cex.lab = 1.2, cex.axis = 1.2, col = module)
+</code></pre>
+<p>散点图结果如下，可以看到module membership值越高的gene，其gene significance也越高。</p>
+<figure data-type="image" tabindex="3"><img src="https://Youpu-Chen.github.io//post-images/1661263464074.png" alt="" loading="lazy"></figure>
+<h1 id="其他">其他</h1>
+<h2 id="绘制gene-module-eigengenes与samples之间的热图">绘制gene module eigengenes与samples之间的热图</h2>
+<pre><code class="language-R">library(&quot;pheatmap&quot;)
+
+# Heatmap of old module eigen-genes and samples
+pdf(file=&quot;oldMEs.pdf&quot;,heigh=80,width=20)
+row.names(merge$oldMEs)=names(data0)  # oldMEs，是一个矩阵
+pheatmap(merge$oldMEs,cluster_col=T,cluster_row=T,show_rownames=T,show_colnames=T,fontsize=6)
+dev.off()
+
+# Heatmap of new module eigen-genes and samples
+# pdf(file=&quot;newMEs.pdf&quot;,heigh=60,width=20)
+row.names(merge$newMEs)=names(data0)
+pheatmap(merge$newMEs,cluster_col=T,cluster_row=T,show_rownames=T,show_colnames=T,fontsize=6)
+# dev.off()
+</code></pre>
+<h1 id="参考资料">参考资料</h1>
+<p>[1] https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/Tutorials/</p>
+<p>[2] https://github.com/PengYuMaize/Yu2021NaturePlants</p>
+<p>[3] <a href="https://www.jianshu.com/p/a19e335f057a">跟着Nature Plants学数据分析：R语言WGCNA分析完整示例</a></p>
+<p>[4] https://www.youtube.com/watch?v=BzYfg1lO3jw</p>
+<p>[5] https://www.biostars.org/p/288153/</p>
+<p>[6] https://peterlangfelder.com/2018/11/25/signed-or-unsigned-which-network-type-is-preferable/</p>
+<p>[7] https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/TechnicalReports/signedTOM.pdf</p>
+<br />
+                                            
+                                </p>
+                            </div>
+                            <div class="post_footer">
+                                
+                                    <div class="meta">
+                                        <div class="info"><span class="field tags"><i class="iconfont icon-tag-sm"></i>
+                                                
+                                                    <a href="https://Youpu-Chen.github.io/tag/p6u3WQosA/" class="article-info">
+                                                        WGCNA
+                                                    </a>
+                                                    
+                                                    <a href="https://Youpu-Chen.github.io/tag/JqrJMa8-Vd/" class="article-info">
+                                                        转录组
+                                                    </a>
+                                                    
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                        
+                                            <div class="next-post" style="margin-top: 20px;">
+                                                <div class="next">下一篇</div>
+                                                <a href="https://Youpu-Chen.github.io/post/tomy22/">
+                                                    <h3 class="post-title">
+                                                        写给二十二岁的自己
+                                                    </h3>
+                                                </a>
+                                            </div>
+                                            
+                            </div>
+                        </div>
+                        
+                            
+                                        
+                                            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+<div id="disqus_thread"></div>
+<script>
+    var options = {
+        shortname: 'DisqusComments',
+        apikey: '0D4eig7RqYsljZD0i62dy7y5H2AVm2gE3T9qwx1S16zyJejdxXypcpTtxHm07Eig',
+    }
+    if ('https://disqus.com/api/oauth/2.0/authorize/') {
+        options.api = 'https://disqus.com/api/oauth/2.0/authorize/'
+    }
+    var dsqjs = new DisqusJS(options)
+</script>
+                                                
+                                                    
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="footer">
+    
+    <div class="powered_by">
+        <a href="https://github.com/kytrun/gridea-theme-one" target="_blank">Theme One,</a>
+        <a href="https://gridea.dev/" target="_blank">Powered by Gridea&#65281;</a>
+    </div>
+    <div class="footer_slogan">
+        有谱
+    </div>
+    <div id="back_to_top" class="back_to_top">
+        <span>△</span>
+    </div>
+    
+</div>
+
+<script src="https://Youpu-Chen.github.io//media/scripts/util.js"></script>
+        <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/default.min.css">
+        <script src="//unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+</body>
+
+</html>
