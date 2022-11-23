@@ -6,10 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <title>这可能是我写过最全的GATK笔记 | 陈有朴</title>
-<link rel="shortcut icon" href="https://Youpu-Chen.github.io//favicon.ico">
-<link href="https://Youpu-Chen.github.io//styles/main.css" rel="stylesheet">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<link href="http://localhost:4000/styles/main.css" rel="stylesheet">
 <link href="//at.alicdn.com/t/font_1678829_7cn41ho9lyt.css" rel="stylesheet">
-<link rel="alternate" type="application/rss+xml" title="陈有朴 » Feed" href="https://Youpu-Chen.github.io//atom.xml">
+<link rel="alternate" type="application/rss+xml" title="陈有朴 » Feed" href="http://localhost:4000/atom.xml">
         <meta name="description" content="软件安装
 官方网站：https://gatk.broadinstitute.org/hc/en-us
 点击“Download GATK4”：
@@ -29,7 +29,7 @@ wget https://github.com/broadinstitut..." />
 选择zip安装包：
 
 wget https://github.com/broadinstitut...">
-        <meta property="og:url" content="https://Youpu-Chen.github.io/post/GATK-BESTPRACTICE/" />
+        <meta property="og:url" content="http://localhost:4000/post/GATK-BESTPRACTICE/" />
         <meta property="og:site_name" content="陈有朴">
         <meta property="og:updated_time" content="2022-08-11">
         <meta property="og:image" content="" />
@@ -55,7 +55,7 @@ wget https://github.com/broadinstitut...">
         <div class="header animated fadeInDown">
     <div class="site_title_container">
         <div class="site_title">
-            <a href="https://Youpu-Chen.github.io/">陈有朴</a>
+            <a href="http://localhost:4000">陈有朴</a>
         </div>
     </div>
     <div class="my_socials">
@@ -74,7 +74,7 @@ wget https://github.com/broadinstitut...">
         
             
         
-        <a href="https://Youpu-Chen.github.io//atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
+        <a href="http://localhost:4000/atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
     </div>
 </div>
 
@@ -97,7 +97,7 @@ wget https://github.com/broadinstitut...">
             
         
         <div class="gridea-search-div">
-            <form id="gridea-search-form" action="https://Youpu-Chen.github.io//search/">
+            <form id="gridea-search-form" action="http://localhost:4000/search/">
                 <input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
             </form>
         </div>
@@ -121,9 +121,9 @@ wget https://github.com/broadinstitut...">
                                         <h3 id="软件安装">软件安装</h3>
 <p>官方网站：https://gatk.broadinstitute.org/hc/en-us</p>
 <p>点击“Download GATK4”：<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660188520935.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660188520935.png" alt="" loading="lazy"></p>
 <p>选择zip安装包：<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660188530491.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660188530491.png" alt="" loading="lazy"></p>
 <pre><code class="language-bash">wget https://github.com/broadinstitute/gatk/releases/download/4.2.5.0/gatk-4.2.5.0.zip
 unzip gatk-4.2.5.0.zip
 </code></pre>
@@ -132,7 +132,7 @@ unzip gatk-4.2.5.0.zip
 <p>其他分析流程（bwa替代流程）：https://gatk.broadinstitute.org/hc/en-us/articles/4407897446939--How-to-Run-germline-single-sample-short-variant-discovery-in-DRAGEN-mode</p>
 <h3 id="gatkjave选项">GATK：Jave选项</h3>
 <p>GATK实际使用的命令为：<code>java -jar program.jar</code>，但是为了GATK的开发者为了方便将其添加到环境变量，对其进行了封装，即使用安装目录下的<strong>gatk可执行脚本</strong>可直接运行：<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660188563873.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660188563873.png" alt="" loading="lazy"></p>
 <p>下面给出一个封装前后，设置额外参数的例子：</p>
 <p>未进行封装前，设置额外参数的方式为<code>java -Xmx4G -jar gatk-package-4.2.2.0-local.jar</code></p>
 <p>进行封装后，设置额外参数的方式为<code>gatk --java-options &quot;-Xmx4G&quot;</code></p>
@@ -341,7 +341,7 @@ gatk VariantFiltration \
     -O indels_filtered.vcf.gz
 </code></pre>
 <p>再给出一篇文章中的过滤参数：</p>
-<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1660188613462.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1660188613462.png" alt="" loading="lazy"></figure>
 <p>官方说明文档如下：</p>
 <p>[1] https://gatk.broadinstitute.org/hc/en-us/articles/360037434691-VariantFiltration</p>
 <p>[2] https://gatk.broadinstitute.org/hc/en-us/articles/360035531112--How-to-Filter-variants-either-with-VQSR-or-by-hard-filtering【主要看“2. Hard filter a cohort callset with VariantFiltration”这部分就行】</p>
@@ -385,7 +385,7 @@ gatk VariantFiltration \
 </ul>
 <p>从上述的话，其实也能很明显地看出来，VariantRecalibrator &amp; ApplyVQSR这套方法的缺陷 —— 需要先验的高质量VCF数据集。</p>
 <p>输入数据的要求：</p>
-<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1660188666242.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1660188666242.png" alt="" loading="lazy"></figure>
 <h4 id="variantrecalibrator示例运行">VariantRecalibrator：示例运行</h4>
 <pre><code class="language-bash"># exome data
 gatk VariantRecalibrator \
@@ -453,7 +453,7 @@ LB = DNA preparation library identifier
 </code></pre>
 <h4 id="2如何进行read-group信息添加">（2）如何进行read group信息添加？</h4>
 <p>图示：<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660299121752.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660299121752.png" alt="" loading="lazy"></p>
 <pre><code class="language-bash">@A00312:194:HFK5KDSX2  # 测序仪器
 4                      # lane ID
 1101                   # tail坐标
@@ -475,11 +475,11 @@ bwa -R '@RG\tID:lane_${lane}\tPL:illumina\tSM:${sample}'
                                     <div class="meta">
                                         <div class="info"><span class="field tags"><i class="iconfont icon-tag-sm"></i>
                                                 
-                                                    <a href="https://Youpu-Chen.github.io/tag/ZUP1ThQfW/" class="article-info">
+                                                    <a href="http://localhost:4000/tag/ZUP1ThQfW/" class="article-info">
                                                         GATK
                                                     </a>
                                                     
-                                                    <a href="https://Youpu-Chen.github.io/tag/aOqSaL_Yug/" class="article-info">
+                                                    <a href="http://localhost:4000/tag/aOqSaL_Yug/" class="article-info">
                                                         WGS
                                                     </a>
                                                     
@@ -490,7 +490,7 @@ bwa -R '@RG\tID:lane_${lane}\tPL:illumina\tSM:${sample}'
                                         
                                             <div class="next-post" style="margin-top: 20px;">
                                                 <div class="next">下一篇</div>
-                                                <a href="https://Youpu-Chen.github.io/post/hello-gridea/">
+                                                <a href="http://localhost:4000/post/hello-gridea/">
                                                     <h3 class="post-title">
                                                         「Hello Gridea」Here comes Youpu-Chen
                                                     </h3>
@@ -536,7 +536,7 @@ bwa -R '@RG\tID:lane_${lane}\tPL:illumina\tSM:${sample}'
     
 </div>
 
-<script src="https://Youpu-Chen.github.io//media/scripts/util.js"></script>
+<script src="http://localhost:4000/media/scripts/util.js"></script>
         <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/default.min.css">
         <script src="//unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js"></script>
         <script>hljs.highlightAll();</script>

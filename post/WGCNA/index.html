@@ -6,10 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <title>「转录组」WGCNA专题：实战原理两不误 | 陈有朴</title>
-<link rel="shortcut icon" href="https://Youpu-Chen.github.io//favicon.ico">
-<link href="https://Youpu-Chen.github.io//styles/main.css" rel="stylesheet">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<link href="http://localhost:4000/styles/main.css" rel="stylesheet">
 <link href="//at.alicdn.com/t/font_1678829_7cn41ho9lyt.css" rel="stylesheet">
-<link rel="alternate" type="application/rss+xml" title="陈有朴 » Feed" href="https://Youpu-Chen.github.io//atom.xml">
+<link rel="alternate" type="application/rss+xml" title="陈有朴 » Feed" href="http://localhost:4000/atom.xml">
         <meta name="description" content="Hello，这里是即将开学的陈有朴。
 表达矩阵的处理
 后续分析所用到的数据，均为FPKM标准化后的表达矩阵。
@@ -27,7 +27,7 @@
 从流程上对WGCNA进行解读
 1）当对芯片数据或者RNA-Seq等数据完成分析之后，我们可以得到一张表达矩阵
 一行为一个样本，一列...">
-        <meta property="og:url" content="https://Youpu-Chen.github.io/post/WGCNA/" />
+        <meta property="og:url" content="http://localhost:4000/post/WGCNA/" />
         <meta property="og:site_name" content="陈有朴">
         <meta property="og:updated_time" content="2022-08-23">
         <meta property="og:image" content="" />
@@ -52,7 +52,7 @@
         <div class="header animated fadeInDown">
     <div class="site_title_container">
         <div class="site_title">
-            <a href="https://Youpu-Chen.github.io/">陈有朴</a>
+            <a href="http://localhost:4000">陈有朴</a>
         </div>
     </div>
     <div class="my_socials">
@@ -71,7 +71,7 @@
         
             
         
-        <a href="https://Youpu-Chen.github.io//atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
+        <a href="http://localhost:4000/atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
     </div>
 </div>
 
@@ -94,7 +94,7 @@
             
         
         <div class="gridea-search-div">
-            <form id="gridea-search-form" action="https://Youpu-Chen.github.io//search/">
+            <form id="gridea-search-form" action="http://localhost:4000/search/">
                 <input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
             </form>
         </div>
@@ -193,7 +193,7 @@ plotDendroAndColors(geneTree, dynamicColors, &quot;Dynamic Tree Cut&quot;,dendro
 # dev.off()
 </code></pre>
 <p>绘制图如下，<br>
-<img src="https://Youpu-Chen.github.io//post-images/1661263419560.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1661263419560.png" alt="" loading="lazy"></p>
 <p>gene module合并代码如下 -&gt; 基于<code>cutreeDynamic()</code>的分析结果进行聚类分析的gene module的合并</p>
 <ul>
 <li><code>mergeCloseModules</code>：合并gene module</li>
@@ -216,7 +216,7 @@ write.table(merge$oldMEs,file=&quot;oldMEs.txt&quot;);
 write.table(merge$newMEs,file=&quot;newMEs.txt&quot;);
 </code></pre>
 <p>绘制图如下，可以看到有一些gene module被合并了，</p>
-<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1661263433346.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1661263433346.png" alt="" loading="lazy"></figure>
 <h2 id="7将gene-module与表型特征相联系">7）将gene module与表型特征相联系</h2>
 <p>使用标准化的eigengene进行计算。<br>
 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>o</mi><mi>r</mi><mo>(</mo><mi>M</mi><mi>E</mi><mi>s</mi><mo separator="true">,</mo><mi>T</mi><mi>r</mi><mi>a</mi><mi>i</mi><mi>t</mi><mi>s</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">
@@ -294,7 +294,7 @@ labeledHeatmap(Matrix = moduleTraitCor,
 <blockquote>
 <p>Note：右边的图例，代表相关性程度</p>
 </blockquote>
-<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1661263448767.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1661263448767.png" alt="" loading="lazy"></figure>
 <h2 id="8hub-gene的鉴定">8）Hub gene的鉴定</h2>
 <p>2种方法，</p>
 <ul>
@@ -358,7 +358,7 @@ verboseScatterplot(abs(geneModuleMembership[moduleGenes, column]),
                    cex.main = 1.2, cex.lab = 1.2, cex.axis = 1.2, col = module)
 </code></pre>
 <p>散点图结果如下，可以看到module membership值越高的gene，其gene significance也越高。</p>
-<figure data-type="image" tabindex="3"><img src="https://Youpu-Chen.github.io//post-images/1661263464074.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1661263464074.png" alt="" loading="lazy"></figure>
 <h1 id="其他">其他</h1>
 <h2 id="绘制gene-module-eigengenes与samples之间的热图">绘制gene module eigengenes与samples之间的热图</h2>
 <pre><code class="language-R">library(&quot;pheatmap&quot;)
@@ -392,11 +392,11 @@ pheatmap(merge$newMEs,cluster_col=T,cluster_row=T,show_rownames=T,show_colnames=
                                     <div class="meta">
                                         <div class="info"><span class="field tags"><i class="iconfont icon-tag-sm"></i>
                                                 
-                                                    <a href="https://Youpu-Chen.github.io/tag/p6u3WQosA/" class="article-info">
+                                                    <a href="http://localhost:4000/tag/p6u3WQosA/" class="article-info">
                                                         WGCNA
                                                     </a>
                                                     
-                                                    <a href="https://Youpu-Chen.github.io/tag/JqrJMa8-Vd/" class="article-info">
+                                                    <a href="http://localhost:4000/tag/JqrJMa8-Vd/" class="article-info">
                                                         转录组
                                                     </a>
                                                     
@@ -407,7 +407,7 @@ pheatmap(merge$newMEs,cluster_col=T,cluster_row=T,show_rownames=T,show_colnames=
                                         
                                             <div class="next-post" style="margin-top: 20px;">
                                                 <div class="next">下一篇</div>
-                                                <a href="https://Youpu-Chen.github.io/post/tomy22/">
+                                                <a href="http://localhost:4000/post/tomy22/">
                                                     <h3 class="post-title">
                                                         写给二十二岁的自己
                                                     </h3>
@@ -453,7 +453,7 @@ pheatmap(merge$newMEs,cluster_col=T,cluster_row=T,show_rownames=T,show_colnames=
     
 </div>
 
-<script src="https://Youpu-Chen.github.io//media/scripts/util.js"></script>
+<script src="http://localhost:4000/media/scripts/util.js"></script>
         <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/default.min.css">
         <script src="//unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js"></script>
         <script>hljs.highlightAll();</script>

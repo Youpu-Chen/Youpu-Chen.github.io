@@ -6,10 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <title>「一文搞定序列比对算法」Global以及Local Alignment序列比对算法的实现 | 陈有朴</title>
-<link rel="shortcut icon" href="https://Youpu-Chen.github.io//favicon.ico">
-<link href="https://Youpu-Chen.github.io//styles/main.css" rel="stylesheet">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<link href="http://localhost:4000/styles/main.css" rel="stylesheet">
 <link href="//at.alicdn.com/t/font_1678829_7cn41ho9lyt.css" rel="stylesheet">
-<link rel="alternate" type="application/rss+xml" title="陈有朴 » Feed" href="https://Youpu-Chen.github.io//atom.xml">
+<link rel="alternate" type="application/rss+xml" title="陈有朴 » Feed" href="http://localhost:4000/atom.xml">
         <meta name="description" content="序列比对是什么以及序列比对主要的作用是什么，本篇博客就一笔带过，因为不是主要分享内容。
 序列比对，此处引申为pairwise alignment会更加恰当一些，用于比较2条序列之间的相似程度，推断它们之间的相似程度，进而探索对应功能以及系统..." />
         <meta name="keywords" content="" />
@@ -19,11 +19,11 @@
         <meta property="og:type" content="article" />
         <meta property="og:description" content="序列比对是什么以及序列比对主要的作用是什么，本篇博客就一笔带过，因为不是主要分享内容。
 序列比对，此处引申为pairwise alignment会更加恰当一些，用于比较2条序列之间的相似程度，推断它们之间的相似程度，进而探索对应功能以及系统...">
-        <meta property="og:url" content="https://Youpu-Chen.github.io/post/globalandlocal_alignment/" />
+        <meta property="og:url" content="http://localhost:4000/post/globalandlocal_alignment/" />
         <meta property="og:site_name" content="陈有朴">
         <meta property="og:updated_time" content="2022-10-08">
-        <meta property="og:image" content="https://Youpu-Chen.github.io//post-images/globalandlocal_alignment.jpg" />
-        <meta property="og:image:secure_url" content="https://Youpu-Chen.github.io//post-images/globalandlocal_alignment.jpg">
+        <meta property="og:image" content="http://localhost:4000/post-images/globalandlocal_alignment.jpg" />
+        <meta property="og:image:secure_url" content="http://localhost:4000/post-images/globalandlocal_alignment.jpg">
         <meta property="og:image:alt" content="「一文搞定序列比对算法」Global以及Local Alignment序列比对算法的实现">
         <!-- Twitter (post.ejs) -->
         <meta name="twitter:card" content="summary_large_image">
@@ -32,7 +32,7 @@
 序列比对，此处引申为pairwise alignment会更加恰当一些，用于比较2条序列之间的相似程度，推断它们之间的相似程度，进而探索对应功能以及系统...">
         <!-- <meta name="twitter:site" content="@WBoy0609">
         <meta name="twitter:creator" content="@WBoy0609"> -->
-        <meta name="twitter:image" content="https://Youpu-Chen.github.io//post-images/globalandlocal_alignment.jpg">
+        <meta name="twitter:image" content="http://localhost:4000/post-images/globalandlocal_alignment.jpg">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
         <div class="header animated fadeInDown">
     <div class="site_title_container">
         <div class="site_title">
-            <a href="https://Youpu-Chen.github.io/">陈有朴</a>
+            <a href="http://localhost:4000">陈有朴</a>
         </div>
     </div>
     <div class="my_socials">
@@ -59,7 +59,7 @@
         
             
         
-        <a href="https://Youpu-Chen.github.io//atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
+        <a href="http://localhost:4000/atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
     </div>
 </div>
 
@@ -82,7 +82,7 @@
             
         
         <div class="gridea-search-div">
-            <form id="gridea-search-form" action="https://Youpu-Chen.github.io//search/">
+            <form id="gridea-search-form" action="http://localhost:4000/search/">
                 <input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
             </form>
         </div>
@@ -113,7 +113,7 @@
 <li>全局比对想要得到的是2条序列最佳的匹配结果（e.g. 最多的match数量、最高的比对得分、最高的identity），局部比对想要得到的是2条序列中<strong>最佳匹配片段</strong>（注意：最佳的匹配结果需要建立在相对较少的序列修改上）</li>
 <li>全局比对更适用于evolution关系上更加靠近的（e.g. 粳稻和籼稻），而局部比对更加适用于evolution关系上关系比较远的（e.g. 水稻和葡萄）</li>
 </ul>
-<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1665210943785.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1665210943785.png" alt="" loading="lazy"></figure>
 <h1 id="步骤拆解global-alignment">「步骤拆解」Global Alignment</h1>
 <p>利用动态规划来解决问题，最关键的一步就是列出<strong>动态规划公式</strong>，只要能列出公式，后面的编程也都只是时间问题。</p>
 <p>但是，我并不想一上来就列出数学公式，我认为以一个简单的例子入手更有利于序列比对问题中的动态规划应用。</p>
@@ -138,9 +138,9 @@
 </li>
 </ul>
 <p>Note：数值增大代表替换矩阵中，该碱基对应关系为match，而数值减小，代表替换矩阵中碱基对应关系为mismatch</p>
-<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1665210984762.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1665210984762.png" alt="" loading="lazy"></figure>
 <h1 id="公式global-alignment">「公式」Global Alignment</h1>
-<figure data-type="image" tabindex="3"><img src="https://Youpu-Chen.github.io//post-images/1665211129642.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1665211129642.png" alt="" loading="lazy"></figure>
 <h1 id="引入gap-extension">引入gap extension</h1>
 <p><strong>出现4个单位长度的一个完整gap将两条序列给比对上，或者4个单位长度的单独gap将两条序列给比对上是更符合生物学原理的</strong>？</p>
 <p>上述的文字情况如下所示，</p>
@@ -157,14 +157,14 @@ ATCG-ATCG-ATCG-ATCG-ATCG
 </blockquote>
 <p>affine gap penalty，即在打开第一个gap的时候引入gap open罚分，而在该gap的基础上进行延续则采用gap extension罚分。</p>
 <p>该种做法与原来的常量gap有一定区别，因此就需要改变动态规划公式，同时引入CS中的状态机可以帮助我们更好地理解这个问题。</p>
-<figure data-type="image" tabindex="4"><img src="https://Youpu-Chen.github.io//post-images/1665211055133.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="http://localhost:4000/post-images/1665211055133.png" alt="" loading="lazy"></figure>
 <p>上图中存在3个状态，</p>
 <p>1）M：当前的比对情况下为match或mismatch</p>
 <p>2）Ix：当前的比对情况为在seq2上打开一个gap，而seq1上为一个base</p>
 <p>3）Iy：当前的比对情况为在seq1上打开一个gap，而seq2上为一个base</p>
 <p>三者之间是可以相互转换的，通过d、e、s(x, y)来调整。</p>
 <p>因此动态规划公式变为如下的形式，</p>
-<figure data-type="image" tabindex="5"><img src="https://Youpu-Chen.github.io//post-images/1665211100756.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="http://localhost:4000/post-images/1665211100756.png" alt="" loading="lazy"></figure>
 <h2 id="gap-extension情况下的动态规划矩阵初始化">gap extension情况下的动态规划矩阵初始化</h2>
 <ul>
 <li>M(0,0)=0</li>
@@ -181,13 +181,13 @@ ATCG-ATCG-ATCG-ATCG-ATCG
 <p>同时，由于每一个cell都存在一种情况，我们需要建立3个矩阵来存储对应的信息，分别用M、X、Y来表示。</p>
 <p>经初始化之后，就可以得到如下3个矩阵：</p>
 <h4 id="1m">1）M</h4>
-<figure data-type="image" tabindex="6"><img src="https://Youpu-Chen.github.io//post-images/1665211211305.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="http://localhost:4000/post-images/1665211211305.png" alt="" loading="lazy"></figure>
 <h4 id="2x">2）X</h4>
 <p>代表在列方向打开一个gap，即seq2上插入一个gap</p>
-<figure data-type="image" tabindex="7"><img src="https://Youpu-Chen.github.io//post-images/1665211230263.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="http://localhost:4000/post-images/1665211230263.png" alt="" loading="lazy"></figure>
 <h4 id="3y">3）Y</h4>
 <p>代表在行方向上打开一个gap，即seq1上插入一个gap</p>
-<figure data-type="image" tabindex="8"><img src="https://Youpu-Chen.github.io//post-images/1665211245230.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="http://localhost:4000/post-images/1665211245230.png" alt="" loading="lazy"></figure>
 <h3 id="gap-extension情况下的动态规划矩阵回溯">gap extension情况下的动态规划矩阵回溯</h3>
 <p>3个矩阵，可以使用1个矩阵来记录当前的cell的数值来源，3种情况如下</p>
 <ul>
@@ -196,11 +196,11 @@ ATCG-ATCG-ATCG-ATCG-ATCG
 <li>来自Y，即当前为一个gap open/gap extension，记录为2</li>
 </ul>
 <p>给个示例的回溯矩阵，</p>
-<figure data-type="image" tabindex="9"><img src="https://Youpu-Chen.github.io//post-images/1665211266426.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="http://localhost:4000/post-images/1665211266426.png" alt="" loading="lazy"></figure>
 <h1 id="步骤拆解local-alignment">「步骤拆解」Local Alignment</h1>
 <p>步骤与Global Alignment近似，只是引入了一个0，就可以得到局部的最佳匹配。</p>
 <p>公式如下，</p>
-<figure data-type="image" tabindex="10"><img src="https://Youpu-Chen.github.io//post-images/1665211285196.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="http://localhost:4000/post-images/1665211285196.png" alt="" loading="lazy"></figure>
 <h1 id="代码实现">代码实现</h1>
 <pre><code class="language-python">import numpy as np
 
@@ -475,7 +475,7 @@ def local_backtracking(trace_matrix, score_matrix):
                                         
                                             <div class="next-post" style="margin-top: 20px;">
                                                 <div class="next">下一篇</div>
-                                                <a href="https://Youpu-Chen.github.io/post/for-readers/">
+                                                <a href="http://localhost:4000/post/for-readers/">
                                                     <h3 class="post-title">
                                                         从读者的角度出发
                                                     </h3>
@@ -521,7 +521,7 @@ def local_backtracking(trace_matrix, score_matrix):
     
 </div>
 
-<script src="https://Youpu-Chen.github.io//media/scripts/util.js"></script>
+<script src="http://localhost:4000/media/scripts/util.js"></script>
         <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/default.min.css">
         <script src="//unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js"></script>
         <script>hljs.highlightAll();</script>

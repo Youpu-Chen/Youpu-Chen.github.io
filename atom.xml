@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://Youpu-Chen.github.io/</id>
+    <id>http://localhost:4000</id>
     <title>陈有朴</title>
-    <updated>2022-11-23T02:10:22.446Z</updated>
+    <updated>2022-11-23T02:14:51.427Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://Youpu-Chen.github.io/"/>
-    <link rel="self" href="https://Youpu-Chen.github.io/atom.xml"/>
+    <link rel="alternate" href="http://localhost:4000"/>
+    <link rel="self" href="http://localhost:4000/atom.xml"/>
     <subtitle>有谱</subtitle>
-    <logo>https://Youpu-Chen.github.io/images/avatar.png</logo>
-    <icon>https://Youpu-Chen.github.io/favicon.ico</icon>
+    <logo>http://localhost:4000/images/avatar.png</logo>
+    <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2022, 陈有朴</rights>
     <entry>
         <title type="html"><![CDATA[「基因组」基因组组装之前要做的：Genome Survey]]></title>
-        <id>https://Youpu-Chen.github.io/post/genomesurvey/</id>
-        <link href="https://Youpu-Chen.github.io/post/genomesurvey/">
+        <id>http://localhost:4000/post/genomesurvey/</id>
+        <link href="http://localhost:4000/post/genomesurvey/">
         </link>
         <updated>2022-10-16T07:36:39.000Z</updated>
         <content type="html"><![CDATA[<p>基因组组装之前，有一些问题还是需要注意的，</p>
@@ -117,7 +117,7 @@ smudgeplot.py hetkmers -o smudgeplot_kmercounts/&lt;kmc_db&gt;.kmc_L&quot;$L&quo
 smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
 </code></pre>
 <p>结果示意图如下，</p>
-<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1665905861119.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1665905861119.png" alt="" loading="lazy"></figure>
 <p><strong>基因组大小估计需要注意的点</strong>，</p>
 <p>0）三代数据不适合用于Kmer分析，因为测序错误率高了很多，会对分析结果产生非常大的影响，</p>
 <p>但是HiFi reads以及canu和falcon产生的corrected reads可以很好的适用于Genome Scope分析</p>
@@ -128,9 +128,9 @@ smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
 <p>前者的<code>observed</code>曲线经过了一个转换，越往后的peak其峰值越大，即在原始的kmer freq上乘了一个n（n代表第n个peak），</p>
 <p>后者的<code>observed</code>曲线为实际观测到的一个数值，没有经过上述转换</p>
 <p>transformed linear：</p>
-<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1665905871689.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1665905871689.png" alt="" loading="lazy"></figure>
 <p>linear plot：</p>
-<figure data-type="image" tabindex="3"><img src="https://Youpu-Chen.github.io//post-images/1665905877897.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1665905877897.png" alt="" loading="lazy"></figure>
 <p>4）Genome Scope 2.0分析时，如果将过多的kmer判定为了<code>error</code>，最终的genome size就会小了特别多（基于genome size的计算公式）</p>
 <h1 id="背后的原理">背后的原理</h1>
 <p>首先需要明确的一个点是：Genome Scope 是基于diploid进行编写的。</p>
@@ -172,8 +172,8 @@ smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
     </entry>
     <entry>
         <title type="html"><![CDATA[「一文搞定序列比对算法」Global以及Local Alignment序列比对算法的实现]]></title>
-        <id>https://Youpu-Chen.github.io/post/globalandlocal_alignment/</id>
-        <link href="https://Youpu-Chen.github.io/post/globalandlocal_alignment/">
+        <id>http://localhost:4000/post/globalandlocal_alignment/</id>
+        <link href="http://localhost:4000/post/globalandlocal_alignment/">
         </link>
         <updated>2022-10-08T06:15:10.000Z</updated>
         <content type="html"><![CDATA[<p>序列比对是什么以及序列比对主要的作用是什么，本篇博客就一笔带过，因为不是主要分享内容。</p>
@@ -186,7 +186,7 @@ smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
 <li>全局比对想要得到的是2条序列最佳的匹配结果（e.g. 最多的match数量、最高的比对得分、最高的identity），局部比对想要得到的是2条序列中<strong>最佳匹配片段</strong>（注意：最佳的匹配结果需要建立在相对较少的序列修改上）</li>
 <li>全局比对更适用于evolution关系上更加靠近的（e.g. 粳稻和籼稻），而局部比对更加适用于evolution关系上关系比较远的（e.g. 水稻和葡萄）</li>
 </ul>
-<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1665210943785.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1665210943785.png" alt="" loading="lazy"></figure>
 <h1 id="步骤拆解global-alignment">「步骤拆解」Global Alignment</h1>
 <p>利用动态规划来解决问题，最关键的一步就是列出<strong>动态规划公式</strong>，只要能列出公式，后面的编程也都只是时间问题。</p>
 <p>但是，我并不想一上来就列出数学公式，我认为以一个简单的例子入手更有利于序列比对问题中的动态规划应用。</p>
@@ -211,9 +211,9 @@ smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
 </li>
 </ul>
 <p>Note：数值增大代表替换矩阵中，该碱基对应关系为match，而数值减小，代表替换矩阵中碱基对应关系为mismatch</p>
-<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1665210984762.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1665210984762.png" alt="" loading="lazy"></figure>
 <h1 id="公式global-alignment">「公式」Global Alignment</h1>
-<figure data-type="image" tabindex="3"><img src="https://Youpu-Chen.github.io//post-images/1665211129642.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1665211129642.png" alt="" loading="lazy"></figure>
 <h1 id="引入gap-extension">引入gap extension</h1>
 <p><strong>出现4个单位长度的一个完整gap将两条序列给比对上，或者4个单位长度的单独gap将两条序列给比对上是更符合生物学原理的</strong>？</p>
 <p>上述的文字情况如下所示，</p>
@@ -230,14 +230,14 @@ ATCG-ATCG-ATCG-ATCG-ATCG
 </blockquote>
 <p>affine gap penalty，即在打开第一个gap的时候引入gap open罚分，而在该gap的基础上进行延续则采用gap extension罚分。</p>
 <p>该种做法与原来的常量gap有一定区别，因此就需要改变动态规划公式，同时引入CS中的状态机可以帮助我们更好地理解这个问题。</p>
-<figure data-type="image" tabindex="4"><img src="https://Youpu-Chen.github.io//post-images/1665211055133.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="http://localhost:4000/post-images/1665211055133.png" alt="" loading="lazy"></figure>
 <p>上图中存在3个状态，</p>
 <p>1）M：当前的比对情况下为match或mismatch</p>
 <p>2）Ix：当前的比对情况为在seq2上打开一个gap，而seq1上为一个base</p>
 <p>3）Iy：当前的比对情况为在seq1上打开一个gap，而seq2上为一个base</p>
 <p>三者之间是可以相互转换的，通过d、e、s(x, y)来调整。</p>
 <p>因此动态规划公式变为如下的形式，</p>
-<figure data-type="image" tabindex="5"><img src="https://Youpu-Chen.github.io//post-images/1665211100756.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="http://localhost:4000/post-images/1665211100756.png" alt="" loading="lazy"></figure>
 <h2 id="gap-extension情况下的动态规划矩阵初始化">gap extension情况下的动态规划矩阵初始化</h2>
 <ul>
 <li>M(0,0)=0</li>
@@ -254,13 +254,13 @@ ATCG-ATCG-ATCG-ATCG-ATCG
 <p>同时，由于每一个cell都存在一种情况，我们需要建立3个矩阵来存储对应的信息，分别用M、X、Y来表示。</p>
 <p>经初始化之后，就可以得到如下3个矩阵：</p>
 <h4 id="1m">1）M</h4>
-<figure data-type="image" tabindex="6"><img src="https://Youpu-Chen.github.io//post-images/1665211211305.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="http://localhost:4000/post-images/1665211211305.png" alt="" loading="lazy"></figure>
 <h4 id="2x">2）X</h4>
 <p>代表在列方向打开一个gap，即seq2上插入一个gap</p>
-<figure data-type="image" tabindex="7"><img src="https://Youpu-Chen.github.io//post-images/1665211230263.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="http://localhost:4000/post-images/1665211230263.png" alt="" loading="lazy"></figure>
 <h4 id="3y">3）Y</h4>
 <p>代表在行方向上打开一个gap，即seq1上插入一个gap</p>
-<figure data-type="image" tabindex="8"><img src="https://Youpu-Chen.github.io//post-images/1665211245230.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="http://localhost:4000/post-images/1665211245230.png" alt="" loading="lazy"></figure>
 <h3 id="gap-extension情况下的动态规划矩阵回溯">gap extension情况下的动态规划矩阵回溯</h3>
 <p>3个矩阵，可以使用1个矩阵来记录当前的cell的数值来源，3种情况如下</p>
 <ul>
@@ -269,11 +269,11 @@ ATCG-ATCG-ATCG-ATCG-ATCG
 <li>来自Y，即当前为一个gap open/gap extension，记录为2</li>
 </ul>
 <p>给个示例的回溯矩阵，</p>
-<figure data-type="image" tabindex="9"><img src="https://Youpu-Chen.github.io//post-images/1665211266426.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="http://localhost:4000/post-images/1665211266426.png" alt="" loading="lazy"></figure>
 <h1 id="步骤拆解local-alignment">「步骤拆解」Local Alignment</h1>
 <p>步骤与Global Alignment近似，只是引入了一个0，就可以得到局部的最佳匹配。</p>
 <p>公式如下，</p>
-<figure data-type="image" tabindex="10"><img src="https://Youpu-Chen.github.io//post-images/1665211285196.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="http://localhost:4000/post-images/1665211285196.png" alt="" loading="lazy"></figure>
 <h1 id="代码实现">代码实现</h1>
 <pre><code class="language-python">import numpy as np
 
@@ -543,8 +543,8 @@ def local_backtracking(trace_matrix, score_matrix):
     </entry>
     <entry>
         <title type="html"><![CDATA[从读者的角度出发]]></title>
-        <id>https://Youpu-Chen.github.io/post/for-readers/</id>
-        <link href="https://Youpu-Chen.github.io/post/for-readers/">
+        <id>http://localhost:4000/post/for-readers/</id>
+        <link href="http://localhost:4000/post/for-readers/">
         </link>
         <updated>2022-09-24T13:21:59.000Z</updated>
         <content type="html"><![CDATA[<p>虽然没有一头想着要搞科研的打算，但是有着想要在活着的时候做一些自己觉得有意思的事情作为出发点，开始了我新阶段的学习，尽管现在还没有如愿。</p>
@@ -574,8 +574,8 @@ def local_backtracking(trace_matrix, score_matrix):
     </entry>
     <entry>
         <title type="html"><![CDATA[「转录组」WGCNA专题：实战原理两不误]]></title>
-        <id>https://Youpu-Chen.github.io/post/WGCNA/</id>
-        <link href="https://Youpu-Chen.github.io/post/WGCNA/">
+        <id>http://localhost:4000/post/WGCNA/</id>
+        <link href="http://localhost:4000/post/WGCNA/">
         </link>
         <updated>2022-08-23T13:50:06.000Z</updated>
         <content type="html"><![CDATA[<p>Hello，这里是即将开学的陈有朴。</p>
@@ -656,7 +656,7 @@ plotDendroAndColors(geneTree, dynamicColors, &quot;Dynamic Tree Cut&quot;,dendro
 # dev.off()
 </code></pre>
 <p>绘制图如下，<br>
-<img src="https://Youpu-Chen.github.io//post-images/1661263419560.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1661263419560.png" alt="" loading="lazy"></p>
 <p>gene module合并代码如下 -&gt; 基于<code>cutreeDynamic()</code>的分析结果进行聚类分析的gene module的合并</p>
 <ul>
 <li><code>mergeCloseModules</code>：合并gene module</li>
@@ -679,7 +679,7 @@ write.table(merge$oldMEs,file=&quot;oldMEs.txt&quot;);
 write.table(merge$newMEs,file=&quot;newMEs.txt&quot;);
 </code></pre>
 <p>绘制图如下，可以看到有一些gene module被合并了，</p>
-<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1661263433346.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1661263433346.png" alt="" loading="lazy"></figure>
 <h2 id="7将gene-module与表型特征相联系">7）将gene module与表型特征相联系</h2>
 <p>使用标准化的eigengene进行计算。<br>
 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>o</mi><mi>r</mi><mo>(</mo><mi>M</mi><mi>E</mi><mi>s</mi><mo separator="true">,</mo><mi>T</mi><mi>r</mi><mi>a</mi><mi>i</mi><mi>t</mi><mi>s</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">
@@ -757,7 +757,7 @@ labeledHeatmap(Matrix = moduleTraitCor,
 <blockquote>
 <p>Note：右边的图例，代表相关性程度</p>
 </blockquote>
-<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1661263448767.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1661263448767.png" alt="" loading="lazy"></figure>
 <h2 id="8hub-gene的鉴定">8）Hub gene的鉴定</h2>
 <p>2种方法，</p>
 <ul>
@@ -821,7 +821,7 @@ verboseScatterplot(abs(geneModuleMembership[moduleGenes, column]),
                    cex.main = 1.2, cex.lab = 1.2, cex.axis = 1.2, col = module)
 </code></pre>
 <p>散点图结果如下，可以看到module membership值越高的gene，其gene significance也越高。</p>
-<figure data-type="image" tabindex="3"><img src="https://Youpu-Chen.github.io//post-images/1661263464074.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1661263464074.png" alt="" loading="lazy"></figure>
 <h1 id="其他">其他</h1>
 <h2 id="绘制gene-module-eigengenes与samples之间的热图">绘制gene module eigengenes与samples之间的热图</h2>
 <pre><code class="language-R">library(&quot;pheatmap&quot;)
@@ -850,8 +850,8 @@ pheatmap(merge$newMEs,cluster_col=T,cluster_row=T,show_rownames=T,show_colnames=
     </entry>
     <entry>
         <title type="html"><![CDATA[写给二十二岁的自己]]></title>
-        <id>https://Youpu-Chen.github.io/post/tomy22/</id>
-        <link href="https://Youpu-Chen.github.io/post/tomy22/">
+        <id>http://localhost:4000/post/tomy22/</id>
+        <link href="http://localhost:4000/post/tomy22/">
         </link>
         <updated>2022-08-14T06:47:00.000Z</updated>
         <content type="html"><![CDATA[<p>写下这篇文章的时候，我的生日已经过去了二十多天，但或许是近来反刍的事情太多，才让我写下这篇文章。</p>
@@ -908,16 +908,16 @@ pheatmap(merge$newMEs,cluster_col=T,cluster_row=T,show_rownames=T,show_colnames=
     </entry>
     <entry>
         <title type="html"><![CDATA[这可能是我写过最全的GATK笔记]]></title>
-        <id>https://Youpu-Chen.github.io/post/GATK-BESTPRACTICE/</id>
-        <link href="https://Youpu-Chen.github.io/post/GATK-BESTPRACTICE/">
+        <id>http://localhost:4000/post/GATK-BESTPRACTICE/</id>
+        <link href="http://localhost:4000/post/GATK-BESTPRACTICE/">
         </link>
         <updated>2022-08-11T03:23:01.000Z</updated>
         <content type="html"><![CDATA[<h3 id="软件安装">软件安装</h3>
 <p>官方网站：https://gatk.broadinstitute.org/hc/en-us</p>
 <p>点击“Download GATK4”：<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660188520935.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660188520935.png" alt="" loading="lazy"></p>
 <p>选择zip安装包：<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660188530491.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660188530491.png" alt="" loading="lazy"></p>
 <pre><code class="language-bash">wget https://github.com/broadinstitute/gatk/releases/download/4.2.5.0/gatk-4.2.5.0.zip
 unzip gatk-4.2.5.0.zip
 </code></pre>
@@ -926,7 +926,7 @@ unzip gatk-4.2.5.0.zip
 <p>其他分析流程（bwa替代流程）：https://gatk.broadinstitute.org/hc/en-us/articles/4407897446939--How-to-Run-germline-single-sample-short-variant-discovery-in-DRAGEN-mode</p>
 <h3 id="gatkjave选项">GATK：Jave选项</h3>
 <p>GATK实际使用的命令为：<code>java -jar program.jar</code>，但是为了GATK的开发者为了方便将其添加到环境变量，对其进行了封装，即使用安装目录下的<strong>gatk可执行脚本</strong>可直接运行：<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660188563873.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660188563873.png" alt="" loading="lazy"></p>
 <p>下面给出一个封装前后，设置额外参数的例子：</p>
 <p>未进行封装前，设置额外参数的方式为<code>java -Xmx4G -jar gatk-package-4.2.2.0-local.jar</code></p>
 <p>进行封装后，设置额外参数的方式为<code>gatk --java-options &quot;-Xmx4G&quot;</code></p>
@@ -1135,7 +1135,7 @@ gatk VariantFiltration \
     -O indels_filtered.vcf.gz
 </code></pre>
 <p>再给出一篇文章中的过滤参数：</p>
-<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1660188613462.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1660188613462.png" alt="" loading="lazy"></figure>
 <p>官方说明文档如下：</p>
 <p>[1] https://gatk.broadinstitute.org/hc/en-us/articles/360037434691-VariantFiltration</p>
 <p>[2] https://gatk.broadinstitute.org/hc/en-us/articles/360035531112--How-to-Filter-variants-either-with-VQSR-or-by-hard-filtering【主要看“2. Hard filter a cohort callset with VariantFiltration”这部分就行】</p>
@@ -1179,7 +1179,7 @@ gatk VariantFiltration \
 </ul>
 <p>从上述的话，其实也能很明显地看出来，VariantRecalibrator &amp; ApplyVQSR这套方法的缺陷 —— 需要先验的高质量VCF数据集。</p>
 <p>输入数据的要求：</p>
-<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1660188666242.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1660188666242.png" alt="" loading="lazy"></figure>
 <h4 id="variantrecalibrator示例运行">VariantRecalibrator：示例运行</h4>
 <pre><code class="language-bash"># exome data
 gatk VariantRecalibrator \
@@ -1247,7 +1247,7 @@ LB = DNA preparation library identifier
 </code></pre>
 <h4 id="2如何进行read-group信息添加">（2）如何进行read group信息添加？</h4>
 <p>图示：<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660299121752.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660299121752.png" alt="" loading="lazy"></p>
 <pre><code class="language-bash">@A00312:194:HFK5KDSX2  # 测序仪器
 4                      # lane ID
 1101                   # tail坐标
@@ -1264,8 +1264,8 @@ bwa -R '@RG\tID:lane_${lane}\tPL:illumina\tSM:${sample}'
     </entry>
     <entry>
         <title type="html"><![CDATA[「Hello Gridea」Here comes Youpu-Chen]]></title>
-        <id>https://Youpu-Chen.github.io/post/hello-gridea/</id>
-        <link href="https://Youpu-Chen.github.io/post/hello-gridea/">
+        <id>http://localhost:4000/post/hello-gridea/</id>
+        <link href="http://localhost:4000/post/hello-gridea/">
         </link>
         <updated>2022-08-09T16:00:00.000Z</updated>
         <content type="html"><![CDATA[<p>这是从Gridea开始的第一篇故事。</p>
@@ -1283,18 +1283,18 @@ bwa -R '@RG\tID:lane_${lane}\tPL:illumina\tSM:${sample}'
 <h1 id="gridea客户端安装">「Gridea」客户端安装</h1>
 <p>官网 -&gt; <a href="https://gridea.dev/">Click here</a></p>
 <p>0）根据自己的系统选择即可<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660115082807.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660115082807.png" alt="" loading="lazy"></p>
 <h1 id="gridea与github">「Gridea与Github」</h1>
 <p>1）首先，需要有一个Github账号<br>
 2）创建一个名字为<code>&lt;username&gt;.github.io</code>的仓库<br>
 3）Gridea远程配置如下即可，<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660114907888.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660114907888.png" alt="" loading="lazy"></p>
 <h2 id="如何绑定自己的域名">如何绑定自己的域名？</h2>
 <p>以腾讯云为例，在控制台完成如下操作即可 -&gt; A &amp; CNAME的配置，<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660114916595.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660114916595.png" alt="" loading="lazy"></p>
 <p>在Github创建的仓库中，输入域名即可<br>
 「记得<code>Enforce https</code>」<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660114927770.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660114927770.png" alt="" loading="lazy"></p>
 <h1 id="gridea主题更换">「Gridea」主题更换</h1>
 <p>以gridea-theme-one为例，Github链接 -&gt; <a href="https://github.com/kytrun/gridea-theme-one.git">one</a></p>
 <p>「克隆仓库前，记得想想自己将Gridea的工作目录放置到了哪里，」</p>
@@ -1309,8 +1309,8 @@ bwa -R '@RG\tID:lane_${lane}\tPL:illumina\tSM:${sample}'
     </entry>
     <entry>
         <title type="html"><![CDATA[「我的大学，是怎么样的？」]]></title>
-        <id>https://Youpu-Chen.github.io/post/aboutuniversity/</id>
-        <link href="https://Youpu-Chen.github.io/post/aboutuniversity/">
+        <id>http://localhost:4000/post/aboutuniversity/</id>
+        <link href="http://localhost:4000/post/aboutuniversity/">
         </link>
         <updated>2021-10-03T01:46:40.000Z</updated>
         <content type="html"><![CDATA[<h2 id="part1-校园回忆录">Part1-校园回忆录</h2>
@@ -1329,7 +1329,7 @@ bwa -R '@RG\tID:lane_${lane}\tPL:illumina\tSM:${sample}'
 ​“实验室，我有不搞科研，实验室有啥好去的，没意思”<br>
 ​  “大创。。要写计划书，要看文献，真麻烦，打开电脑我都觉得麻烦。。”</p>
 <p>最后你放弃了思考，像天上的卡兹一样停止了思考（此处为jojo梗），觉得思考太费力气，还是保持现状比较好。<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660442578922.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660442578922.png" alt="" loading="lazy"></p>
 <p>再过了几年，你发现自己混的不如意，只能回老家考一个公务员，又或者在一个小公司上班遇到了黑心的老板，每天压榨员工，自己生活仿佛乌云笼罩，窗外的太阳很大，只是透不进来。</p>
 <p><strong>就此打住，我希望你对自己大学生活的回忆不是这样</strong></p>
 <p>我希望你对大学生活的回忆是这样的：</p>
@@ -1342,10 +1342,10 @@ bwa -R '@RG\tID:lane_${lane}\tPL:illumina\tSM:${sample}'
 <p>“我想要继续深造，这所课题组/大学/科研机构）的研究方向我很感兴趣，我决定要申请这里的博士”<br>
 “这份工作，我觉得对我来说已经没有挑战性了，也没有太大的上升空间，我决定要向下一个岗位进发”</p>
 <h2 id="part2-回答what-is-university">Part2-回答“What is University?”</h2>
-<p><img src="https://Youpu-Chen.github.io//post-images/1660442593831.png" alt="" loading="lazy"><br>
+<p><img src="http://localhost:4000/post-images/1660442593831.png" alt="" loading="lazy"><br>
 大学是什么？我个人觉得理想中的大学应该是充满了各种天马行空想法和热情的地方，每个人都能在自己所选定的方向上发光发热。但是我知道这是不现实的，这个时代是不断在前进没有错，但是我们没有必要要求所有人都前仆后继地投身到“伟大事业建设”中去。</p>
 <p>如果你很早就确定了自己未来想从事的工作，明确了自己前进的方向，对自己的“工作”和生活充满了热情，那么祝贺你，你已经走在了大部分人的前面。但是，如果你还没有，“keep looking, don't settle”<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660442601337.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660442601337.png" alt="" loading="lazy"></p>
 <center>上图截自Steve Jobs 2005年在Standford University的毕业典礼演讲​</center>
 <p>大部分的人，都很难在高中阶段（甚至进入社会后的几十年是，这是现实情况）找到自己真正热爱的是什么，因此大学提供了一个非常好的机会给我们去探索，去勇敢地尝试（年轻人，就是要勇于试错！年轻的时候试错成本低），在这个探索过程中，我们说不定就能发现我们真正热爱的事情是什么（但是关于热爱和兴趣这件事，有兴趣的同学可以找我私聊，目前博客没有设置评论功能）。</p>
 <p><strong>不要被自己的专业所局限住</strong>，因为高中选专业的时候可能有父母在旁边左右（我没有，我自己作死来的福州 <strong>😃</strong> ），可能还是一个懵懂的高中生凭着感觉选择的专业。所以，在进入大学之后，我个人推荐推荐你可以动动自己的小指头，打开咱们学校的教务系统，看看其他专业上的课有没有自己感兴趣的，可以去听听看。同时，现在已经是互联网时代了，要利用好网络上的资源，“好的大学没有围墙”（我觉得我在本科期间，在实验室内，我真正锻炼到的是我的自学能力。在此包含辛酸泪地说一句，“羡慕那些刚进实验室就有人带的孩子，这样起步比我快多了”）。</p>
@@ -1364,7 +1364,7 @@ bwa -R '@RG\tID:lane_${lane}\tPL:illumina\tSM:${sample}'
 <p>PS：Harvard positive psychology中提到了一位非常厉害的老师 —— Marva Collins（她的事迹，有兴趣的同学可以上百度搜搜）。</p>
 <p>我在本科的学习生活中认识了非常多的老师，有资历高的教授，有刚进学校的青椒，有人生导师（重点描述对象），当然也有让我觉得disgusting的老师（这可能是现存制度的问题）。</p>
 <p>实话实说，刚进大一的我，整天看到创新班英语群里在发“加油加油加油”的表情包，我以为我加入了什么邪教组织，每次看到同学们在里面发啥标语，我笑得比看“你得支棱起来啊”笑的还欢，有一种众人皆醉我独醒的感觉，如下：<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660442610790.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660442610790.png" alt="" loading="lazy"></p>
 <p>到后来，我发现我错了，我错得很彻底。当大一下学期郭老师给我们正式上课的时候，又或者说当雅思培训开始时，我真正意识到这个男人配得上“我愿称你为最强”（不好意思，我有中二病，可能治不好的那种哈哈哈哈）。</p>
 <p>郭老师的冰山理论、ppp理论，说实话，忘了很多了，但是当我每每想起雅思培训时老郭说的一些话，我总是会有一种不可言喻的感觉。郭老师看到了我的闪光点，或许是连我自己都没有看到的闪光点，并将它轻轻一推，但就是这轻轻一推，让原本只是宇宙中一颗小小尘埃，变成了能够照亮整个太阳系的光源：</p>
 <p>“你这么努力，我觉得你有可能是在坐的同学里面，有机会去面试浙大的学生，但是学习不仅要work hard，还要work smart……”</p>
