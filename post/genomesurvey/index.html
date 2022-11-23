@@ -6,10 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <title>「基因组」基因组组装之前要做的：Genome Survey | 陈有朴</title>
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
-<link href="http://localhost:4000/styles/main.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://Youpu-Chen.github.io//favicon.ico">
+<link href="https://Youpu-Chen.github.io//styles/main.css" rel="stylesheet">
 <link href="//at.alicdn.com/t/font_1678829_7cn41ho9lyt.css" rel="stylesheet">
-<link rel="alternate" type="application/rss+xml" title="陈有朴 » Feed" href="http://localhost:4000/atom.xml">
+<link rel="alternate" type="application/rss+xml" title="陈有朴 » Feed" href="https://Youpu-Chen.github.io//atom.xml">
         <meta name="description" content="基因组组装之前，有一些问题还是需要注意的，
 
 genome size是多少？
@@ -29,7 +29,7 @@ genome size是多少？
 重复序列的占比是多少？
 
 可以系统性地称为genome survey，这是一个非常简单的分析，但是其...">
-        <meta property="og:url" content="http://localhost:4000/post/genomesurvey/" />
+        <meta property="og:url" content="https://Youpu-Chen.github.io/post/genomesurvey/" />
         <meta property="og:site_name" content="陈有朴">
         <meta property="og:updated_time" content="2022-10-16">
         <meta property="og:image" content="" />
@@ -55,7 +55,7 @@ genome size是多少？
         <div class="header animated fadeInDown">
     <div class="site_title_container">
         <div class="site_title">
-            <a href="http://localhost:4000">陈有朴</a>
+            <a href="https://Youpu-Chen.github.io/">陈有朴</a>
         </div>
     </div>
     <div class="my_socials">
@@ -74,7 +74,7 @@ genome size是多少？
         
             
         
-        <a href="http://localhost:4000/atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
+        <a href="https://Youpu-Chen.github.io//atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
     </div>
 </div>
 
@@ -97,7 +97,7 @@ genome size是多少？
             
         
         <div class="gridea-search-div">
-            <form id="gridea-search-form" action="http://localhost:4000/search/">
+            <form id="gridea-search-form" action="https://Youpu-Chen.github.io//search/">
                 <input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
             </form>
         </div>
@@ -219,7 +219,7 @@ smudgeplot.py hetkmers -o smudgeplot_kmercounts/&lt;kmc_db&gt;.kmc_L&quot;$L&quo
 smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
 </code></pre>
 <p>结果示意图如下，</p>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1665905861119.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1665905861119.png" alt="" loading="lazy"></figure>
 <p><strong>基因组大小估计需要注意的点</strong>，</p>
 <p>0）三代数据不适合用于Kmer分析，因为测序错误率高了很多，会对分析结果产生非常大的影响，</p>
 <p>但是HiFi reads以及canu和falcon产生的corrected reads可以很好的适用于Genome Scope分析</p>
@@ -230,9 +230,9 @@ smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
 <p>前者的<code>observed</code>曲线经过了一个转换，越往后的peak其峰值越大，即在原始的kmer freq上乘了一个n（n代表第n个peak），</p>
 <p>后者的<code>observed</code>曲线为实际观测到的一个数值，没有经过上述转换</p>
 <p>transformed linear：</p>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1665905871689.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1665905871689.png" alt="" loading="lazy"></figure>
 <p>linear plot：</p>
-<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1665905877897.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://Youpu-Chen.github.io//post-images/1665905877897.png" alt="" loading="lazy"></figure>
 <p>4）Genome Scope 2.0分析时，如果将过多的kmer判定为了<code>error</code>，最终的genome size就会小了特别多（基于genome size的计算公式）</p>
 <h1 id="背后的原理">背后的原理</h1>
 <p>首先需要明确的一个点是：Genome Scope 是基于diploid进行编写的。</p>
@@ -279,15 +279,15 @@ smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
                                     <div class="meta">
                                         <div class="info"><span class="field tags"><i class="iconfont icon-tag-sm"></i>
                                                 
-                                                    <a href="http://localhost:4000/tag/Xg1_Prd4r/" class="article-info">
+                                                    <a href="https://Youpu-Chen.github.io/tag/Xg1_Prd4r/" class="article-info">
                                                         基因组学
                                                     </a>
                                                     
-                                                    <a href="http://localhost:4000/tag/O3WOVHTS3b/" class="article-info">
+                                                    <a href="https://Youpu-Chen.github.io/tag/O3WOVHTS3b/" class="article-info">
                                                         Python
                                                     </a>
                                                     
-                                                    <a href="http://localhost:4000/tag/YePZ4sFJt/" class="article-info">
+                                                    <a href="https://Youpu-Chen.github.io/tag/YePZ4sFJt/" class="article-info">
                                                         R
                                                     </a>
                                                     
@@ -298,7 +298,7 @@ smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
                                         
                                             <div class="next-post" style="margin-top: 20px;">
                                                 <div class="next">下一篇</div>
-                                                <a href="http://localhost:4000/post/globalandlocal_alignment/">
+                                                <a href="https://Youpu-Chen.github.io/post/globalandlocal_alignment/">
                                                     <h3 class="post-title">
                                                         「一文搞定序列比对算法」Global以及Local Alignment序列比对算法的实现
                                                     </h3>
@@ -344,7 +344,7 @@ smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
     
 </div>
 
-<script src="http://localhost:4000/media/scripts/util.js"></script>
+<script src="https://Youpu-Chen.github.io//media/scripts/util.js"></script>
         <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/default.min.css">
         <script src="//unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js"></script>
         <script>hljs.highlightAll();</script>
