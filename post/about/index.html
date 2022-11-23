@@ -1,122 +1,111 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" >
 
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes"/>
 <title>我的故事 | 陈有朴</title>
 
-<link rel="shortcut icon" href="https://Youpu-Chen.github.io//favicon.ico">
-<link href="https://Youpu-Chen.github.io//styles/main.css" rel="stylesheet">
-<link href="//at.alicdn.com/t/font_1678829_7cn41ho9lyt.css" rel="stylesheet">
-<link rel="alternate" type="application/rss+xml" title="陈有朴 » Feed" href="https://Youpu-Chen.github.io//atom.xml">
-        <meta name="description" content="欢迎来到我的小站，我估摸它应该会从2022年开始陪我很长一段时间（只要我还在生物信息学这个领域中摸爬滚打）
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Youpu-Chen.github.io//favicon.ico?v=1669168957857">
+<link rel="stylesheet" href="https://Youpu-Chen.github.io//styles/main.css">
+
+
+  
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css" />
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="欢迎来到我的小站，我估摸它应该会从2022年开始陪我很长一段时间（只要我还在生物信息学这个领域中摸爬滚打）
 Who am I?
 I am nobody, and I am somebody
 What about this site?
 
 Bi..." />
-        <meta name="keywords" content="" />
-        <!-- OG -->
-        <meta property="og:locale" content="zh_CN">
-        <meta property="og:title" content="我的故事" />
-        <meta property="og:type" content="article" />
-        <meta property="og:description" content="欢迎来到我的小站，我估摸它应该会从2022年开始陪我很长一段时间（只要我还在生物信息学这个领域中摸爬滚打）
-Who am I?
-I am nobody, and I am somebody
-What about this site?
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
 
-Bi...">
-        <meta property="og:url" content="https://Youpu-Chen.github.io/post/about/" />
-        <meta property="og:site_name" content="陈有朴">
-        <meta property="og:updated_time" content="2022-08-10">
-        <meta property="og:image" content="" />
-        <meta property="og:image:secure_url" content="">
-        <meta property="og:image:alt" content="我的故事">
-        <!-- Twitter (post.ejs) -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="我的故事">
-        <meta name="twitter:description" content="欢迎来到我的小站，我估摸它应该会从2022年开始陪我很长一段时间（只要我还在生物信息学这个领域中摸爬滚打）
-Who am I?
-I am nobody, and I am somebody
-What about this site?
-
-Bi...">
-        <!-- <meta name="twitter:site" content="@WBoy0609">
-        <meta name="twitter:creator" content="@WBoy0609"> -->
-        <meta name="twitter:image" content="">
-</head>
-
-<body>
-    <div class="main animated">
-        <div class="header animated fadeInDown">
-    <div class="site_title_container">
-        <div class="site_title">
-            <a href="https://Youpu-Chen.github.io/">陈有朴</a>
-        </div>
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Youpu-Chen.github.io/">
+        <img src="https://Youpu-Chen.github.io//images/avatar.png?v=1669168957857" class="site-logo">
+        <h1 class="site-title">陈有朴</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="my_socials">
+    <div>
+      
         
-            
-                <a href="https://github.com/Youpu-Chen" target="_blank"><i class="iconfont icon-github"></i></a>
-            
+          <a href="/" class="site-nav">
+            首页
+          </a>
         
-            
-                <a href="https://twitter.com/chenhongpu1" target="_blank"><i class="iconfont icon-twitter"></i></a>
-            
+      
         
-            
+          <a href="/archives" class="site-nav">
+            Archives
+          </a>
         
-            
+      
         
-            
+          <a href="/tags" class="site-nav">
+            Tags
+          </a>
         
-        <a href="https://Youpu-Chen.github.io//atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
+      
+        
+          <a href="/post/about" class="site-nav">
+            About Me
+          </a>
+        
+      
     </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      有谱
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank"> Gridea</a> | <a class="rss" href="https://Youpu-Chen.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
 </div>
 
-    <div class="header_menu">
-        
-            
-                <a href="/" class="menu">首页</a>
-            
-        
-            
-                <a href="/archives" class="menu">Archives</a>
-            
-        
-            
-                <a href="/tags" class="menu">Tags</a>
-            
-        
-            
-                <a href="/post/about" class="menu">About Me</a>
-            
-        
-        <div class="gridea-search-div">
-            <form id="gridea-search-form" action="https://Youpu-Chen.github.io//search/">
-                <input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
-            </form>
-        </div>
-    </div>
 
-            <div class="autopagerize_page_element">
-                <div class="content">
-                    <div class="post_page">
-                        <div class="post animated fadeInDown">
-                            <div class="post_title post_detail_title">
-                                <h2>
-                                    我的故事
-                                </h2>
-                                <span class="article-info">
-                                    2022-08-10, 109 words, 1 min read
-                                </span>
-                            </div>
-                            <div class="post_content markdown">
-                                <p class="md_block">
-                                    <span class="md_line md_line_start md_line_end">
-                                        <p>欢迎来到我的小站，我估摸它应该会从2022年开始陪我很长一段时间（只要我还在生物信息学这个领域中摸爬滚打）</p>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">我的故事</h2>
+            <div class="post-date">2022-08-10</div>
+            
+            <div class="post-content" v-pre>
+              <p>欢迎来到我的小站，我估摸它应该会从2022年开始陪我很长一段时间（只要我还在生物信息学这个领域中摸爬滚打）</p>
 <h2 id="who-am-i">Who am I?</h2>
 <p>I am nobody, and I am somebody</p>
 <h2 id="what-about-this-site">What about this site?</h2>
@@ -130,56 +119,63 @@ Bi...">
 💻 CSDN: <a href="https://blog.csdn.net/qq524730309">陈有朴</a><br>
 🍃 语雀： <a href="https://www.yuque.com/chenyoupu/">陈有朴</a><br>
 💨 简书： <a href="https://www.jianshu.com/u/0884f8da350f">陈有朴</a></p>
-<br />
-                                            
-                                </p>
-                            </div>
-                            <div class="post_footer">
-                                
-                                        
-                            </div>
-                        </div>
-                        
-                            
-                                        
-                                            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
-<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
-<div id="disqus_thread"></div>
-<script>
+
+            </div>
+            
+            
+
+            
+              
+
+              
+                <div id="disqus_thread" data-aos="fade-in"></div>
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+
+  
+    <script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+    <script>
+
     var options = {
-        shortname: 'DisqusComments',
-        apikey: '0D4eig7RqYsljZD0i62dy7y5H2AVm2gE3T9qwx1S16zyJejdxXypcpTtxHm07Eig',
+      shortname: 'DisqusComments',
+      apikey: '0D4eig7RqYsljZD0i62dy7y5H2AVm2gE3T9qwx1S16zyJejdxXypcpTtxHm07Eig',
     }
     if ('https://disqus.com/api/oauth/2.0/authorize/') {
-        options.api = 'https://disqus.com/api/oauth/2.0/authorize/'
+      options.api = 'https://disqus.com/api/oauth/2.0/authorize/'
     }
     var dsqjs = new DisqusJS(options)
-</script>
-                                                
-                                                    
-                    </div>
-                </div>
-            </div>
-    </div>
-    <div class="footer">
-    
-    <div class="powered_by">
-        <a href="https://github.com/kytrun/gridea-theme-one" target="_blank">Theme One,</a>
-        <a href="https://gridea.dev/" target="_blank">Powered by Gridea&#65281;</a>
-    </div>
-    <div class="footer_slogan">
-        有谱
-    </div>
-    <div id="back_to_top" class="back_to_top">
-        <span>△</span>
-    </div>
-    
-</div>
 
-<script src="https://Youpu-Chen.github.io//media/scripts/util.js"></script>
-        <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/default.min.css">
-        <script src="//unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script>
-</body>
+    </script>
+  
 
+
+
+
+  </body>
 </html>

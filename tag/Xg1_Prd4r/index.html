@@ -1,144 +1,138 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" >
 
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes"/>
 <title>基因组学 | 陈有朴</title>
 
-<link rel="shortcut icon" href="https://Youpu-Chen.github.io//favicon.ico">
-<link href="https://Youpu-Chen.github.io//styles/main.css" rel="stylesheet">
-<link href="//at.alicdn.com/t/font_1678829_7cn41ho9lyt.css" rel="stylesheet">
-<link rel="alternate" type="application/rss+xml" title="陈有朴 » Feed" href="https://Youpu-Chen.github.io//atom.xml">
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<body>
-    <div class="main animated">
-        <div class="header animated fadeInDown">
-    <div class="site_title_container">
-        <div class="site_title">
-            <a href="https://Youpu-Chen.github.io/">陈有朴</a>
-        </div>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Youpu-Chen.github.io//favicon.ico?v=1669168957857">
+<link rel="stylesheet" href="https://Youpu-Chen.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="有谱">
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Youpu-Chen.github.io/">
+        <img src="https://Youpu-Chen.github.io//images/avatar.png?v=1669168957857" class="site-logo">
+        <h1 class="site-title">陈有朴</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="my_socials">
+    <div>
+      
         
-            
-                <a href="https://github.com/Youpu-Chen" target="_blank"><i class="iconfont icon-github"></i></a>
-            
+          <a href="/" class="site-nav">
+            首页
+          </a>
         
-            
-                <a href="https://twitter.com/chenhongpu1" target="_blank"><i class="iconfont icon-twitter"></i></a>
-            
+      
         
-            
+          <a href="/archives" class="site-nav">
+            Archives
+          </a>
         
-            
+      
         
-            
+          <a href="/tags" class="site-nav">
+            Tags
+          </a>
         
-        <a href="https://Youpu-Chen.github.io//atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
+      
+        
+          <a href="/post/about" class="site-nav">
+            About Me
+          </a>
+        
+      
     </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      有谱
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank"> Gridea</a> | <a class="rss" href="https://Youpu-Chen.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
 </div>
 
-    <div class="header_menu">
-        
-            
-                <a href="/" class="menu">首页</a>
-            
-        
-            
-                <a href="/archives" class="menu">Archives</a>
-            
-        
-            
-                <a href="/tags" class="menu">Tags</a>
-            
-        
-            
-                <a href="/post/about" class="menu">About Me</a>
-            
-        
-        <div class="gridea-search-div">
-            <form id="gridea-search-form" action="https://Youpu-Chen.github.io//search/">
-                <input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
-            </form>
-        </div>
-    </div>
 
-            <div class="autopagerize_page_element">
-                <div class="content">
-                    
-                        <div class="post animated fadeInDown">
-                            <div class="post_title">
-                                <h2>
-                                    <a href="https://Youpu-Chen.github.io/post/genomesurvey/">
-                                        「基因组」基因组组装之前要做的：Genome Survey
-                                    </a>
-                                </h2>
-                            </div>
-                            <div class="list">
-                                <div class="post_content">
-                                    <p>
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="post_footer">
-                                <div class="meta">
-                                    <div class="info">
-                                        <div class="article-infos">
-                                            <i class="iconfont icon-words-sm"></i>
-                                            <span class="article-info">
-                                                1684
-                                            </span>
-                                            <i class="iconfont icon-calendar"></i>
-                                            <span class="article-info">
-                                                2022-10-16
-                                            </span>
-                                        </div>
-                                        
-                                            <span class="field tags"> <i class="iconfont icon-tag-sm"></i>
-                                                
-                                                    <a href="https://Youpu-Chen.github.io/tag/Xg1_Prd4r/" class="article-info">
-                                                        基因组学
-                                                    </a>
-                                                    
-                                                    <a href="https://Youpu-Chen.github.io/tag/O3WOVHTS3b/" class="article-info">
-                                                        Python
-                                                    </a>
-                                                    
-                                                    <a href="https://Youpu-Chen.github.io/tag/YePZ4sFJt/" class="article-info">
-                                                        R
-                                                    </a>
-                                                    
-                                            </span>
-                                            
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <h2 class="current-tag">标签: 基因组学</h2>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://Youpu-Chen.github.io/post/genomesurvey/">
+                  <h2 class="post-title">「基因组」基因组组装之前要做的：Genome Survey</h2>
+                </a>
+                <div class="post-date">
+                  2022-10-16
                 </div>
-            </div>
-            
-    </div>
-    <div class="footer">
-    
-    <div class="powered_by">
-        <a href="https://github.com/kytrun/gridea-theme-one" target="_blank">Theme One,</a>
-        <a href="https://gridea.dev/" target="_blank">Powered by Gridea&#65281;</a>
-    </div>
-    <div class="footer_slogan">
-        有谱
-    </div>
-    <div id="back_to_top" class="back_to_top">
-        <span>△</span>
-    </div>
-    
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+
+          <div class="pagination-container">
+  
+  
 </div>
 
-<script src="https://Youpu-Chen.github.io//media/scripts/util.js"></script>
-</body>
+        </div>
+      </div>
+    </div>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
 </html>
