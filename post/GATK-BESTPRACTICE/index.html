@@ -9,7 +9,7 @@
 <meta name="description" content="有谱">
 <meta name="theme-color" content="">
 <title>这可能是我写过最全的GATK笔记 | 陈有朴</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1669280404702">
+<link rel="shortcut icon" href="/favicon.ico?v=1669373854633">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -244,7 +244,7 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://Youpu-Chen.github.io/post/GATK-BESTPRACTICE/"> 这可能是我写过最全的GATK笔记 </a>
+    <a class="post-title-link" href="http://localhost:4000/post/GATK-BESTPRACTICE/"> 这可能是我写过最全的GATK笔记 </a>
   </h1>
   <div class="post-meta">
     
@@ -259,8 +259,8 @@
       <i class="fa fa-folder-o"></i>
       <span class="pc-show language" data-lan="category-in">标签:</span>
        
-      <a href="https://Youpu-Chen.github.io/tag/ZUP1ThQfW/"> <span>GATK</span> </a>、   
-      <a href="https://Youpu-Chen.github.io/tag/aOqSaL_Yug/">
+      <a href="http://localhost:4000/tag/ZUP1ThQfW/"> <span>GATK</span> </a>、   
+      <a href="http://localhost:4000/tag/aOqSaL_Yug/">
         <span>WGS</span>
       </a>
        
@@ -292,9 +292,9 @@
               <h3 id="软件安装">软件安装</h3>
 <p>官方网站：https://gatk.broadinstitute.org/hc/en-us</p>
 <p>点击“Download GATK4”：<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660188520935.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660188520935.png" alt="" loading="lazy"></p>
 <p>选择zip安装包：<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660188530491.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660188530491.png" alt="" loading="lazy"></p>
 <pre><code class="language-bash">wget https://github.com/broadinstitute/gatk/releases/download/4.2.5.0/gatk-4.2.5.0.zip
 unzip gatk-4.2.5.0.zip
 </code></pre>
@@ -303,7 +303,7 @@ unzip gatk-4.2.5.0.zip
 <p>其他分析流程（bwa替代流程）：https://gatk.broadinstitute.org/hc/en-us/articles/4407897446939--How-to-Run-germline-single-sample-short-variant-discovery-in-DRAGEN-mode</p>
 <h3 id="gatkjave选项">GATK：Jave选项</h3>
 <p>GATK实际使用的命令为：<code>java -jar program.jar</code>，但是为了GATK的开发者为了方便将其添加到环境变量，对其进行了封装，即使用安装目录下的<strong>gatk可执行脚本</strong>可直接运行：<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660188563873.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660188563873.png" alt="" loading="lazy"></p>
 <p>下面给出一个封装前后，设置额外参数的例子：</p>
 <p>未进行封装前，设置额外参数的方式为<code>java -Xmx4G -jar gatk-package-4.2.2.0-local.jar</code></p>
 <p>进行封装后，设置额外参数的方式为<code>gatk --java-options &quot;-Xmx4G&quot;</code></p>
@@ -512,7 +512,7 @@ gatk VariantFiltration \
     -O indels_filtered.vcf.gz
 </code></pre>
 <p>再给出一篇文章中的过滤参数：</p>
-<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1660188613462.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1660188613462.png" alt="" loading="lazy"></figure>
 <p>官方说明文档如下：</p>
 <p>[1] https://gatk.broadinstitute.org/hc/en-us/articles/360037434691-VariantFiltration</p>
 <p>[2] https://gatk.broadinstitute.org/hc/en-us/articles/360035531112--How-to-Filter-variants-either-with-VQSR-or-by-hard-filtering【主要看“2. Hard filter a cohort callset with VariantFiltration”这部分就行】</p>
@@ -556,7 +556,7 @@ gatk VariantFiltration \
 </ul>
 <p>从上述的话，其实也能很明显地看出来，VariantRecalibrator &amp; ApplyVQSR这套方法的缺陷 —— 需要先验的高质量VCF数据集。</p>
 <p>输入数据的要求：</p>
-<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1660188666242.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1660188666242.png" alt="" loading="lazy"></figure>
 <h4 id="variantrecalibrator示例运行">VariantRecalibrator：示例运行</h4>
 <pre><code class="language-bash"># exome data
 gatk VariantRecalibrator \
@@ -624,7 +624,7 @@ LB = DNA preparation library identifier
 </code></pre>
 <h4 id="2如何进行read-group信息添加">（2）如何进行read group信息添加？</h4>
 <p>图示：<br>
-<img src="https://Youpu-Chen.github.io//post-images/1660299121752.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1660299121752.png" alt="" loading="lazy"></p>
 <pre><code class="language-bash">@A00312:194:HFK5KDSX2  # 测序仪器
 4                      # lane ID
 1101                   # tail坐标
@@ -649,7 +649,7 @@ bwa -R '@RG\tID:lane_${lane}\tPL:illumina\tSM:${sample}'
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://Youpu-Chen.github.io/post/GATK-BESTPRACTICE/" title="这可能是我写过最全的GATK笔记">https://Youpu-Chen.github.io/post/GATK-BESTPRACTICE/</a>
+      <a href="http://localhost:4000/post/GATK-BESTPRACTICE/" title="这可能是我写过最全的GATK笔记">http://localhost:4000/post/GATK-BESTPRACTICE/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -658,23 +658,23 @@ bwa -R '@RG\tID:lane_${lane}\tPL:illumina\tSM:${sample}'
   </ul>
   <div class="tags">
     
-      <a href="https://Youpu-Chen.github.io/tag/ZUP1ThQfW/"># GATK</a>
+      <a href="http://localhost:4000/tag/ZUP1ThQfW/"># GATK</a>
     
-      <a href="https://Youpu-Chen.github.io/tag/aOqSaL_Yug/"># WGS</a>
+      <a href="http://localhost:4000/tag/aOqSaL_Yug/"># WGS</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="写给二十二岁的自己" href="https://Youpu-Chen.github.io/post/tomy22/">写给二十二岁的自己</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="写给二十二岁的自己" href="https://Youpu-Chen.github.io/post/tomy22/">上一篇</a>
+        <a class="nav-pc-next" title="写给二十二岁的自己" href="http://localhost:4000/post/tomy22/">写给二十二岁的自己</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="写给二十二岁的自己" href="http://localhost:4000/post/tomy22/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="「Hello Gridea」Here comes Youpu-Chen" href="https://Youpu-Chen.github.io/post/hello-gridea/">「Hello Gridea」Here comes Youpu-Chen</a>
-        <a class="nav-mobile-next" title="「Hello Gridea」Here comes Youpu-Chen" href="https://Youpu-Chen.github.io/post/hello-gridea/">下一篇</a>
+        <a class="nav-pc-next" title="「Hello Gridea」Here comes Youpu-Chen" href="http://localhost:4000/post/hello-gridea/">「Hello Gridea」Here comes Youpu-Chen</a>
+        <a class="nav-mobile-next" title="「Hello Gridea」Here comes Youpu-Chen" href="http://localhost:4000/post/hello-gridea/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
