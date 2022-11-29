@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://localhost:4000</id>
+    <id>https://Youpu-Chen.github.io/</id>
     <title>陈有朴</title>
-    <updated>2022-11-29T04:23:33.026Z</updated>
+    <updated>2022-11-29T05:25:42.110Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://localhost:4000"/>
-    <link rel="self" href="http://localhost:4000/atom.xml"/>
+    <link rel="alternate" href="https://Youpu-Chen.github.io/"/>
+    <link rel="self" href="https://Youpu-Chen.github.io/atom.xml"/>
     <subtitle>有谱</subtitle>
-    <logo>http://localhost:4000/images/avatar.png</logo>
-    <icon>http://localhost:4000/favicon.ico</icon>
+    <logo>https://Youpu-Chen.github.io/images/avatar.png</logo>
+    <icon>https://Youpu-Chen.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 陈有朴</rights>
     <entry>
         <title type="html"><![CDATA[「Theoretical Evolutionary Genetics」读书笔记（三）gene frequency的推断：极大似然估计（maximum likelihood estimation）]]></title>
-        <id>http://localhost:4000/post/theoretical-evolutionary-genetics-three-ME/</id>
-        <link href="http://localhost:4000/post/theoretical-evolutionary-genetics-three-ME/">
+        <id>https://Youpu-Chen.github.io/post/theoretical-evolutionary-genetics-three-ME/</id>
+        <link href="https://Youpu-Chen.github.io/post/theoretical-evolutionary-genetics-three-ME/">
         </link>
         <updated>2022-11-29T04:16:53.000Z</updated>
         <content type="html"><![CDATA[<h1 id="写在前头">写在前头</h1>
@@ -116,7 +116,7 @@ c-8,0,-12,-0.7,-12,-2z M1001 80H400000v40H1014z'/></svg></span></span></span><sp
 <p>1）不是所有population都已经达到了HD equilibrium（就算一个population达到了HD equilibrium，但是将尺度放大，考虑多个population之间的equilibrium时，其实是不满足条件的）</p>
 <p>2）很多时候，其实是无法计算得到sample中对应gene的frequency。</p>
 <p>举个例子，针对3种血型，分别存在如下的genotype和phenotype。假设我们现在是无法区分开AA和AO这两种genotype的占比，因此我们也无法得到对应gene frequency，<br>
-<img src="http://localhost:4000/post-images/1669695656771.png" alt="" width="300" loading="lazy"></p>
+<img src="https://Youpu-Chen.github.io//post-images/1669695656771.png" alt="" width="300" loading="lazy"></p>
 <p>虽然还是可以根据HW principle列出如下的公式，但是由于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>n</mi><mrow><mi>A</mi><mi>A</mi></mrow></msub></mrow><annotation encoding="application/x-tex">n_{AA}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>、<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>n</mi><mrow><mi>A</mi><mi>O</mi></mrow></msub></mrow><annotation encoding="application/x-tex">n_{AO}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">O</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>是未知的，因此还是无法计算得到最终的gene frequency，<br>
 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mi>A</mi></msub><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>n</mi><mrow><mi>A</mi><mi>A</mi></mrow></msub><mo>+</mo><msub><mi>n</mi><mrow><mi>A</mi><mi>O</mi></mrow></msub><mo>+</mo><msub><mi>n</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow><mrow><mn>2</mn><mi>n</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
 p_{A} = \frac{2n_{AA}+n_{AO}+n_{AB}}{2n}
@@ -158,8 +158,8 @@ p_{B} = [\frac{p_{O}}{p_{A}+2p_{O}}n_{A}+\frac{p_{O}}{p_{B}+2p_{O}}n_B+n_{O}]/(2
     </entry>
     <entry>
         <title type="html"><![CDATA[「Theoretical Evolutionary Genetics」读书笔记（二）Linkage Disequilibrium]]></title>
-        <id>http://localhost:4000/post/theoretical-evolutionary-geneticslinkage-disequilibrium-linkage-disequilibrium/</id>
-        <link href="http://localhost:4000/post/theoretical-evolutionary-geneticslinkage-disequilibrium-linkage-disequilibrium/">
+        <id>https://Youpu-Chen.github.io/post/theoretical-evolutionary-geneticslinkage-disequilibrium-linkage-disequilibrium/</id>
+        <link href="https://Youpu-Chen.github.io/post/theoretical-evolutionary-geneticslinkage-disequilibrium-linkage-disequilibrium/">
         </link>
         <updated>2022-11-26T11:49:58.000Z</updated>
         <content type="html"><![CDATA[<p>先用一个简答的例子，来理解linkage disequilibrium，即LD，</p>
@@ -174,14 +174,14 @@ p_{B} = [\frac{p_{O}}{p_{A}+2p_{O}}n_{A}+\frac{p_{O}}{p_{B}+2p_{O}}n_B+n_{O}]/(2
 </ul>
 <p>上述这些因素都是会造成现如今的DNA呈现在我们眼前如此多样的原因。</p>
 <p>来看张图理解，</p>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1669463552541.png" alt="" width="400" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1669463552541.png" alt="" width="400" loading="lazy"></figure>
 <h1 id="如何衡量linkage-disequilibrium">如何衡量Linkage Disequilibrium？</h1>
 <p>引入D统计量，</p>
 <blockquote>
 <p>Note：D存在多种变式，比如<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>D</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">D&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>、<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">r^{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
 </blockquote>
 <p>假设在某条染色体上存在两个相邻locus，第一个locus的gene有A和a，第二个locus的gene有B和b，那么它们在理想群体下的frequency是多少？</p>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1669463567266.png" alt="" width="400" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1669463567266.png" alt="" width="400" loading="lazy"></figure>
 <p>如果locus之间是存在linkage disequilibrium效应的呢？则会出现目标gamete type的期望频率和实际频率的偏离，用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span>来衡量。以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>D</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow><annotation encoding="application/x-tex">D_{AB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>为例，</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>D</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><mo>=</mo><msub><mi>p</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><mo>−</mo><msub><mi>p</mi><mi>A</mi></msub><msub><mi>p</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">D_{AB} = p_{AB} - p_{A}p_{B}
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7777700000000001em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
@@ -243,8 +243,8 @@ P_{AB}-p_{A}p_{B}，即为实际gamete frequency和期望frequency之间的差�
 <p>联系这张图，就可以一下子理解</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1669463584501.png" alt="" width="400" loading="lazy"></figure>
-<figure data-type="image" tabindex="4"><img src="http://localhost:4000/post-images/1669463594711.png" alt="" width="700" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://Youpu-Chen.github.io//post-images/1669463584501.png" alt="" width="400" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://Youpu-Chen.github.io//post-images/1669463594711.png" alt="" width="700" loading="lazy"></figure>
 <p>而最终就可以得到，如下这样的一个关系式，</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><msub><mi>P</mi><mrow><mi>a</mi><mi>b</mi></mrow></msub><mo>−</mo><msub><mi>P</mi><mrow><mi>A</mi><mi>b</mi></mrow></msub><msub><mi>P</mi><mrow><mi>a</mi><mi>B</mi></mrow></msub><mo>=</mo><msub><mi>P</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><mo>−</mo><msub><mi>p</mi><mi>A</mi></msub><msub><mi>p</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">P_{AB}P_{ab} - P_{Ab}P_{aB} = P_{AB}-p_{A}p_{B}
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
@@ -284,8 +284,8 @@ P_{AB}-p_{A}p_{B}，即为实际gamete frequency和期望frequency之间的差�
     </entry>
     <entry>
         <title type="html"><![CDATA[「Theoretical Evolutionary Genetics」读书笔记（一）- Random Mating Populations]]></title>
-        <id>http://localhost:4000/post/theoretical-evolutionary-genetics-randommating/</id>
-        <link href="http://localhost:4000/post/theoretical-evolutionary-genetics-randommating/">
+        <id>https://Youpu-Chen.github.io/post/theoretical-evolutionary-genetics-randommating/</id>
+        <link href="https://Youpu-Chen.github.io/post/theoretical-evolutionary-genetics-randommating/">
         </link>
         <updated>2022-11-25T10:27:50.000Z</updated>
         <content type="html"><![CDATA[<h1 id="导入-以asexual-inheritance和haploid-inheritance为例">导入 | 以asexual inheritance和haploid inheritance为例</h1>
@@ -311,13 +311,13 @@ P_{AB}-p_{A}p_{B}，即为实际gamete frequency和期望frequency之间的差�
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.598568em;vertical-align:-0.979088em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.61948em;"><span style="top:-2.28722em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8227800000000001em;"><span style="top:-2.433692em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.0448000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828285714285715em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.26630799999999993em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.94248em;"><span style="top:-2.4518920000000004em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8278285714285715em;"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.24810799999999997em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.979088em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.19633em;vertical-align:-0.8360000000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.19633em;vertical-align:-0.8360000000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
 <p>重要推论：每一种strain在群体中的种群数量占比，是不变的，</p>
 <p>上述情况拓展到，i个strain，也是一样的，</p>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1669373622701.png" alt="" width="200" loading="lazy"></figure>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1669373666902.png" alt="" width="400" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1669373622701.png" alt="" width="200" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1669373666902.png" alt="" width="400" loading="lazy"></figure>
 <p>每一个strain的占比，</p>
-<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1669373732536.png" alt="" width="200" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://Youpu-Chen.github.io//post-images/1669373732536.png" alt="" width="200" loading="lazy"></figure>
 <h2 id="haploid-inheritance">Haploid inheritance</h2>
 <p>以下面这个species为例（e.g. 一般是微生物具有类似的生殖模式，即haploid-&gt; diploid -&gt; haploid，如下图），现假设群体中存在两种genotype A和a。不同于二倍体，haploid物种，在单个locus只存在一个allele，要么是A，要么是a。</p>
-<figure data-type="image" tabindex="4"><img src="http://localhost:4000/post-images/1669373758351.png" alt="" width="400" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://Youpu-Chen.github.io//post-images/1669373758351.png" alt="" width="400" loading="lazy"></figure>
 <p>那么在当前这一代，能够形成如下的几种genotype的二倍体，其frequency（genotype frequency）如下，</p>
 <ul>
 <li>AA：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>p</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">p^{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.008548em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>：均产生A gene</li>
@@ -409,7 +409,7 @@ P_{all}(Aa) = \frac{500+700}{1000+1400} = 0.5
 <h2 id="sex-differentiation的引入">sex differentiation的引入</h2>
 <p>现假定female population中，A gene frequency为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mi>f</mi></msub></mrow><annotation encoding="application/x-tex">p_{f}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>，male population中为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">p_{m}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，</p>
 <p>generation之间的计算规律如下，</p>
-<figure data-type="image" tabindex="5"><img src="http://localhost:4000/post-images/1669373803604.png" alt="" width="400" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://Youpu-Chen.github.io//post-images/1669373803604.png" alt="" width="400" loading="lazy"></figure>
 <p>下一代中，female、male population中的A gene frequency为，</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>p</mi><mi>f</mi><mo mathvariant="normal">′</mo></msubsup><mo>=</mo><msubsup><mi>p</mi><mi>m</mi><mo mathvariant="normal">′</mo></msubsup><mo>=</mo><msub><mi>p</mi><mi>f</mi></msub><msub><mi>p</mi><mi>m</mi></msub><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>[</mo><msub><mi>p</mi><mi>f</mi></msub><mo>(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mi>m</mi></msub><mo>)</mo><mo>+</mo><msub><mi>p</mi><mi>m</mi></msub><mo>(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mi>f</mi></msub><mo>)</mo><mo>]</mo><mspace linebreak="newline"></mspace><mtext> </mtext><mtext> </mtext><mtext> </mtext><mo>=</mo><msub><mi>p</mi><mi>f</mi></msub><msub><mi>p</mi><mi>m</mi></msub><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>p</mi><mi>f</mi></msub><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>p</mi><mi>f</mi></msub><msub><mi>p</mi><mi>m</mi></msub><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>p</mi><mi>m</mi></msub><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>p</mi><mi>f</mi></msub><msub><mi>p</mi><mi>m</mi></msub><mspace linebreak="newline"></mspace><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>p</mi><mi>f</mi></msub><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>p</mi><mi>m</mi></msub><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext></mrow><annotation encoding="application/x-tex">p&#x27;_{f}=p&#x27;_{m}=p_{f}p_{m}+\frac{1}{2}[p_{f}(1-p_{m})+p_{m}(1-p_{f})] \\
 \,\,\,=p_{f}p_{m}+\frac{1}{2}p_{f}-\frac{1}{2}p_{f}p_{m}+\frac{1}{2}p_{m}-\frac{1}{2}p_{f}p_{m}\\
@@ -483,7 +483,7 @@ p
 # ggsave(&quot;sim-HWprinciple-sex-linked-locus.pdf&quot;, p, height = 6, width = 10)
 </code></pre>
 <p>当<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mi>f</mi></msub><mo>=</mo><mn>1</mn><mo separator="true">,</mo><msub><mi>p</mi><mi>m</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p_{f}=1, p_{m}=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>的初始情况下，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mrow><mi>A</mi><mi>A</mi></mrow></msub></mrow><annotation encoding="application/x-tex">P_{AA}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>在0.667收敛，如下图，</p>
-<figure data-type="image" tabindex="6"><img src="http://localhost:4000/post-images/1669373818297.png" alt="" width="400" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://Youpu-Chen.github.io//post-images/1669373818297.png" alt="" width="400" loading="lazy"></figure>
 <h1 id="其他">其他</h1>
 <h2 id="公式推导-lim_partialt-01-partial_tfractpartialt">公式推导 | <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>i</mi><msub><mi>m</mi><mrow><mi mathvariant="normal">∂</mi><mi>t</mi><mo>−</mo><mo>&gt;</mo><mn>0</mn></mrow></msub><mo>(</mo><mn>1</mn><mo>−</mo><msub><mi mathvariant="normal">∂</mi><mi>t</mi></msub><msup><mo>)</mo><mfrac><mi>t</mi><mrow><mi mathvariant="normal">∂</mi><mi>t</mi></mrow></mfrac></msup></mrow><annotation encoding="application/x-tex">lim_{\partial{t}-&gt;0}(1-\partial_{t})^{\frac{t}{\partial{t}}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span><span class="mord mtight">−</span><span class="mrel mtight">&gt;</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.18934em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord" style="margin-right:0.05556em;">∂</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.05556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9393400000000001em;"><span style="top:-3.363em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8233428571428572em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span></span></span></span></span></span></span></span></h2>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>i</mi><msub><mi>m</mi><mrow><mi mathvariant="normal">∂</mi><mi>t</mi><mo>−</mo><mo>&gt;</mo><mn>0</mn></mrow></msub><mo>(</mo><mn>1</mn><mo>−</mo><mi mathvariant="normal">∂</mi><mi>t</mi><msup><mo>)</mo><mfrac><mi>t</mi><mrow><mi mathvariant="normal">∂</mi><mi>t</mi></mrow></mfrac></msup><mspace linebreak="newline"></mspace><mo>=</mo><munder><mi>lim</mi><mo>⁡</mo><mrow><mi mathvariant="normal">∂</mi><mi>t</mi><mo>−</mo><mo>&gt;</mo><mn>0</mn></mrow></munder><msup><mi>e</mi><mfrac><mi>t</mi><mrow><mi mathvariant="normal">∂</mi><mi>t</mi></mrow></mfrac></msup><mrow><mi>l</mi><mi>n</mi><mo>(</mo><mn>1</mn><mo>−</mo><mi mathvariant="normal">∂</mi><mi>t</mi><mo>)</mo></mrow><mspace linebreak="newline"></mspace><mo>=</mo><msup><mi>e</mi><mrow><munder><mi>lim</mi><mo>⁡</mo><mrow><mi mathvariant="normal">∂</mi><mi>t</mi><mo>−</mo><mo>&gt;</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>t</mi><mo separator="true">⋅</mo><mi>l</mi><mi>n</mi><mo>(</mo><mn>1</mn><mo>−</mo><mi mathvariant="normal">∂</mi><mi>t</mi><mo>)</mo></mrow><mrow><mi mathvariant="normal">∂</mi><mi>t</mi></mrow></mfrac></mrow></msup><mspace linebreak="newline"></mspace><mi mathvariant="normal">应</mi><mi mathvariant="normal">用</mi><mi mathvariant="normal">洛</mi><mi mathvariant="normal">必</mi><mi mathvariant="normal">达</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">则</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">得</mi><msup><mi>e</mi><mrow><munder><mi>lim</mi><mo>⁡</mo><mrow><mi mathvariant="normal">∂</mi><mi>t</mi><mo>−</mo><mo>&gt;</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>t</mi><mo separator="true">⋅</mo><mfrac><mrow><mo>−</mo><mn>1</mn></mrow><mrow><mn>1</mn><mo>−</mo><mi mathvariant="normal">∂</mi><mi>t</mi></mrow></mfrac></mrow><mn>1</mn></mfrac></mrow></msup><mo>=</mo><msup><mi>e</mi><mrow><munder><mi>lim</mi><mo>⁡</mo><mrow><mi mathvariant="normal">∂</mi><mi>t</mi><mo>−</mo><mo>&gt;</mo><mn>0</mn></mrow></munder><mi>t</mi><mo separator="true">⋅</mo><mfrac><mrow><mo>−</mo><mn>1</mn></mrow><mrow><mn>1</mn><mo>−</mo><mi mathvariant="normal">∂</mi><mi>t</mi></mrow></mfrac></mrow></msup><mspace linebreak="newline"></mspace><mi mathvariant="normal">即</mi><mi mathvariant="normal">当</mi><mi mathvariant="normal">∂</mi><mi>t</mi><mi mathvariant="normal">趋</mi><mi mathvariant="normal">近</mi><mi mathvariant="normal">于</mi><mn>0</mn><mi mathvariant="normal">时</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">该</mi><mi mathvariant="normal">函</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">极</mi><mi mathvariant="normal">限</mi><mi mathvariant="normal">值</mi><mi mathvariant="normal">为</mi><msup><mi>e</mi><mrow><mo>−</mo><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">lim_{\partial{t}-&gt;0}(1-\partial{t})^{\frac{t}{\partial{t}}} \\
@@ -496,8 +496,8 @@ p
     </entry>
     <entry>
         <title type="html"><![CDATA[「基因组」基因组组装之前要做的：Genome Survey]]></title>
-        <id>http://localhost:4000/post/genomesurvey/</id>
-        <link href="http://localhost:4000/post/genomesurvey/">
+        <id>https://Youpu-Chen.github.io/post/genomesurvey/</id>
+        <link href="https://Youpu-Chen.github.io/post/genomesurvey/">
         </link>
         <updated>2022-10-16T07:36:39.000Z</updated>
         <content type="html"><![CDATA[<p>基因组组装之前，有一些问题还是需要注意的，</p>
@@ -601,7 +601,7 @@ smudgeplot.py hetkmers -o smudgeplot_kmercounts/&lt;kmc_db&gt;.kmc_L&quot;$L&quo
 smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
 </code></pre>
 <p>结果示意图如下，</p>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1665905861119.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1665905861119.png" alt="" loading="lazy"></figure>
 <p><strong>基因组大小估计需要注意的点</strong>，</p>
 <p>0）三代数据不适合用于Kmer分析，因为测序错误率高了很多，会对分析结果产生非常大的影响，</p>
 <p>但是HiFi reads以及canu和falcon产生的corrected reads可以很好的适用于Genome Scope分析</p>
@@ -612,9 +612,9 @@ smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
 <p>前者的<code>observed</code>曲线经过了一个转换，越往后的peak其峰值越大，即在原始的kmer freq上乘了一个n（n代表第n个peak），</p>
 <p>后者的<code>observed</code>曲线为实际观测到的一个数值，没有经过上述转换</p>
 <p>transformed linear：</p>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1665905871689.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1665905871689.png" alt="" loading="lazy"></figure>
 <p>linear plot：</p>
-<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1665905877897.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://Youpu-Chen.github.io//post-images/1665905877897.png" alt="" loading="lazy"></figure>
 <p>4）Genome Scope 2.0分析时，如果将过多的kmer判定为了<code>error</code>，最终的genome size就会小了特别多（基于genome size的计算公式）</p>
 <h1 id="背后的原理">背后的原理</h1>
 <p>首先需要明确的一个点是：Genome Scope 是基于diploid进行编写的。</p>
@@ -656,8 +656,8 @@ smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
     </entry>
     <entry>
         <title type="html"><![CDATA[「一文搞定序列比对算法」Global以及Local Alignment序列比对算法的实现]]></title>
-        <id>http://localhost:4000/post/globalandlocal_alignment/</id>
-        <link href="http://localhost:4000/post/globalandlocal_alignment/">
+        <id>https://Youpu-Chen.github.io/post/globalandlocal_alignment/</id>
+        <link href="https://Youpu-Chen.github.io/post/globalandlocal_alignment/">
         </link>
         <updated>2022-10-08T06:15:10.000Z</updated>
         <content type="html"><![CDATA[<p>序列比对是什么以及序列比对主要的作用是什么，本篇博客就一笔带过，因为不是主要分享内容。</p>
@@ -670,7 +670,7 @@ smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
 <li>全局比对想要得到的是2条序列最佳的匹配结果（e.g. 最多的match数量、最高的比对得分、最高的identity），局部比对想要得到的是2条序列中<strong>最佳匹配片段</strong>（注意：最佳的匹配结果需要建立在相对较少的序列修改上）</li>
 <li>全局比对更适用于evolution关系上更加靠近的（e.g. 粳稻和籼稻），而局部比对更加适用于evolution关系上关系比较远的（e.g. 水稻和葡萄）</li>
 </ul>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1665210943785.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1665210943785.png" alt="" loading="lazy"></figure>
 <h1 id="步骤拆解global-alignment">「步骤拆解」Global Alignment</h1>
 <p>利用动态规划来解决问题，最关键的一步就是列出<strong>动态规划公式</strong>，只要能列出公式，后面的编程也都只是时间问题。</p>
 <p>但是，我并不想一上来就列出数学公式，我认为以一个简单的例子入手更有利于序列比对问题中的动态规划应用。</p>
@@ -695,9 +695,9 @@ smudgeplot.py plot &lt;kmc_db&gt;._L&quot;$L&quot;_U&quot;$U&quot;_coverages.tsv
 </li>
 </ul>
 <p>Note：数值增大代表替换矩阵中，该碱基对应关系为match，而数值减小，代表替换矩阵中碱基对应关系为mismatch</p>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1665210984762.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1665210984762.png" alt="" loading="lazy"></figure>
 <h1 id="公式global-alignment">「公式」Global Alignment</h1>
-<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1665211129642.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://Youpu-Chen.github.io//post-images/1665211129642.png" alt="" loading="lazy"></figure>
 <h1 id="引入gap-extension">引入gap extension</h1>
 <p><strong>出现4个单位长度的一个完整gap将两条序列给比对上，或者4个单位长度的单独gap将两条序列给比对上是更符合生物学原理的</strong>？</p>
 <p>上述的文字情况如下所示，</p>
@@ -714,14 +714,14 @@ ATCG-ATCG-ATCG-ATCG-ATCG
 </blockquote>
 <p>affine gap penalty，即在打开第一个gap的时候引入gap open罚分，而在该gap的基础上进行延续则采用gap extension罚分。</p>
 <p>该种做法与原来的常量gap有一定区别，因此就需要改变动态规划公式，同时引入CS中的状态机可以帮助我们更好地理解这个问题。</p>
-<figure data-type="image" tabindex="4"><img src="http://localhost:4000/post-images/1665211055133.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://Youpu-Chen.github.io//post-images/1665211055133.png" alt="" loading="lazy"></figure>
 <p>上图中存在3个状态，</p>
 <p>1）M：当前的比对情况下为match或mismatch</p>
 <p>2）Ix：当前的比对情况为在seq2上打开一个gap，而seq1上为一个base</p>
 <p>3）Iy：当前的比对情况为在seq1上打开一个gap，而seq2上为一个base</p>
 <p>三者之间是可以相互转换的，通过d、e、s(x, y)来调整。</p>
 <p>因此动态规划公式变为如下的形式，</p>
-<figure data-type="image" tabindex="5"><img src="http://localhost:4000/post-images/1665211100756.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://Youpu-Chen.github.io//post-images/1665211100756.png" alt="" loading="lazy"></figure>
 <h2 id="gap-extension情况下的动态规划矩阵初始化">gap extension情况下的动态规划矩阵初始化</h2>
 <ul>
 <li>M(0,0)=0</li>
@@ -738,13 +738,13 @@ ATCG-ATCG-ATCG-ATCG-ATCG
 <p>同时，由于每一个cell都存在一种情况，我们需要建立3个矩阵来存储对应的信息，分别用M、X、Y来表示。</p>
 <p>经初始化之后，就可以得到如下3个矩阵：</p>
 <h4 id="1m">1）M</h4>
-<figure data-type="image" tabindex="6"><img src="http://localhost:4000/post-images/1665211211305.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://Youpu-Chen.github.io//post-images/1665211211305.png" alt="" loading="lazy"></figure>
 <h4 id="2x">2）X</h4>
 <p>代表在列方向打开一个gap，即seq2上插入一个gap</p>
-<figure data-type="image" tabindex="7"><img src="http://localhost:4000/post-images/1665211230263.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://Youpu-Chen.github.io//post-images/1665211230263.png" alt="" loading="lazy"></figure>
 <h4 id="3y">3）Y</h4>
 <p>代表在行方向上打开一个gap，即seq1上插入一个gap</p>
-<figure data-type="image" tabindex="8"><img src="http://localhost:4000/post-images/1665211245230.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://Youpu-Chen.github.io//post-images/1665211245230.png" alt="" loading="lazy"></figure>
 <h3 id="gap-extension情况下的动态规划矩阵回溯">gap extension情况下的动态规划矩阵回溯</h3>
 <p>3个矩阵，可以使用1个矩阵来记录当前的cell的数值来源，3种情况如下</p>
 <ul>
@@ -753,11 +753,11 @@ ATCG-ATCG-ATCG-ATCG-ATCG
 <li>来自Y，即当前为一个gap open/gap extension，记录为2</li>
 </ul>
 <p>给个示例的回溯矩阵，</p>
-<figure data-type="image" tabindex="9"><img src="http://localhost:4000/post-images/1665211266426.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://Youpu-Chen.github.io//post-images/1665211266426.png" alt="" loading="lazy"></figure>
 <h1 id="步骤拆解local-alignment">「步骤拆解」Local Alignment</h1>
 <p>步骤与Global Alignment近似，只是引入了一个0，就可以得到局部的最佳匹配。</p>
 <p>公式如下，</p>
-<figure data-type="image" tabindex="10"><img src="http://localhost:4000/post-images/1665211285196.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://Youpu-Chen.github.io//post-images/1665211285196.png" alt="" loading="lazy"></figure>
 <h1 id="代码实现">代码实现</h1>
 <pre><code class="language-python">import numpy as np
 
@@ -1027,8 +1027,8 @@ def local_backtracking(trace_matrix, score_matrix):
     </entry>
     <entry>
         <title type="html"><![CDATA[从读者的角度出发]]></title>
-        <id>http://localhost:4000/post/for-readers/</id>
-        <link href="http://localhost:4000/post/for-readers/">
+        <id>https://Youpu-Chen.github.io/post/for-readers/</id>
+        <link href="https://Youpu-Chen.github.io/post/for-readers/">
         </link>
         <updated>2022-09-24T13:21:59.000Z</updated>
         <content type="html"><![CDATA[<p>虽然没有一头想着要搞科研的打算，但是有着想要在活着的时候做一些自己觉得有意思的事情作为出发点，开始了我新阶段的学习，尽管现在还没有如愿。</p>
@@ -1058,8 +1058,8 @@ def local_backtracking(trace_matrix, score_matrix):
     </entry>
     <entry>
         <title type="html"><![CDATA[「转录组」WGCNA专题：实战原理两不误]]></title>
-        <id>http://localhost:4000/post/WGCNA/</id>
-        <link href="http://localhost:4000/post/WGCNA/">
+        <id>https://Youpu-Chen.github.io/post/WGCNA/</id>
+        <link href="https://Youpu-Chen.github.io/post/WGCNA/">
         </link>
         <updated>2022-08-23T13:50:06.000Z</updated>
         <content type="html"><![CDATA[<p>Hello，这里是即将开学的陈有朴。</p>
@@ -1140,7 +1140,7 @@ plotDendroAndColors(geneTree, dynamicColors, &quot;Dynamic Tree Cut&quot;,dendro
 # dev.off()
 </code></pre>
 <p>绘制图如下，<br>
-<img src="http://localhost:4000/post-images/1661263419560.png" alt="" loading="lazy"></p>
+<img src="https://Youpu-Chen.github.io//post-images/1661263419560.png" alt="" loading="lazy"></p>
 <p>gene module合并代码如下 -&gt; 基于<code>cutreeDynamic()</code>的分析结果进行聚类分析的gene module的合并</p>
 <ul>
 <li><code>mergeCloseModules</code>：合并gene module</li>
@@ -1163,7 +1163,7 @@ write.table(merge$oldMEs,file=&quot;oldMEs.txt&quot;);
 write.table(merge$newMEs,file=&quot;newMEs.txt&quot;);
 </code></pre>
 <p>绘制图如下，可以看到有一些gene module被合并了，</p>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1661263433346.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1661263433346.png" alt="" loading="lazy"></figure>
 <h2 id="7将gene-module与表型特征相联系">7）将gene module与表型特征相联系</h2>
 <p>使用标准化的eigengene进行计算。<br>
 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>o</mi><mi>r</mi><mo>(</mo><mi>M</mi><mi>E</mi><mi>s</mi><mo separator="true">,</mo><mi>T</mi><mi>r</mi><mi>a</mi><mi>i</mi><mi>t</mi><mi>s</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">
@@ -1241,7 +1241,7 @@ labeledHeatmap(Matrix = moduleTraitCor,
 <blockquote>
 <p>Note：右边的图例，代表相关性程度</p>
 </blockquote>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1661263448767.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1661263448767.png" alt="" loading="lazy"></figure>
 <h2 id="8hub-gene的鉴定">8）Hub gene的鉴定</h2>
 <p>2种方法，</p>
 <ul>
@@ -1305,7 +1305,7 @@ verboseScatterplot(abs(geneModuleMembership[moduleGenes, column]),
                    cex.main = 1.2, cex.lab = 1.2, cex.axis = 1.2, col = module)
 </code></pre>
 <p>散点图结果如下，可以看到module membership值越高的gene，其gene significance也越高。</p>
-<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1661263464074.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://Youpu-Chen.github.io//post-images/1661263464074.png" alt="" loading="lazy"></figure>
 <h1 id="其他">其他</h1>
 <h2 id="绘制gene-module-eigengenes与samples之间的热图">绘制gene module eigengenes与samples之间的热图</h2>
 <pre><code class="language-R">library(&quot;pheatmap&quot;)
@@ -1334,8 +1334,8 @@ pheatmap(merge$newMEs,cluster_col=T,cluster_row=T,show_rownames=T,show_colnames=
     </entry>
     <entry>
         <title type="html"><![CDATA[写给二十二岁的自己]]></title>
-        <id>http://localhost:4000/post/tomy22/</id>
-        <link href="http://localhost:4000/post/tomy22/">
+        <id>https://Youpu-Chen.github.io/post/tomy22/</id>
+        <link href="https://Youpu-Chen.github.io/post/tomy22/">
         </link>
         <updated>2022-08-14T06:47:00.000Z</updated>
         <content type="html"><![CDATA[<p>写下这篇文章的时候，我的生日已经过去了二十多天，但或许是近来反刍的事情太多，才让我写下这篇文章。</p>
@@ -1392,16 +1392,16 @@ pheatmap(merge$newMEs,cluster_col=T,cluster_row=T,show_rownames=T,show_colnames=
     </entry>
     <entry>
         <title type="html"><![CDATA[这可能是我写过最全的GATK笔记]]></title>
-        <id>http://localhost:4000/post/GATK-BESTPRACTICE/</id>
-        <link href="http://localhost:4000/post/GATK-BESTPRACTICE/">
+        <id>https://Youpu-Chen.github.io/post/GATK-BESTPRACTICE/</id>
+        <link href="https://Youpu-Chen.github.io/post/GATK-BESTPRACTICE/">
         </link>
         <updated>2022-08-11T03:23:01.000Z</updated>
         <content type="html"><![CDATA[<h3 id="软件安装">软件安装</h3>
 <p>官方网站：https://gatk.broadinstitute.org/hc/en-us</p>
 <p>点击“Download GATK4”：<br>
-<img src="http://localhost:4000/post-images/1660188520935.png" alt="" loading="lazy"></p>
+<img src="https://Youpu-Chen.github.io//post-images/1660188520935.png" alt="" loading="lazy"></p>
 <p>选择zip安装包：<br>
-<img src="http://localhost:4000/post-images/1660188530491.png" alt="" loading="lazy"></p>
+<img src="https://Youpu-Chen.github.io//post-images/1660188530491.png" alt="" loading="lazy"></p>
 <pre><code class="language-bash">wget https://github.com/broadinstitute/gatk/releases/download/4.2.5.0/gatk-4.2.5.0.zip
 unzip gatk-4.2.5.0.zip
 </code></pre>
@@ -1410,7 +1410,7 @@ unzip gatk-4.2.5.0.zip
 <p>其他分析流程（bwa替代流程）：https://gatk.broadinstitute.org/hc/en-us/articles/4407897446939--How-to-Run-germline-single-sample-short-variant-discovery-in-DRAGEN-mode</p>
 <h3 id="gatkjave选项">GATK：Jave选项</h3>
 <p>GATK实际使用的命令为：<code>java -jar program.jar</code>，但是为了GATK的开发者为了方便将其添加到环境变量，对其进行了封装，即使用安装目录下的<strong>gatk可执行脚本</strong>可直接运行：<br>
-<img src="http://localhost:4000/post-images/1660188563873.png" alt="" loading="lazy"></p>
+<img src="https://Youpu-Chen.github.io//post-images/1660188563873.png" alt="" loading="lazy"></p>
 <p>下面给出一个封装前后，设置额外参数的例子：</p>
 <p>未进行封装前，设置额外参数的方式为<code>java -Xmx4G -jar gatk-package-4.2.2.0-local.jar</code></p>
 <p>进行封装后，设置额外参数的方式为<code>gatk --java-options &quot;-Xmx4G&quot;</code></p>
@@ -1619,7 +1619,7 @@ gatk VariantFiltration \
     -O indels_filtered.vcf.gz
 </code></pre>
 <p>再给出一篇文章中的过滤参数：</p>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1660188613462.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://Youpu-Chen.github.io//post-images/1660188613462.png" alt="" loading="lazy"></figure>
 <p>官方说明文档如下：</p>
 <p>[1] https://gatk.broadinstitute.org/hc/en-us/articles/360037434691-VariantFiltration</p>
 <p>[2] https://gatk.broadinstitute.org/hc/en-us/articles/360035531112--How-to-Filter-variants-either-with-VQSR-or-by-hard-filtering【主要看“2. Hard filter a cohort callset with VariantFiltration”这部分就行】</p>
@@ -1663,7 +1663,7 @@ gatk VariantFiltration \
 </ul>
 <p>从上述的话，其实也能很明显地看出来，VariantRecalibrator &amp; ApplyVQSR这套方法的缺陷 —— 需要先验的高质量VCF数据集。</p>
 <p>输入数据的要求：</p>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1660188666242.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://Youpu-Chen.github.io//post-images/1660188666242.png" alt="" loading="lazy"></figure>
 <h4 id="variantrecalibrator示例运行">VariantRecalibrator：示例运行</h4>
 <pre><code class="language-bash"># exome data
 gatk VariantRecalibrator \
@@ -1731,7 +1731,7 @@ LB = DNA preparation library identifier
 </code></pre>
 <h4 id="2如何进行read-group信息添加">（2）如何进行read group信息添加？</h4>
 <p>图示：<br>
-<img src="http://localhost:4000/post-images/1660299121752.png" alt="" loading="lazy"></p>
+<img src="https://Youpu-Chen.github.io//post-images/1660299121752.png" alt="" loading="lazy"></p>
 <pre><code class="language-bash">@A00312:194:HFK5KDSX2  # 测序仪器
 4                      # lane ID
 1101                   # tail坐标
@@ -1748,8 +1748,8 @@ bwa -R '@RG\tID:lane_${lane}\tPL:illumina\tSM:${sample}'
     </entry>
     <entry>
         <title type="html"><![CDATA[「Hello Gridea」Here comes Youpu-Chen]]></title>
-        <id>http://localhost:4000/post/hello-gridea/</id>
-        <link href="http://localhost:4000/post/hello-gridea/">
+        <id>https://Youpu-Chen.github.io/post/hello-gridea/</id>
+        <link href="https://Youpu-Chen.github.io/post/hello-gridea/">
         </link>
         <updated>2022-08-09T16:00:00.000Z</updated>
         <content type="html"><![CDATA[<p>这是从Gridea开始的第一篇故事。</p>
@@ -1767,18 +1767,18 @@ bwa -R '@RG\tID:lane_${lane}\tPL:illumina\tSM:${sample}'
 <h1 id="gridea客户端安装">「Gridea」客户端安装</h1>
 <p>官网 -&gt; <a href="https://gridea.dev/">Click here</a></p>
 <p>0）根据自己的系统选择即可<br>
-<img src="http://localhost:4000/post-images/1660115082807.png" alt="" loading="lazy"></p>
+<img src="https://Youpu-Chen.github.io//post-images/1660115082807.png" alt="" loading="lazy"></p>
 <h1 id="gridea与github">「Gridea与Github」</h1>
 <p>1）首先，需要有一个Github账号<br>
 2）创建一个名字为<code>&lt;username&gt;.github.io</code>的仓库<br>
 3）Gridea远程配置如下即可，<br>
-<img src="http://localhost:4000/post-images/1660114907888.png" alt="" loading="lazy"></p>
+<img src="https://Youpu-Chen.github.io//post-images/1660114907888.png" alt="" loading="lazy"></p>
 <h2 id="如何绑定自己的域名">如何绑定自己的域名？</h2>
 <p>以腾讯云为例，在控制台完成如下操作即可 -&gt; A &amp; CNAME的配置，<br>
-<img src="http://localhost:4000/post-images/1660114916595.png" alt="" loading="lazy"></p>
+<img src="https://Youpu-Chen.github.io//post-images/1660114916595.png" alt="" loading="lazy"></p>
 <p>在Github创建的仓库中，输入域名即可<br>
 「记得<code>Enforce https</code>」<br>
-<img src="http://localhost:4000/post-images/1660114927770.png" alt="" loading="lazy"></p>
+<img src="https://Youpu-Chen.github.io//post-images/1660114927770.png" alt="" loading="lazy"></p>
 <h1 id="gridea主题更换">「Gridea」主题更换</h1>
 <p>以gridea-theme-one为例，Github链接 -&gt; <a href="https://github.com/kytrun/gridea-theme-one.git">one</a></p>
 <p>「克隆仓库前，记得想想自己将Gridea的工作目录放置到了哪里，」</p>
